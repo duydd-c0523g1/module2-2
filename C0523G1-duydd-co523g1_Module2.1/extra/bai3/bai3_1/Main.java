@@ -8,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a number from 1 to 9");
         int number = Integer.parseInt(scanner.nextLine());
-        System.out.println("The index of number " + number + " is " + IntegerArray.findExistence(array, number));
+        System.out.println("The index of number " + number + " is "
+                + IntegerArray.findExistence(array, number));
     }
 }
