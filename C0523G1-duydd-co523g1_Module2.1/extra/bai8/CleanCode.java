@@ -9,7 +9,7 @@ public class CleanCode {
         // Do something
     }
 
-    public boolean is_leap_year(int year) {
+    public boolean isLeapYear(int year) {
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 
@@ -29,7 +29,7 @@ public class CleanCode {
             case 11:
                 return 30;
             case 2:
-                return is_leap_year(year) ? 29 : 28;
+                return isLeapYear(year) ? 29 : 28;
             default:
                 return -1;
         }
