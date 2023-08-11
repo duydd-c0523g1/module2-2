@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Repository implements IRepository {
-    public final String FILE_PATH_STUDENT = "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\src\\mvc_practice\\data\\student.csv";
-    public final String FILE_PATH_TEACHER = "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\src\\mvc_practice\\data\\teacher.csv";
+    public final String FILE_PATH_STUDENT =
+            "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\src\\mvc_practice\\data\\student.csv";
+    public final String FILE_PATH_TEACHER =
+            "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\src\\mvc_practice\\data\\teacher.csv";
 
     @Override
     public void addNewStudent(Person student) {
@@ -86,7 +88,7 @@ public class Repository implements IRepository {
     @Override
     public void removeTeacher(String id) throws Exception {
         boolean idExist = false;
-        List<Person> teacherList = this.showStudentList();
+        List<Person> teacherList = this.showTeacherList();
         List<String> stringList = new ArrayList<>();
         for (int i = 0; i < teacherList.size(); i++) {
             if (teacherList.get(i).getId().equals(id)) {

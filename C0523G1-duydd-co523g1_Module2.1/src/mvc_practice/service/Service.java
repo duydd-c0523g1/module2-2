@@ -6,6 +6,7 @@ import src.mvc_practice.model.Teacher;
 import src.mvc_practice.repository.IRepository;
 import src.mvc_practice.repository.Repository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,7 +68,7 @@ public class Service implements IService {
         System.out.println("Insert student's ID to remove");
         String id = scanner.nextLine();
         repository.removeStudent(id);
-        System.out.println("Updated student list: " + repository.showStudentList());
+        System.out.println("Updated student list: \n" + repository.showStudentList());
     }
 
     @Override
@@ -75,6 +76,6 @@ public class Service implements IService {
         System.out.println("Insert teacher's ID to remove");
         String id = scanner.nextLine();
         repository.removeStudent(id);
-        System.out.println("Updated teacher list: " + repository.showTeacherList());
+        System.out.println("Updated teacher list: \n" + repository.showTeacherList());
     }
 }
