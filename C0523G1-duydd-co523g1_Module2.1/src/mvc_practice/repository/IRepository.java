@@ -9,6 +9,6 @@ public interface IRepository {
     void addNewTeacher(Person teacher);
     List<Person> showStudentList();
     List<Person> showTeacherList();
-    void removeStudent(String id);
-    void removeTeacher(String id);
+    void removeStudent(String id) throws Exception;
+    void removeTeacher(String id) throws Exception;
 }

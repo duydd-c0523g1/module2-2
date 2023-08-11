@@ -62,16 +62,45 @@ public class Repository implements IRepository {
 
 
     @Override
-    public void removeStudent(String id) {
-        List<Person> teacherList = new ArrayList<>();
-        List<String> stringList = Stream.read(FILE_PATH_STUDENT);
-        for (int i = 0; i < stringList.size(); i++) {
-            if (stringList.get(i).get)
+    public void removeStudent(String id) throws Exception {
+        boolean idExist = false;
+        List<Person> studentList = this.showStudentList();
+        List<String> stringList = new ArrayList<>();
+        for (int i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getId().equals(id)) {
+                studentList.remove(studentList.get(i));
+                idExist = true;
+                break;
+            }
         }
+        if (!idExist) {
+            throw new Exception("Person does not exist!");
+        }
+        for (Person student : studentList) {
+            stringList.add(student.getInfoToCsv());
+        }
+        Stream.write(FILE_PATH_STUDENT, stringList, false);
     }
 
-    @Override
-    public void removeTeacher(String id) {
 
+    @Override
+    public void removeTeacher(String id) throws Exception {
+        boolean idExist = false;
+        List<Person> teacherList = this.showStudentList();
+        List<String> stringList = new ArrayList<>();
+        for (int i = 0; i < teacherList.size(); i++) {
+            if (teacherList.get(i).getId().equals(id)) {
+                teacherList.remove(teacherList.get(i));
+                idExist = true;
+                break;
+            }
+        }
+        if (!idExist) {
+            throw new Exception("Person does not exist!");
+        }
+        for (Person teacher : teacherList) {
+            stringList.add(teacher.getInfoToCsv());
+        }
+        Stream.write(FILE_PATH_TEACHER, stringList, false);
     }
 }
