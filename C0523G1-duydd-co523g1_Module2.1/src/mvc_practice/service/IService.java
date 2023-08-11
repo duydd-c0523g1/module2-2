@@ -5,6 +5,6 @@ public interface IService {
     void addNewTeacher();
     void showStudentList();
     void showTeacherList();
-    void removeStudent();
-    void removeTeacher();
+    void removeStudent() throws Exception;
+    void removeTeacher() throws Exception;
 }

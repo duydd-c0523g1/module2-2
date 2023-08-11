@@ -63,7 +63,7 @@ public class Service implements IService {
     }
 
     @Override
-    public void removeStudent() {
+    public void removeStudent() throws Exception {
         System.out.println("Insert student's ID to remove");
         String id = scanner.nextLine();
         repository.removeStudent(id);
@@ -71,7 +71,7 @@ public class Service implements IService {
     }
 
     @Override
-    public void removeTeacher() {
+    public void removeTeacher() throws Exception {
         System.out.println("Insert teacher's ID to remove");
         String id = scanner.nextLine();
         repository.removeStudent(id);
