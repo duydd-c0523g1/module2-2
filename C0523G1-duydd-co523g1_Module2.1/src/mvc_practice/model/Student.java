@@ -37,6 +37,7 @@ public class Student extends Person {
     public String toString() {
         return super.toString() +
                 "Class: " + classId + "\n" +
-                "Score: " + score;
+                "Score: " + score + "\n" +
+                "----------------------------";
     }
 }
