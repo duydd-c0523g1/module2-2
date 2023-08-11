@@ -43,7 +43,7 @@ public class Service implements IService {
         System.out.println("Insert teacher's profession");
         String profession = scanner.nextLine();
         Person teacher = new Teacher(id, name, dob, gender, profession);
-        repository.addNewStudent(teacher);
+        repository.addNewTeacher(teacher);
     }
 
     @Override
