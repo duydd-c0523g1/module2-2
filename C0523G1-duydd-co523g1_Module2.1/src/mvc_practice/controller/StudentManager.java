@@ -12,7 +12,7 @@ public class StudentManager {
     private static IService service = new Service();
     public static void showMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        do {
+        do try {
             System.out.println("-------STUDENT MANAGER-------");
             System.out.println("1. Add new");
             System.out.println("2. Delete");
@@ -34,8 +34,10 @@ public class StudentManager {
                 case 4:
                     System.exit(0);
                 default:
-                    throw new Exception("Invalid option");
+                    System.out.println("Invalid option!");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Please insert a NUMBER!!!!");
         } while (true);
     }
 }

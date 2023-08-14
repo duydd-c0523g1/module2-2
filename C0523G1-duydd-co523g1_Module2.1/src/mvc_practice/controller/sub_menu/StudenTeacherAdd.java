@@ -10,7 +10,7 @@ public class StudenTeacherAdd {
     private static IService service = new Service();
     public static void showSubMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        do {
+        do try {
             System.out.println("1. Add new student");
             System.out.println("2. Add new teacher");
             System.out.println("3. Home");
@@ -31,8 +31,10 @@ public class StudenTeacherAdd {
                     System.exit(0);
                     break;
                 default:
-                    throw new Exception("Invalid option");
+                    System.out.println("Invalid option!");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Please insert a NUMBER!!!!");
         } while (true);
     }
 }
