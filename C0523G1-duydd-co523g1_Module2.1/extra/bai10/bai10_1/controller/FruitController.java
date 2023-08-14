@@ -11,12 +11,13 @@ public class FruitController {
         Scanner scanner = new Scanner(System.in);
         do try {
             int option;
-            System.out.println("-----FRUITS MENU-----");
+            System.out.println("=====FRUITS MENU=====");
             System.out.println("1. Add new fruit");
             System.out.println("2. Display fruit list");
             System.out.println("3. Exit");
             System.out.print("Insert your option: ");
             option = Integer.parseInt(scanner.nextLine());
+            System.out.println("-----------------------------------");
             switch (option) {
                 case 1:
                     fruitService.addNew();

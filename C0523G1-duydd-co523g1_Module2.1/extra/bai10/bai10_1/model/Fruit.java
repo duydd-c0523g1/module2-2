@@ -69,13 +69,12 @@ public class Fruit {
 
     @Override
     public String toString() {
-        return "Fruit{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", dom='" + dom + '\'' +
-                ", exp='" + exp + '\'' +
-                ", origin='" + origin + '\'' +
-                ", price=" + price +
-                '}';
+        return "Name: " + this.name
+                + "\nType: " + this.type
+                + "\nDate of manufacture: " + this.dom
+                + "\nExpiration date: " + this.exp
+                + "\nOrigin: " + this.origin
+                + "\nPrice per kilogram: " + "$" + this.price
+                + "\n-----------------------------------";
     }
 }

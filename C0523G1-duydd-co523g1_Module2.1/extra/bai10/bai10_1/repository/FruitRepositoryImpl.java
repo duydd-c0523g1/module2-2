@@ -9,11 +9,11 @@ public class FruitRepositoryImpl implements  IFruitRepository{
     static List<Fruit> fruitList = new ArrayList<>();
     static {
         fruitList.add(new Fruit("Apple", "Normal",
-                "14/08/2023", "20/08/2023", "Vietnam", 100000));
+                "14/08/2023", "20/08/2023", "Vietnam", 10));
         fruitList.add(new Fruit("Orange", "Normal",
-                "14/08/2023", "20/08/2023", "Vietnam", 150000));
+                "14/08/2023", "20/08/2023", "Vietnam", 15));
         fruitList.add(new Fruit("Banana", "Normal",
-                "14/08/2023", "20/08/2023", "Nigeria", 140000));
+                "14/08/2023", "20/08/2023", "Nigeria", 14));
     }
     @Override
     public void addNew(Fruit fruit) {

@@ -23,8 +23,10 @@ public class FruitServiceImpl implements IFruitService{
         String exp = scanner.nextLine();
         System.out.print("Origin: ");
         String origin = scanner.nextLine();
-        System.out.print("Price per kilogram: ");
+        System.out.print("Price per kilogram ($): ");
         int price = Integer.parseInt(scanner.nextLine());
+        System.out.println("Success!");
+        System.out.println("-----------------------------------");
         Fruit fruit = new Fruit(name, type, dom, exp, origin, price);
         fruitRepository.addNew(fruit);
     }
