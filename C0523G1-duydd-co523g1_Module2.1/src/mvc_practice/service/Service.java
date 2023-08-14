@@ -75,7 +75,7 @@ public class Service implements IService {
     public void removeTeacher() throws Exception {
         System.out.println("Insert teacher's ID to remove");
         String id = scanner.nextLine();
-        repository.removeStudent(id);
+        repository.removeTeacher(id);
         System.out.println("Updated teacher list: \n" + repository.showTeacherList());
     }
 }
