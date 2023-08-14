@@ -62,7 +62,6 @@ public class Repository implements IRepository {
         return teacherList;
     }
 
-
     @Override
     public void removeStudent(String id) throws Exception {
         boolean idExist = false;
@@ -83,7 +82,6 @@ public class Repository implements IRepository {
         }
         Stream.write(FILE_PATH_STUDENT, stringList, false);
     }
-
 
     @Override
     public void removeTeacher(String id) throws Exception {
