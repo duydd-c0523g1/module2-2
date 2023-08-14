@@ -1,11 +1,17 @@
 package extra.bai8;
 
+import java.util.List;
+
 public class CleanCode {
-    public int sum(int num1, int num2, int num3) {
-        return num1 + num2 + num3;
+    public int sum(int... numbers) {
+        int total = 0;
+        for (int num : numbers) {
+            total += num;
+        }
+        return total;
     }
 
-    private void employeeDetails(String name, String age, String awards, String ctc, String experience) {
+    public void employeeDetails(String name, int age, List<String> awards, double ctc, int experienceYears) {
         // Do something
     }
 
@@ -13,25 +19,21 @@ public class CleanCode {
         return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 
-    public int getDayOfMonth(int month, int year) {
+    public int getDaysInMonth(int month, int year) {
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException("Invalid month: " + month);
+        }
+
         switch (month) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                return 31;
+            case 2:
+                return isLeapYear(year) ? 29 : 28;
             case 4:
             case 6:
             case 9:
             case 11:
                 return 30;
-            case 2:
-                return isLeapYear(year) ? 29 : 28;
             default:
-                return -1;
+                return 31;
         }
     }
 }
