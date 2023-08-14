@@ -20,7 +20,7 @@ public class StudentManager {
             System.out.println("4. Exit");
             System.out.print("Select an option: ");
             int option  = Integer.parseInt(scanner.nextLine());
-            System.out.println("\n----------------------------");
+            System.out.println("----------------------------");
             switch (option) {
                 case 1:
                     StudenTeacherAdd.showSubMenu();
