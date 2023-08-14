@@ -1,8 +1,9 @@
 package src.mvc_practice.controller;
 
-import src.mvc_practice.controller.sub_menu.StudenTeacherAdd;
+import src.mvc_practice.controller.sub_menu.StudentTeacherAdd;
 import src.mvc_practice.controller.sub_menu.StudentTeacherDisplay;
 import src.mvc_practice.controller.sub_menu.StudentTeacherRemove;
+import src.mvc_practice.model.Student;
 import src.mvc_practice.service.IService;
 import src.mvc_practice.service.Service;
 
@@ -25,7 +26,7 @@ public class StudentManager {
                 System.out.println("----------------------------");
                 switch (option) {
                     case 1:
-                        StudenTeacherAdd.showSubMenu();
+                        StudentTeacherAdd.showSubMenu();
                         break;
                     case 2:
                         StudentTeacherRemove.showSubMenu();

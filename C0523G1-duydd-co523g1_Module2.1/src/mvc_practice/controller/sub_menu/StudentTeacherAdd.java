@@ -6,7 +6,7 @@ import src.mvc_practice.service.Service;
 
 import java.util.Scanner;
 
-public class StudenTeacherAdd {
+public class StudentTeacherAdd {
     private static IService service = new Service();
 
     public static void showSubMenu() throws Exception {
