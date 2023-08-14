@@ -1,20 +1,13 @@
 package extra.bai11;
 
-import java.util.Stack;
 
 public class NumberCheck {
-    public static boolean isPrime(int number) {
-        if (number <= 1) {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
             return false;
         }
-        if (number <= 3) {
-            return true;
-        }
-        if (number % 2 == 0 || number % 3 == 0) {
-            return false;
-        }
-        for (int i = 5; i * i <= number; i += 6) {
-            if (number % i == 0 || number % (i + 2) == 0) {
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
                 return false;
             }
         }
