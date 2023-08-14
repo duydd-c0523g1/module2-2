@@ -68,7 +68,8 @@ public class Service implements IService {
         System.out.println("Insert student's ID to remove");
         String id = scanner.nextLine();
         repository.removeStudent(id);
-        System.out.println("Updated student list: \n" + repository.showStudentList());
+        System.out.println("Updated student list: ");
+        showStudentList();
     }
 
     @Override
@@ -76,6 +77,7 @@ public class Service implements IService {
         System.out.println("Insert teacher's ID to remove");
         String id = scanner.nextLine();
         repository.removeTeacher(id);
-        System.out.println("Updated teacher list: \n" + repository.showTeacherList());
+        System.out.println("Updated teacher list: ");
+        showTeacherList();
     }
 }
