@@ -1,8 +1,8 @@
-package extra.bai10.bai10_1.service;
+package extra.bai10.service;
 
-import extra.bai10.bai10_1.model.Fruit;
-import extra.bai10.bai10_1.repository.FruitRepositoryImpl;
-import extra.bai10.bai10_1.repository.IFruitRepository;
+import extra.bai10.model.Fruit;
+import extra.bai10.repository.FruitRepositoryImpl;
+import extra.bai10.repository.IFruitRepository;
 
 import java.util.List;
 import java.util.Scanner;

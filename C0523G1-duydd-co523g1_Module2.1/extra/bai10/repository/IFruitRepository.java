@@ -1,6 +1,6 @@
-package extra.bai10.bai10_1.repository;
+package extra.bai10.repository;
 
-import extra.bai10.bai10_1.model.Fruit;
+import extra.bai10.model.Fruit;
 
 import java.util.List;
 

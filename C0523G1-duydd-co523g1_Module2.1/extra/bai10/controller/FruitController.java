@@ -1,7 +1,7 @@
-package extra.bai10.bai10_1.controller;
+package extra.bai10.controller;
 
-import extra.bai10.bai10_1.service.FruitServiceImpl;
-import extra.bai10.bai10_1.service.IFruitService;
+import extra.bai10.service.FruitServiceImpl;
+import extra.bai10.service.IFruitService;
 
 import java.util.Scanner;
 

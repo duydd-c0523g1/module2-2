@@ -1,4 +1,4 @@
-package extra.bai10.bai10_1.model;
+package extra.bai10.model;
 
 public class Fruit {
     private String name;
