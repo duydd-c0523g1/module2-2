@@ -23,7 +23,6 @@ public class CleanCode {
         if (month < 1 || month > 12) {
             throw new IllegalArgumentException("Invalid month: " + month);
         }
-
         switch (month) {
             case 2:
                 return isLeapYear(year) ? 29 : 28;
