@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FruitRepositoryImpl implements  IFruitRepository{
-    static List<Fruit> fruitList = new ArrayList<>();
+    private static List<Fruit> fruitList = new ArrayList<>();
     static {
         fruitList.add(new Fruit("Apple", "Normal",
                 "14/08/2023", "20/08/2023", "Vietnam", 10));
