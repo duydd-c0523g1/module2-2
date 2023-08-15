@@ -11,7 +11,7 @@ public class CleanCode {
         return total;
     }
 
-    public void employeeDetails(String name, int age, List<String> awards, double ctc, int experienceYears) {
+    public void employeeDetails(Employee employee) {
         // Do something
     }
 
