@@ -1,5 +1,6 @@
 package extra.bai12.service;
 
+import extra.bai12.controller.FruitController;
 import extra.bai12.model.Fruit;
 import extra.bai12.repository.FruitRepositoryImpl;
 import extra.bai12.repository.IFruitRepository;
@@ -58,7 +59,19 @@ public class FruitServiceImpl implements IFruitService {
         String newOrigin = scanner.nextLine();
         System.out.print("Price per kilogram ($): ");
         int newPrice = Integer.parseInt(scanner.nextLine());
-        Fruit newFruit = new Fruit(newnName, newType, newDom, newExp, newOrigin, newPrice);
+        Fruit newFruit = new Fruit(id, newnName, newType, newDom, newExp, newOrigin, newPrice);
         System.out.println(fruitRepository.updateFruit(id, newFruit));
+    }
+
+    @Override
+    public void findFruitById() {
+        System.out.print("Insert ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("-----------------------------------");
+        List<Fruit> fruitList = fruitRepository.findFruit(id);
+        for (Fruit fruit : fruitList) {
+            System.out.println(fruit);
+        }
+        FruitController.showMenu();
     }
 }

@@ -2,10 +2,7 @@ package extra.bai12.repository;
 
 import extra.bai12.model.Fruit;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FruitRepositoryImpl implements IFruitRepository {
     private static Map<Integer, Fruit> fruitMap = new LinkedHashMap<>();
@@ -21,11 +18,11 @@ public class FruitRepositoryImpl implements IFruitRepository {
 
     @Override
     public String addNew(Integer num, Fruit fruit) {
-        if (fruitMap.containsKey(num)){
-            return "Cannot use this ID, please try again!"; //Dùng tạm
+        if (fruitMap.containsKey(num)) {
+            return "Cannot use this ID, please try again!" + "\n-----------------------------------";
         } else {
             fruitMap.put(num, fruit);
-            return "Success!";
+            return "Success!" + "\n-----------------------------------";
         }
     }
 
@@ -35,6 +32,7 @@ public class FruitRepositoryImpl implements IFruitRepository {
         for (Map.Entry<Integer, Fruit> fruit : fruitMap.entrySet()) {
             fruitList.add(fruit.getValue());
         }
+        Collections.sort(fruitList);
         return fruitList;
     }
 
@@ -49,14 +47,20 @@ public class FruitRepositoryImpl implements IFruitRepository {
             }
         }
         if (fruitExist) {
-            return "The fruit has been updated.";
+            return "The fruit has been updated." + "\n-----------------------------------";
         } else {
-            return "The fruit does not exist!";
+            return "The fruit does not exist!" + "\n-----------------------------------";
         }
     }
 
     @Override
-    public String findFruit(int id) {
-        return null;
+    public List<Fruit> findFruit(int id) {
+        List<Fruit> fruitList = new ArrayList<>();
+        for (Map.Entry<Integer, Fruit> fruit : fruitMap.entrySet()) {
+            if (fruit.getKey() == id) {
+                fruitList.add(fruit.getValue());
+            }
+        }
+        return fruitList;
     }
 }

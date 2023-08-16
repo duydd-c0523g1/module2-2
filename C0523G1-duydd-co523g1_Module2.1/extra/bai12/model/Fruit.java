@@ -1,6 +1,8 @@
 package extra.bai12.model;
 
-public class Fruit {
+import java.util.Objects;
+
+public class Fruit implements Comparable<Fruit> {
     private int id;
     private String name;
     private String type;
@@ -94,5 +96,10 @@ public class Fruit {
                 + "\nOrigin: " + this.origin
                 + "\nPrice per kilogram: " + "$" + this.price
                 + "\n-----------------------------------";
+    }
+
+    @Override
+    public int compareTo(Fruit o) {
+        return this.price - o.price;
     }
 }

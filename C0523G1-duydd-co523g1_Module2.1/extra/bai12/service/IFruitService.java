@@ -4,4 +4,5 @@ public interface IFruitService {
     void addNew();
     void displayAll();
     void updateFruit();
+    void findFruitById();
 }

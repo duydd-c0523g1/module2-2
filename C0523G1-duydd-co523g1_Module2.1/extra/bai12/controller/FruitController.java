@@ -17,6 +17,7 @@ public class FruitController {
                 System.out.println("1. Add new fruit");
                 System.out.println("2. Display fruit list");
                 System.out.println("3. Update fruit product");
+                System.out.println("4. Find fruit");
                 System.out.println("0. Exit");
                 System.out.print("Insert your option: ");
                 option = Integer.parseInt(scanner.nextLine());
@@ -31,6 +32,25 @@ public class FruitController {
                     case 3:
                         fruitService.updateFruit();
                         break;
+                    case 4:
+                        int select;
+                        System.out.println("1. Find by ID");
+                        System.out.println("2. Find by name");
+                        System.out.println("0. Back");
+                        System.out.print("Insert your option: ");
+                        select = Integer.parseInt(scanner.nextLine());
+                        switch (select) {
+                            case 1:
+                                fruitService.findFruitById();
+                                break;
+                            case 0:
+                                showMenu();
+                                break;
+                            default:
+                                System.out.println("Function is not available.");
+                                showMenu();
+                                break;
+                        }
                     case 0:
                         System.exit(0);
                     default:
