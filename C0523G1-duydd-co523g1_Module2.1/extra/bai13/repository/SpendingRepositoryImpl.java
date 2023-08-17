@@ -27,9 +27,8 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
 
     @Override
     public void addNewPlan(Spend spend) {
-        boolean idExist = true;
-        Integer idIterate = 1;
-        while (idExist == true) {
+        int idIterate = 1;
+        while (true) {
             if (spendMap.containsKey(spendMap.size() + idIterate)) {
                 idIterate++;
             } else {
