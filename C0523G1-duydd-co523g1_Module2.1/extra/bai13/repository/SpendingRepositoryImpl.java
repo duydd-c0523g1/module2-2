@@ -68,14 +68,15 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
     }
 
     @Override
-    public List<Spend> searchPlanById(Integer id) {
+    public Spend searchPlanById(Integer id) {
         List<Spend> spendList = new ArrayList<>();
         for (Map.Entry<Integer, Spend> value : spendMap.entrySet()) {
             if (Objects.equals(value.getKey(), id)) {
                 spendList.add(value.getValue());
             }
+            return value.getValue();
         }
-        return spendList;
+        return null;
     }
 
     @Override

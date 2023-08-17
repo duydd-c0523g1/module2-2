@@ -74,15 +74,18 @@ public class SpendingServiceImpl implements ISpendingService {
 
     @Override
     public void searchPlanById() {
+        Integer id = null;
         try {
             System.out.print("Enter plan's ID: ");
-            Integer id = Integer.parseInt(scanner.nextLine());
-            List<Spend> spendList = spendingRepository.searchPlanById(id);
-            for (Spend spend : spendList) {
-                System.out.println(spend);
-            }
+            id = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("ID must be a NUMBER!!!");
+        }
+        Spend result = spendingRepository.searchPlanById(id);
+        if (result != null) {
+            System.out.println(result);
+        } else {
+            System.out.println("Plan does not exist.");
         }
     }
 

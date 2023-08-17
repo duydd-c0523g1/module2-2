@@ -9,6 +9,6 @@ public interface ISpendingRepository {
     void addNewPlan(Spend spend);
     String deletePlan(Integer id);
     void editPlan(Integer id, Spend spend);
-    List<Spend> searchPlanById(Integer id);
+    Spend searchPlanById(Integer id);
     List<Spend> proximitySearchByName(String name);
 }
