@@ -5,7 +5,7 @@ import extra.bai13.model.Spend;
 import java.util.*;
 
 public class SpendingRepositoryImpl implements ISpendingRepository {
-    private static Map<Integer, Spend> spendMap = new LinkedHashMap<>();
+    private static final Map<Integer, Spend> spendMap = new LinkedHashMap<>();
 
     static {
         spendMap.put(1, new Spend(1, "Buy VinFast VF9"
