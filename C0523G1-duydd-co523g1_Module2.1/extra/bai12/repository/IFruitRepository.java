@@ -9,5 +9,5 @@ public interface IFruitRepository {
     String addNew(Integer num, Fruit fruit);
     List<Fruit> displayAll();
     String updateFruit(int key, Fruit fruit);
-    List<Fruit> findFruit(int id);
+    Fruit findFruit(int id);
 }

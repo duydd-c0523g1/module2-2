@@ -68,10 +68,6 @@ public class FruitServiceImpl implements IFruitService {
         System.out.print("Insert ID: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("-----------------------------------");
-        List<Fruit> fruitList = fruitRepository.findFruit(id);
-        for (Fruit fruit : fruitList) {
-            System.out.println(fruit);
-        }
-        FruitController.showMenu();
+        System.out.println(fruitRepository.findFruit(id));
     }
 }

@@ -54,13 +54,14 @@ public class FruitRepositoryImpl implements IFruitRepository {
     }
 
     @Override
-    public List<Fruit> findFruit(int id) {
+    public Fruit findFruit(int id) {
         List<Fruit> fruitList = new ArrayList<>();
         for (Map.Entry<Integer, Fruit> fruit : fruitMap.entrySet()) {
             if (fruit.getKey() == id) {
                 fruitList.add(fruit.getValue());
+                break;
             }
         }
-        return fruitList;
+        return fruitList.get(0);
     }
 }
