@@ -21,23 +21,22 @@ public class SpendingServiceImpl implements ISpendingService {
     @Override
     public void addNewPlan() {
         Spend spend = new Spend();
-
-            System.out.println("Plan's ID will be initialized automatically");
-            System.out.print("Enter plan's name: ");
-            spend.setName(scanner.nextLine());
-            System.out.print("Enter plan's date:  ");
-            spend.setSpendDate(scanner.nextLine());
-        try {
-            System.out.print("Enter amount of money ($): ");
-            spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
-        } catch (NumberFormatException e) {
-            System.out.println("Is that even a number??");
-        }
-            System.out.print("Enter description: ");
-            spend.setDescription(scanner.nextLine());
-            spendingRepository.addNewPlan(spend);
-            System.out.println("Success!");
-            System.out.println();
+        System.out.println("Plan's ID will be initialized automatically");
+        System.out.print("Enter plan's name: ");
+        spend.setName(scanner.nextLine());
+        System.out.print("Enter plan's date:  ");
+        spend.setSpendDate(scanner.nextLine());
+            try {
+                System.out.print("Enter amount of money ($): ");
+                spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
+            } catch (NumberFormatException e) {
+                System.out.println("That was not a number. \nField will be set to 0 automatically. \nUse Editing function to reassign the field.");
+            }
+        System.out.print("Enter description: ");
+        spend.setDescription(scanner.nextLine());
+        spendingRepository.addNewPlan(spend);
+        System.out.println("Success!");
+        System.out.println();
     }
 
     @Override
