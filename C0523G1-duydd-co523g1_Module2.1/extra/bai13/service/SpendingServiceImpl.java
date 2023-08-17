@@ -91,8 +91,12 @@ public class SpendingServiceImpl implements ISpendingService {
         System.out.print("Enter plan's name: ");
         String name = scanner.nextLine();
         List<Spend> spendList = spendingRepository.proximitySearchByName(name);
-        for (Spend spend : spendList) {
-            System.out.println(spend);
+        if (spendList.isEmpty()) {
+            System.out.println("Cannot find any plan with that name");
+        } else {
+            for (Spend spend : spendList) {
+                System.out.println(spend);
+            }
         }
     }
 }

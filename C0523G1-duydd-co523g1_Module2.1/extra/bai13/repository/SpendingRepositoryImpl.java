@@ -12,8 +12,8 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 , "20/10/2022", 50000, "Full options"));
         spendMap.put(2, new Spend(2, "Buy Villa"
                 , "13/06/2026", 700000, "Sea sided"));
-        spendMap.put(3, new Spend(3, "Private Jet"
-                , "02/01/2032", 9000000, "Full options"));
+        spendMap.put(3, new Spend(3, "Buy Private Jet"
+                , "02/01/2032", 9000000, "Private pilot included"));
     }
 
     @Override
@@ -28,15 +28,15 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
     @Override
     public void addNewPlan(Spend spend) {
         boolean idExist = true;
-        int idIterate = 1;
+        Integer idIterate = 1;
         while (idExist == true) {
             if (spendMap.containsKey(spendMap.size() + idIterate)) {
                 idIterate++;
             } else {
                 break;
             }
-            spend.setId(spendMap.size() + idIterate);
         }
+        spend.setId(spendMap.size() + idIterate);
         spendMap.put(spend.getId(), spend);
     }
 
@@ -59,6 +59,9 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 value.getValue().setSpendDate(spend.getSpendDate());
                 value.getValue().setSpendAmount(spend.getSpendAmount());
                 value.getValue().setDescription(spend.getDescription());
+            } else {
+                // Xử lý ngoại lệ khi ID ko tồn tại...
+                return;
             }
         }
         displayList();
