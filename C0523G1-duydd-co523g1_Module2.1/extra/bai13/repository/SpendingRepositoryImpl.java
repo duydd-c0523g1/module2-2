@@ -27,8 +27,15 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
 
     @Override
     public void addNewPlan(Spend spend) {
-        for (int i = 1; spendMap.containsKey(spendMap.size() + i); i++) {
-            spend.setId(spendMap.size() + i);
+        boolean idExist = true;
+        int idIterate = 1;
+        while (idExist == true) {
+            if (spendMap.containsKey(spendMap.size() + idIterate)) {
+                idIterate++;
+            } else {
+                break;
+            }
+            spend.setId(spendMap.size() + idIterate);
         }
         spendMap.put(spend.getId(), spend);
     }
