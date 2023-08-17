@@ -71,7 +71,7 @@ public class Spend {
         return "Plan ID: " + this.id
                 + "\nName: " + this.name
                 + "\nDate: " + this.spendDate
-                + "\nAmount: " + this.spendAmount
+                + "\nAmount: " + "$" + this.spendAmount
                 + "\nDescription: " + this.description
                 + "\n---------------------------";
     }
