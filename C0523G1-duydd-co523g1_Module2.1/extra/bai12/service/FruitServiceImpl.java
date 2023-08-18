@@ -51,29 +51,28 @@ public class FruitServiceImpl implements IFruitService {
 
     @Override
     public void updateFruit() {
-        displayAll();
         System.out.print("Insert fruit's ID to edit: ");
         int id = Integer.parseInt(scanner.nextLine());
-        System.out.print("Insert new ID: ");
-        int newId = Integer.parseInt(scanner.nextLine());
-        boolean result = fruitRepository.checkIfIdExisted(newId);
-        if (!result) {
-            System.out.print("Name: ");
+        boolean result = fruitRepository.checkIfIdExisted(id);
+        if (result) {
+            System.out.println("You are about to edit this fruit:");
+            System.out.println(fruitRepository.findFruit(id) + "\n");
+            System.out.print("New name: ");
             String newnName = scanner.nextLine();
-            System.out.print("Type: ");
+            System.out.print("New type: ");
             String newType = scanner.nextLine();
-            System.out.print("Date of manufacture: ");
+            System.out.print("New date of manufacture: ");
             String newDom = scanner.nextLine();
-            System.out.print("Expiration date: ");
+            System.out.print("New expiration date: ");
             String newExp = scanner.nextLine();
-            System.out.print("Origin: ");
+            System.out.print("New origin: ");
             String newOrigin = scanner.nextLine();
-            System.out.print("Price per kilogram ($): ");
+            System.out.print("New price per kilogram ($): ");
             int newPrice = Integer.parseInt(scanner.nextLine());
-            Fruit newFruit = new Fruit(newId, newnName, newType, newDom, newExp, newOrigin, newPrice);
-            System.out.println(fruitRepository.updateFruit(newId, newFruit));
+            Fruit newFruit = new Fruit(id, newnName, newType, newDom, newExp, newOrigin, newPrice);
+            System.out.println(fruitRepository.updateFruit(id, newFruit));
         } else {
-            System.out.println("Cannot use this ID, please try again!" +
+            System.out.println("The fruit with this ID does not exist" +
                     "\n-----------------------------------");
             updateFruit();
         }

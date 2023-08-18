@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IFruitRepository {
     String addNew(Integer num, Fruit fruit);
     List<Fruit> displayAll();
-    String updateFruit(int key, Fruit fruit);
+    String updateFruit( int Key, Fruit fruit);
     Fruit findFruit(int id);
     boolean checkIfIdExisted(int id);
 }
