@@ -10,4 +10,5 @@ public interface IFruitRepository {
     List<Fruit> displayAll();
     String updateFruit(int key, Fruit fruit);
     Fruit findFruit(int id);
+    boolean checkIfIdExisted(int id);
 }

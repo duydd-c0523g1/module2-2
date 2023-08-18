@@ -18,12 +18,8 @@ public class FruitRepositoryImpl implements IFruitRepository {
 
     @Override
     public String addNew(Integer num, Fruit fruit) {
-        if (fruitMap.containsKey(num)) {
-            return "Cannot use this ID, please try again!" + "\n-----------------------------------";
-        } else {
-            fruitMap.put(num, fruit);
-            return "Success!" + "\n-----------------------------------";
-        }
+        fruitMap.put(num, fruit);
+        return "Success!" + "\n-----------------------------------";
     }
 
     @Override
@@ -38,19 +34,12 @@ public class FruitRepositoryImpl implements IFruitRepository {
 
     @Override
     public String updateFruit(int key, Fruit fruit) {
-        boolean fruitExist = false;
         for (Map.Entry<Integer, Fruit> f : fruitMap.entrySet()) {
             if (f.getKey() == key) {
                 f.setValue(fruit);
-                fruitExist = true;
-                break;
             }
         }
-        if (fruitExist) {
-            return "The fruit has been updated." + "\n-----------------------------------";
-        } else {
-            return "The fruit does not exist!" + "\n-----------------------------------";
-        }
+        return "The fruit has been updated." + "\n-----------------------------------";
     }
 
     @Override
@@ -63,5 +52,10 @@ public class FruitRepositoryImpl implements IFruitRepository {
             }
         }
         return fruitList.get(0);
+    }
+
+    @Override
+    public boolean checkIfIdExisted(int id) {
+        return fruitMap.containsKey(id);
     }
 }
