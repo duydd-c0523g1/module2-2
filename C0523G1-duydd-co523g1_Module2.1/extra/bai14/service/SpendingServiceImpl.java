@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class SpendingServiceImpl implements ISpendingService {
     private final ISpendingRepository spendingRepository = new SpendingRepositoryImpl();
     private final Scanner scanner = new Scanner(System.in);
+
     @Override
     public void displayList() {
         List<Spend> spendList = spendingRepository.displayList();
@@ -26,12 +27,12 @@ public class SpendingServiceImpl implements ISpendingService {
         spend.setName(scanner.nextLine());
         System.out.print("Enter plan's date:  ");
         spend.setSpendDate(scanner.nextLine());
-            try {
-                System.out.print("Enter amount of money ($): ");
-                spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
-            } catch (NumberFormatException e) {
-                System.out.println("That was not a number. \nField will be set to 0 automatically. \nUse Editing function to reassign the field.");
-            }
+        try {
+            System.out.print("Enter amount of money ($): ");
+            spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
+        } catch (NumberFormatException e) {
+            System.out.println("That was not a number. \nField will be set to 0 automatically. \nUse Editing function to reassign the field.");
+        }
         System.out.print("Enter description: ");
         spend.setDescription(scanner.nextLine());
         spendingRepository.addNewPlan(spend);
@@ -52,22 +53,22 @@ public class SpendingServiceImpl implements ISpendingService {
 
     @Override
     public void editPlan() {
-            System.out.print("Enter plan's ID: ");
-            Integer id = Integer.parseInt(scanner.nextLine());
-            Spend newSpend = new Spend();
-            System.out.print("Enter plan's name: ");
-            newSpend.setName(scanner.nextLine());
-            System.out.print("Enter plan's date:  ");
-            newSpend.setSpendDate(scanner.nextLine());
+        System.out.print("Enter plan's ID: ");
+        Integer id = Integer.parseInt(scanner.nextLine());
+        Spend newSpend = new Spend();
+        System.out.print("Enter plan's name: ");
+        newSpend.setName(scanner.nextLine());
+        System.out.print("Enter plan's date:  ");
+        newSpend.setSpendDate(scanner.nextLine());
         try {
             System.out.print("Enter amount of money ($):  ");
             newSpend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
         } catch (NumberFormatException e) {
             System.out.println("ID must be a NUMBER!!!");
         }
-            System.out.print("Enter description: ");
-            newSpend.setDescription(scanner.nextLine());
-            spendingRepository.editPlan(id, newSpend);
+        System.out.print("Enter description: ");
+        newSpend.setDescription(scanner.nextLine());
+        System.out.println(spendingRepository.editPlan(id, newSpend));
     }
 
     @Override
