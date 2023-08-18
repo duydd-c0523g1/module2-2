@@ -19,7 +19,8 @@ public class FruitRepositoryImpl implements IFruitRepository {
     @Override
     public String addNew(Integer num, Fruit fruit) {
         fruitMap.put(num, fruit);
-        return "Success!" + "\n-----------------------------------";
+        return "Success!"
+                + "\n-----------------------------------";
     }
 
     @Override
@@ -39,7 +40,8 @@ public class FruitRepositoryImpl implements IFruitRepository {
                 f.setValue(fruit);
             }
         }
-        return "The fruit has been updated." + "\n-----------------------------------";
+        return "The fruit has been updated."
+                + "\n-----------------------------------";
     }
 
     @Override
