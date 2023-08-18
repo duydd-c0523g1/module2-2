@@ -68,7 +68,6 @@ public class SpendingServiceImpl implements ISpendingService {
             System.out.print("Enter description: ");
             newSpend.setDescription(scanner.nextLine());
             spendingRepository.editPlan(id, newSpend);
-
     }
 
     @Override

@@ -52,7 +52,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
     }
 
     @Override
-    public void editPlan(Integer id, Spend spend) {
+    public String editPlan(Integer id, Spend spend) {
         for (Map.Entry<Integer, Spend> value : spendMap.entrySet()) {
             if (Objects.equals(value.getKey(), id)) {
                 value.getValue().setId(id);
@@ -60,14 +60,11 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 value.getValue().setSpendDate(spend.getSpendDate());
                 value.getValue().setSpendAmount(spend.getSpendAmount());
                 value.getValue().setDescription(spend.getDescription());
-            } else {
-                // Xử lý ngoại lệ khi ID ko tồn tại...
-                return;
+                return "Success!";
             }
         }
-        displayList();
+        return "ID does not exist!";
     }
-
     @Override
     public Spend searchPlanById(Integer id) {
         for (Map.Entry<Integer, Spend> value : spendMap.entrySet()) {
