@@ -17,8 +17,8 @@ public class FruitServiceImpl implements IFruitService {
         System.out.println("Please insert the following information:");
         System.out.print("Fruit ID: ");
         int id = Integer.parseInt(scanner.nextLine());
-        boolean result = fruitRepository.checkIfIdExisted(id);
-        if (!result) {
+        boolean idExist = fruitRepository.checkIfIdExisted(id);
+        if (!idExist) {
             System.out.print("Name: ");
             String name = scanner.nextLine();
             System.out.print("Type: ");
@@ -52,8 +52,8 @@ public class FruitServiceImpl implements IFruitService {
     public void updateFruit() {
         System.out.print("Insert fruit's ID to edit: ");
         int id = Integer.parseInt(scanner.nextLine());
-        boolean result = fruitRepository.checkIfIdExisted(id);
-        if (result) {
+        boolean idExist = fruitRepository.checkIfIdExisted(id);
+        if (idExist) {
             System.out.println("You are about to edit this fruit:");
             System.out.println(fruitRepository.findFruit(id) + "\n");
             System.out.print("New name: ");
