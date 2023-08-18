@@ -33,7 +33,6 @@ public class FruitServiceImpl implements IFruitService {
             int price = Integer.parseInt(scanner.nextLine());
             Fruit fruit = new Fruit(id, name, type, dom, exp, origin, price);
             System.out.println(fruitRepository.addNew(id, fruit));
-            System.out.println("-----------------------------------");
         } else {
             System.out.println("Cannot use this ID, please try again!" +
                     "\n-----------------------------------");
