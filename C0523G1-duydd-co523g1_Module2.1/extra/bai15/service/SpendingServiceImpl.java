@@ -1,6 +1,7 @@
 package extra.bai15.service;
 
 import extra.bai15.Exeptions.IdNotFoundException;
+import extra.bai15.Exeptions.UniqueIdException;
 import extra.bai15.model.Spend;
 import extra.bai15.repository.ISpendingRepository;
 import extra.bai15.repository.SpendingRepositoryImpl;
@@ -23,7 +24,19 @@ public class SpendingServiceImpl implements ISpendingService {
     public void addNewPlan() {
         boolean valid = false;
         Spend spend = new Spend();
-        System.out.println("Plan's ID will be initialized automatically");
+        try {
+            System.out.print("Enter plan's ID: ");
+            int id = Integer.parseInt(scanner.nextLine());
+            List<Spend> spendList = spendingRepository.displayList();
+            if (spendList.contains(new Spend(id))) {
+                throw new UniqueIdException("Id already existed");
+            }
+            spend.setId(id);
+        } catch (UniqueIdException e) {
+            throw new RuntimeException(e);
+        } catch (NumberFormatException e) {
+            System.out.println("ID must be a number");
+        }
         System.out.print("Enter plan's name: ");
         spend.setName(scanner.nextLine());
         System.out.print("Enter plan's date:  ");
@@ -51,7 +64,7 @@ public class SpendingServiceImpl implements ISpendingService {
             System.out.print("Enter plan ID to remove: ");
             Integer id = Integer.parseInt(scanner.nextLine());
                 if (!spendList.contains(new Spend(id))) {
-                    throw new IdNotFoundException("");
+                    throw new IdNotFoundException("Can't find this ID");
                 }
             System.out.println(spendingRepository.deletePlan(id));
         } catch (NumberFormatException e) {

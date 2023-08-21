@@ -42,9 +42,9 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
 //        }
 //        spend.setId(spendMap.size() + idIncrement);
 //        spendMap.put(spend.getId(), spend);
-        spend.setId(idCount);
-        spendMap.put(spend.getId(), spend);
-        idCount++;
+//        spend.setId(idCount);
+//        spendMap.put(spend.getId(), spend);
+//        idCount++;
     }
 
     @Override
