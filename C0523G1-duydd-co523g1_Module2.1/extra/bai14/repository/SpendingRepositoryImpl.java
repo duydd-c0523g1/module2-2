@@ -17,7 +17,9 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
         spendMap.put(4, new Spend(4, "Buy Private Cruiser"
                 , "02/01/2032", 9000000, "Private pilot included"));
     }
-int idCount = 5;
+
+    static int idCount = 5;
+
     @Override
     public List<Spend> displayList() {
         List<Spend> spendList = new ArrayList<>();
@@ -67,6 +69,7 @@ int idCount = 5;
         }
         return "ID does not exist!";
     }
+
     @Override
     public Spend searchPlanById(Integer id) {
         for (Map.Entry<Integer, Spend> value : spendMap.entrySet()) {

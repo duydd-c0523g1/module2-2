@@ -19,7 +19,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 , "02/01/2032", 9000000, "Private pilot included"));
     }
 
-    int idCount = 5;
+    static int idCount = 5;
 
     @Override
     public List<Spend> displayList() {
