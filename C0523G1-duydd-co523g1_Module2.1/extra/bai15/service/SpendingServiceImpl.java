@@ -22,21 +22,25 @@ public class SpendingServiceImpl implements ISpendingService {
 
     @Override
     public void addNewPlan() {
-        boolean valid = false;
+        boolean spendValid = false;
+        boolean idValid = false;
         Spend spend = new Spend();
-        try {
-            System.out.print("Enter plan's ID: ");
-            int id = Integer.parseInt(scanner.nextLine());
-            List<Spend> spendList = spendingRepository.displayList();
-            if (spendList.contains(new Spend(id))) {
-                throw new UniqueIdException("Id already existed");
+        do {
+            try {
+                System.out.print("Enter plan's ID: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                List<Spend> spendList = spendingRepository.displayList();
+                if (spendList.contains(new Spend(id))) {
+                    throw new UniqueIdException("Id already existed");
+                }
+                spend.setId(id);
+                idValid = true;
+            } catch (UniqueIdException e) {
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("ID must be a number");
             }
-            spend.setId(id);
-        } catch (UniqueIdException e) {
-            throw new RuntimeException(e);
-        } catch (NumberFormatException e) {
-            System.out.println("ID must be a number");
-        }
+        } while (!idValid);
         System.out.print("Enter plan's name: ");
         spend.setName(scanner.nextLine());
         System.out.print("Enter plan's date:  ");
@@ -45,11 +49,11 @@ public class SpendingServiceImpl implements ISpendingService {
             try {
                 System.out.print("Enter amount of money ($): ");
                 spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
-                valid = true;
+                spendValid = true;
             } catch (NumberFormatException e) {
                 System.out.println("That was not a number.");
             }
-        } while (!valid);
+        } while (!spendValid);
         System.out.print("Enter description: ");
         spend.setDescription(scanner.nextLine());
         spendingRepository.addNewPlan(spend);
@@ -58,7 +62,7 @@ public class SpendingServiceImpl implements ISpendingService {
     }
 
     @Override
-    public void deletePlan() {
+public void deletePlan() {
         try {
             List<Spend> spendList = spendingRepository.displayList();
             System.out.print("Enter plan ID to remove: ");
