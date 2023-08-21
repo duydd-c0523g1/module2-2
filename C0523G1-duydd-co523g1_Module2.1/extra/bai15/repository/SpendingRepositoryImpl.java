@@ -18,6 +18,8 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 , "02/01/2032", 9000000, "Private pilot included"));
     }
 
+    int idCount = 5;
+
     @Override
     public List<Spend> displayList() {
         List<Spend> spendList = new ArrayList<>();
@@ -29,16 +31,19 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
 
     @Override
     public void addNewPlan(Spend spend) {
-        int idIncrement = 1;
-        while (true) {
-            if (spendMap.containsKey(spendMap.size() + idIncrement)) {
-                idIncrement++;
-            } else {
-                break;
-            }
-        }
-        spend.setId(spendMap.size() + idIncrement);
+//        int idIncrement = 1;
+//        while (true) {
+//            if (spendMap.containsKey(spendMap.size() + idIncrement)) {
+//                idIncrement++;
+//            } else {
+//                break;
+//            }
+//        }
+//        spend.setId(spendMap.size() + idIncrement);
+//        spendMap.put(spend.getId(), spend);
+        spend.setId(idCount);
         spendMap.put(spend.getId(), spend);
+        idCount++;
     }
 
     @Override

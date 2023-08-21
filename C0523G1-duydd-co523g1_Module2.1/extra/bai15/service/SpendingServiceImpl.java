@@ -24,20 +24,22 @@ public class SpendingServiceImpl implements ISpendingService {
 
     @Override
     public void addNewPlan() {
+        boolean valid = false;
         Spend spend = new Spend();
         System.out.println("Plan's ID will be initialized automatically");
         System.out.print("Enter plan's name: ");
         spend.setName(scanner.nextLine());
         System.out.print("Enter plan's date:  ");
         spend.setSpendDate(scanner.nextLine());
+        do {
             try {
                 System.out.print("Enter amount of money ($): ");
                 spend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
+                valid = true;
             } catch (NumberFormatException e) {
-                System.out.println("That was not a number. " +
-                        "\nField will be set to 0 automatically. " +
-                        "\nUse Editing function to reassign the field.");
+                System.out.println("That was not a number.");
             }
+        } while (!valid);
         System.out.print("Enter description: ");
         spend.setDescription(scanner.nextLine());
         spendingRepository.addNewPlan(spend);
@@ -51,16 +53,14 @@ public class SpendingServiceImpl implements ISpendingService {
             List<Spend> spendList = spendingRepository.displayList();
             System.out.print("Enter plan ID to remove: ");
             Integer id = Integer.parseInt(scanner.nextLine());
-            for (Spend spend : spendList) {
                 if (!spendList.contains(new Spend(id))) {
                     throw new IdNotFoundException();
                 }
-            }
             System.out.println(spendingRepository.deletePlan(id));
         } catch (NumberFormatException e) {
             System.out.println("ID must be a NUMBER!!!");
         } catch (IdNotFoundException e) {
-            System.out.println("Id does not exist.");;
+            System.out.println("Id does not exist.");
         }
     }
 
