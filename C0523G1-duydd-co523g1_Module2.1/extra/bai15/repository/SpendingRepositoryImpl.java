@@ -124,8 +124,10 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
             public int compare(Spend o1, Spend o2) {
                 if (o1.getSpendAmount() == o2.getSpendAmount()) {
                     return o2.getName().compareTo(o1.getName());
+                } else if (o2.getSpendAmount() > o1.getSpendAmount()) {
+                    return 1;
                 } else {
-                    return (int) (o2.getSpendAmount() - o1.getSpendAmount());
+                    return -1;
                 }
             }
         });
