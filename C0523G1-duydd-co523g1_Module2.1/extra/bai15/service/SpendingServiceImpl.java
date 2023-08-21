@@ -1,14 +1,11 @@
 package extra.bai15.service;
 
 import extra.bai15.Exeptions.IdNotFoundException;
-import extra.bai15.Exeptions.UniqueIdException;
 import extra.bai15.model.Spend;
 import extra.bai15.repository.ISpendingRepository;
 import extra.bai15.repository.SpendingRepositoryImpl;
-import sun.security.x509.UniqueIdentity;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class SpendingServiceImpl implements ISpendingService {
@@ -54,7 +51,7 @@ public class SpendingServiceImpl implements ISpendingService {
             System.out.print("Enter plan ID to remove: ");
             Integer id = Integer.parseInt(scanner.nextLine());
                 if (!spendList.contains(new Spend(id))) {
-                    throw new IdNotFoundException();
+                    throw new IdNotFoundException("");
                 }
             System.out.println(spendingRepository.deletePlan(id));
         } catch (NumberFormatException e) {
@@ -66,22 +63,30 @@ public class SpendingServiceImpl implements ISpendingService {
 
     @Override
     public void editPlan() {
+        boolean valid = false;
             System.out.print("Enter plan's ID: ");
             Integer id = Integer.parseInt(scanner.nextLine());
             Spend newSpend = new Spend();
-            System.out.print("Enter plan's name: ");
+            System.out.print("Enter new plan's name: ");
             newSpend.setName(scanner.nextLine());
-            System.out.print("Enter plan's date:  ");
+            System.out.print("Enter new plan's date:  ");
             newSpend.setSpendDate(scanner.nextLine());
-        try {
-            System.out.print("Enter amount of money ($):  ");
-            newSpend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
-        } catch (NumberFormatException e) {
-            System.out.println("ID must be a NUMBER!!!");
-        }
-            System.out.print("Enter description: ");
+            do {
+                try {
+                    System.out.print("Enter new amount of money ($):  ");
+                    newSpend.setSpendAmount(Float.parseFloat(scanner.nextLine()));
+                    valid = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Money must be a NUMBER!!!");
+                }
+            } while (!valid);
+            System.out.print("Enter new description: ");
             newSpend.setDescription(scanner.nextLine());
+        try {
             spendingRepository.editPlan(id, newSpend);
+        } catch (IdNotFoundException e) {
+            System.out.println("ID does not exist.");
+        }
     }
 
     @Override

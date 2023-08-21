@@ -1,5 +1,6 @@
 package extra.bai15.repository;
 
+import extra.bai15.Exeptions.IdNotFoundException;
 import extra.bai15.model.Spend;
 
 import java.util.*;
@@ -57,7 +58,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
     }
 
     @Override
-    public void editPlan(Integer id, Spend spend) {
+    public void editPlan(Integer id, Spend spend) throws IdNotFoundException {
         for (Map.Entry<Integer, Spend> value : spendMap.entrySet()) {
             if (Objects.equals(value.getKey(), id)) {
                 value.getValue().setId(id);
@@ -66,7 +67,9 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 value.getValue().setSpendAmount(spend.getSpendAmount());
                 value.getValue().setDescription(spend.getDescription());
             } else {
-                // Xử lý ngoại lệ khi ID ko tồn tại...
+                    if (!spendMap.containsKey(id)) {
+                        throw new IdNotFoundException("ID does not exist.");
+                    }
                 return;
             }
         }
