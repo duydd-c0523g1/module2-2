@@ -80,7 +80,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
         List<Spend> spendList = this.displayList();
         List<Spend> result = new ArrayList<>();
         for (Spend spend : spendList) {
-            if (spend.getName().startsWith(name) || spend.getName().endsWith(name)) {
+            if (spend.getName().startsWith(name)) {
                 result.add(spend);
             }
         }
