@@ -27,6 +27,7 @@ public class Stream {
             }
         }
     }
+
     public static List<String> read(String filePath) {
         File file = new File(filePath);
         FileReader fileReader = null;
@@ -57,6 +58,7 @@ public class Stream {
         }
         return strings;
     }
+
     public static void writeByteStream(String filePath, List<String> strings) {
         File file = new File(filePath);
         FileOutputStream fileOutputStream = null;
@@ -71,13 +73,18 @@ public class Stream {
             throw new RuntimeException(e);
         } finally {
             try {
-                objectOutputStream.close();
-                fileOutputStream.close();
+                if (objectOutputStream != null) {
+                    objectOutputStream.close();
+                }
+                if (fileOutputStream != null) {
+                    fileOutputStream.close();
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
+
     public static List<String> readByteStream(String filePath) {
         File file = new File(filePath);
         FileInputStream fileInputStream = null;
