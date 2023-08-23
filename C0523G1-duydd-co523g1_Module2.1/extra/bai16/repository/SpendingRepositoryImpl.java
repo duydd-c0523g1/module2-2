@@ -8,12 +8,13 @@ import java.util.*;
 
 public class SpendingRepositoryImpl implements ISpendingRepository {
     private static final String FILE_PATH = "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\extra\\bai16\\data\\data.csv";
+    private static final String BYTE_FILE_PATH = "D:\\CodeGym\\Git\\C0523G1-duydd-co523g1_Module2.1\\extra\\bai16\\data\\data.dat";
     public static final String COMMA = ",";
 
     @Override
     public List<Spend> displayList() {
         List<Spend> spendList = new ArrayList<>();
-        List<String> strings = Stream.read(FILE_PATH);
+        List<String> strings = Stream.readByteStream(BYTE_FILE_PATH);
         String[] arr = null;
         for (String str : strings) {
             arr = str.split(",");
@@ -22,7 +23,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
         if (!spendList.isEmpty()) {
             return spendList;
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
@@ -30,7 +31,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
         List<Spend> spendList = this.displayList();
         spendList.add(spend);
         List<String> strings = this.convertToString(spendList);
-        Stream.write(FILE_PATH, strings);
+        Stream.writeByteStream(BYTE_FILE_PATH, strings);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
             }
         }
         List<String> strings = this.convertToString(spendList);
-        Stream.write(FILE_PATH, strings);
+        Stream.writeByteStream(BYTE_FILE_PATH, strings);
         return "Plan has been deleted successfully!";
     }
 
@@ -59,7 +60,7 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
                 s.setDescription(spend.getDescription());
             }
             List<String> strings = this.convertToString(spendList);
-            Stream.write(FILE_PATH, strings);
+            Stream.writeByteStream(BYTE_FILE_PATH, strings);
         }
         displayList();
     }
