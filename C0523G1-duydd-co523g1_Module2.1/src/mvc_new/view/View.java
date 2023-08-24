@@ -16,7 +16,8 @@ public class View {
         System.out.println("1. Add new product");
         System.out.println("2. Display all products");
         System.out.println("3. Find product");
-        System.out.println("4. Exit");
+        System.out.println("4. Delete product");
+        System.out.println("0. Exit");
     }
 
     public static void start() {
@@ -65,6 +66,15 @@ public class View {
                     findProduct();
                     break;
                 case 4:
+                    System.out.print("Enter an ID to delete: ");
+                    int id = Integer.parseInt(scanner.nextLine());
+                    if (controller.deleteProduct(id)) {
+                        System.out.println("The item has been deleted");
+                    } else {
+                        System.out.println("ID not found");
+                    }
+                    break;
+                case 0:
                     System.exit(0);
                 default:
                     System.out.println("[VIEW] Function is not yet available");

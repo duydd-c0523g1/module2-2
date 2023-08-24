@@ -10,4 +10,5 @@ public interface IProductService {
     List<Product> displayProductList();
     List<Product> searchProductByName(String name);
     Product searchProductById(int id);
+    boolean deleteProduct(int id);
 }

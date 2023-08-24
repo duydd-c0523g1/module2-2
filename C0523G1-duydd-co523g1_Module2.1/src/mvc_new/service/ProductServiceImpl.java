@@ -27,4 +27,10 @@ public class ProductServiceImpl implements IProductService {
     public Product searchProductById(int id) {
         return repository.searchProductById(id);
     }
+
+    @Override
+    public boolean deleteProduct(int id) {
+        return repository.deleteProduct(id);
+    }
+
 }

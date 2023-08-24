@@ -24,4 +24,7 @@ public class ProductController {
     public List<Product> searchByName(String name) {
         return service.searchProductByName(name);
     }
+    public boolean deleteProduct(int id) {
+        return service.deleteProduct(id);
+    }
 }

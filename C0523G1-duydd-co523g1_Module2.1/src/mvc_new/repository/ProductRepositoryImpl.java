@@ -57,6 +57,21 @@ public class ProductRepositoryImpl implements IProductRepository {
         }
         return result;
     }
+
+    @Override
+    public boolean deleteProduct(int id) {
+        List<Product> productList = displayProductList();
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                productList.remove(product);
+                List<String> strings = convertToString(productList);
+                Stream.write(FILE_PATH, strings);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<String> convertToString(List<Product> productList) {
         List<String> convertedList = new ArrayList<>();
         for (Product product : productList) {
