@@ -5,6 +5,7 @@ import extra.bai15.model.Spend;
 
 import java.util.*;
 
+
 public class SpendingRepositoryImpl implements ISpendingRepository {
     private static final Map<Integer, Spend> spendMap = new LinkedHashMap<>();
 
