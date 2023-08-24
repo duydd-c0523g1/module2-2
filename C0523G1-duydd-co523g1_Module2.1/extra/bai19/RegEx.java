@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class RegEx {
     public static boolean validate(String string) {
-        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+        Pattern pattern = Pattern.compile("^(?=.{6,32}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         return pattern.matcher(string).matches();
     }
