@@ -13,7 +13,7 @@ public class Main {
                 System.out.println("Valid Email");
                 isValid = true;
             } else {
-                System.out.println("Invalid Email");
+                System.out.println("Invalid Email \nPlease try again");
             }
         } while (!isValid);
         scanner.close();
