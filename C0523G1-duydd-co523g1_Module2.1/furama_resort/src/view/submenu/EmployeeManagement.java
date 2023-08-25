@@ -1,7 +1,6 @@
 package view.submenu;
 
 import controller.EmployeeController;
-import model.people.Customer;
 import model.people.Employee;
 import utils.NameValidator;
 import utils.RegEx;
