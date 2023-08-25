@@ -1,12 +1,12 @@
 package view.submenu;
 
-import controller.Controller;
+import controller.FacilityController;
 import view.MainView;
 
 import java.util.Scanner;
 
 public class PromotionManagement {
-    private final Controller controller = new Controller();
+    private final FacilityController controller = new FacilityController();
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void showPromotionMenu() {

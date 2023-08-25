@@ -1,12 +1,12 @@
 package view.submenu;
 
-import controller.Controller;
+import controller.CustomerController;
 import view.MainView;
 
 import java.util.Scanner;
 
 public class CustomerManagement {
-    private final Controller controller = new Controller();
+    private final CustomerController controller = new CustomerController();
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
