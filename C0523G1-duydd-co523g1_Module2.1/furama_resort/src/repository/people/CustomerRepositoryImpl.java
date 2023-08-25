@@ -38,11 +38,11 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 c.setId(customer.getId());
                 c.setName(customer.getName());
                 c.setDob(customer.getDob());
-                c.setGender(c.getGender());
-                c.setIdentNumber(c.getIdentNumber());
-                c.setPhoneNumber(c.getPhoneNumber());
-                c.setType(c.getType());
-                c.setAddress(c.getAddress());
+                c.setGender(customer.getGender());
+                c.setIdentNumber(customer.getIdentNumber());
+                c.setPhoneNumber(customer.getPhoneNumber());
+                c.setType(customer.getType());
+                c.setAddress(customer.getAddress());
                 List<String> strings = convertToString(customers);
                 Stream.write(FILE_PATH,strings);
                 return true;
