@@ -1,6 +1,5 @@
 package view.submenu;
 
-import com.sun.xml.internal.ws.server.ServerRtException;
 import controller.CustomerController;
 import model.people.Customer;
 import view.MainView;
