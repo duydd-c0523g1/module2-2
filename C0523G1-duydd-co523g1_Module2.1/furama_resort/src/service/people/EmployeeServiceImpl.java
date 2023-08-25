@@ -19,7 +19,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public boolean editEmployee(String id) {
+    public boolean editEmployee(String id, Employee employee) {
         return false;
     }
 

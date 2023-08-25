@@ -14,8 +14,8 @@ public class EmployeeController {
     List<Employee> displayEmployeeList() {
         return employeeService.display();
     }
-    boolean editEmployee(String id) {
-        return employeeService.editEmployee(id);
+    boolean editEmployee(String id, Employee employee) {
+        return employeeService.editEmployee(id, employee);
     }
     boolean deleteEmployee(String id) {
         return employeeService.deleteEmployee(id);
