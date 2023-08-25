@@ -1,10 +1,12 @@
 package view.submenu;
 
+import controller.Controller;
 import view.MainView;
 
 import java.util.Scanner;
 
 public class BookingManagement {
+    private final Controller controller = new Controller();
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
