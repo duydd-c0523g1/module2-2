@@ -3,6 +3,8 @@ package view.submenu;
 import controller.EmployeeController;
 import model.people.Customer;
 import model.people.Employee;
+import utils.NameValidator;
+import utils.RegEx;
 import view.MainView;
 
 import java.util.List;
@@ -42,26 +44,64 @@ public class EmployeeManagement {
                         }
                         break;
                     case 2:
+                        boolean validId = false;
+                        boolean validName = false;
+                        boolean validIdent = false;
+                        boolean validPhone = false;
+                        String name;
+                        String id;
+                        String identNum;
+                        String phoneNumber;
                         System.out.println("[ADDING NEW EMPLOYEE]");
-                        System.out.print("Enter employee's ID: ");
-                        String id = scanner.nextLine();
-                        System.out.print("Enter employee's name: ");
-                        String name = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's ID: ");
+                            id = scanner.nextLine();
+                            if (RegEx.regexEmployeeId(id)) {
+                                validId = true;
+                            } else {
+                                System.out.println("[INVALID ID] ID must look like this: NV-YYYY");
+                            }
+                        } while (!validId);
+                        do {
+                            System.out.print("Enter employee's name: ");
+                            name = scanner.nextLine();
+                            if (NameValidator.validateName(name)) {
+                                validName = true;
+                            } else {
+                                System.out.println("[INVALID NAME] This name is invalid!");
+                            }
+                        } while (!validName);
+
                         System.out.print("Enter employee's date of birth: ");
                         String dob = scanner.nextLine();
                         System.out.print("Enter employee's gender: ");
                         String gender = scanner.nextLine();
-                        System.out.print("Enter employee's identification number: ");
-                        String identNum = scanner.nextLine();
-                        System.out.print("Enter employee's phone number: ");
-                        String phoneNumber = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's identification number: ");
+                            identNum = scanner.nextLine();
+                            if (RegEx.regexIdentNumber(identNum)) {
+                                validIdent = true;
+                            } else {
+                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                            }
+                        } while (!validIdent);
+                        do {
+                            System.out.print("Enter employee's phone number: ");
+                            phoneNumber = scanner.nextLine();
+                            if (RegEx.regexPhoneNumber(phoneNumber)) {
+                                validPhone = true;
+                            } else {
+                                System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
+                                        "\n10 digits in total");
+                            }
+                        } while (!validPhone);
                         System.out.print("Enter employee's email: ");
                         String email = scanner.nextLine();
                         System.out.print("Enter employee's education level: ");
                         String eduLevel = scanner.nextLine();
                         System.out.print("Enter employee's job position: ");
                         String jobPos = scanner.nextLine();
-                        System.out.print("Enter employee's job position: ");
+                        System.out.print("Enter employee's salary: ");
                         double salary = Double.parseDouble(scanner.nextLine());
                         Employee employee = new Employee(id, name, dob, gender,
                                 identNum, phoneNumber, email, eduLevel, jobPos, salary);
