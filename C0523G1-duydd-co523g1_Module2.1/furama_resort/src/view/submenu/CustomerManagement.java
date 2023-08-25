@@ -49,7 +49,7 @@ public class CustomerManagement {
                         String name = scanner.nextLine();
                         System.out.print("Enter customer's date of birth: ");
                         String dob = scanner.nextLine();
-                        System.out.print("Enter customer's gender");
+                        System.out.print("Enter customer's gender: ");
                         String gender = scanner.nextLine();
                         System.out.print("Enter customer's identification number: ");
                         String identNum = scanner.nextLine();
@@ -75,7 +75,7 @@ public class CustomerManagement {
                         String newName = scanner.nextLine();
                         System.out.print("Enter new customer's date of birth: ");
                         String newDob = scanner.nextLine();
-                        System.out.print("Enter new customer's gender");
+                        System.out.print("Enter new customer's gender: ");
                         String newGender = scanner.nextLine();
                         System.out.print("Enter new customer's identification number: ");
                         String newIdentNum = scanner.nextLine();
@@ -110,7 +110,14 @@ public class CustomerManagement {
                         System.out.println("[SEARCHING CUSTOMER]");
                         System.out.print("Enter a name: ");
                         String nameToFind = scanner.nextLine();
-                        controller.searchCustomerByName(nameToFind);
+                        List<Customer> customerList = controller.searchCustomerByName(nameToFind);
+                        if (customerList.isEmpty()) {
+                            System.out.println("No customer found!");
+                        } else {
+                            for (Customer c : customerList) {
+                                System.out.println(c);
+                            }
+                        }
                         break;
                     case 6:
                         MainView.start();
@@ -123,7 +130,8 @@ public class CustomerManagement {
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a number");
             } catch (Exception e) {
-                System.out.println("Something went wrong...");
+                System.out.println("[Exception] Something went wrong...");
+                e.printStackTrace();
             }
         } while (true);
     }

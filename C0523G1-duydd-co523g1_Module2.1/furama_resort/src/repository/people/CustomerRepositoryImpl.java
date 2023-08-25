@@ -32,24 +32,60 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
 
     @Override
     public boolean editCustomer(String id, Customer customer) {
+        List<Customer> customers = this.displayList();
+        for (Customer c : customers) {
+            if (c.getId().equals(id)) {
+                c.setId(customer.getId());
+                c.setName(customer.getName());
+                c.setDob(customer.getDob());
+                c.setGender(c.getGender());
+                c.setIdentNumber(c.getIdentNumber());
+                c.setPhoneNumber(c.getPhoneNumber());
+                c.setType(c.getType());
+                c.setAddress(c.getAddress());
+                List<String> strings = convertToString(customers);
+                Stream.write(FILE_PATH,strings);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public boolean deleteCustomer(String id) {
+        List<Customer> customers = this.displayList();
+        for (Customer c : customers) {
+            if (c.getId().equals(id)) {
+                customers.remove(c);
+                List<String> strings = convertToString(customers);
+                Stream.write(FILE_PATH, strings);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public List<Customer> searchCustomerByName(String name) {
-        return null;
+        List<Customer> customers = this.displayList();
+        List<Customer> result = new ArrayList<>();
+        for (Customer c : customers) {
+            if (c.getName().contains(name)
+                    || c.getName().toLowerCase().contains(name)
+                    || c.getName().toUpperCase().contains(name)) {
+                result.add(c);
+            }
+        }
+        return result;
     }
 
     private List<String> convertToString(List<Customer> customers) {
         List<String> strings = new ArrayList<>();
         for (Customer c : customers) {
-            strings.add(c.getId() + COMMA + c.getName() + COMMA + c.getDob() + COMMA + c.getIdentNumber() + COMMA
-                    + c.getPhoneNumber() + COMMA + c.getEmail() + COMMA + c.getType() + COMMA + c.getAddress());
+            strings.add(c.getId() + COMMA + c.getName() + COMMA + c.getDob()
+                    + COMMA + c.getGender() + COMMA + c.getIdentNumber()
+                    + COMMA + c.getPhoneNumber() + COMMA + c.getEmail()
+                    + COMMA + c.getType() + COMMA + c.getAddress());
         }
         return strings;
     }

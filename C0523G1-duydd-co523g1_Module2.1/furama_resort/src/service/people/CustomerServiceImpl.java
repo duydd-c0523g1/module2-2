@@ -8,9 +8,10 @@ import java.util.List;
 
 public class CustomerServiceImpl implements ICustomerService {
     private final ICustomerRepository customerRepository = new CustomerRepositoryImpl();
+
     @Override
     public void addNew(Customer customer) {
-
+        customerRepository.addNew(customer);
     }
 
     @Override
