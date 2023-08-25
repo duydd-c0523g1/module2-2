@@ -1,12 +1,15 @@
 package view.submenu;
 
 import controller.EmployeeController;
+import model.people.Customer;
+import model.people.Employee;
 import view.MainView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeManagement {
-    private final EmployeeController controller = new EmployeeController();
+    private static final EmployeeController controller = new EmployeeController();
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
@@ -28,14 +31,97 @@ public class EmployeeManagement {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
+                        System.out.println("[DISPLAYING EMPLOYEE LIST]");
+                        List<Employee> employees = controller.displayEmployeeList();
+                        if (employees.isEmpty()) {
+                            System.out.println("No customer found");
+                        } else {
+                            for (Employee employee : employees) {
+                                System.out.println(employee);
+                            }
+                        }
                         break;
                     case 2:
+                        System.out.println("[ADDING NEW EMPLOYEE]");
+                        System.out.print("Enter employee's ID: ");
+                        String id = scanner.nextLine();
+                        System.out.print("Enter employee's name: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Enter employee's date of birth: ");
+                        String dob = scanner.nextLine();
+                        System.out.print("Enter employee's gender: ");
+                        String gender = scanner.nextLine();
+                        System.out.print("Enter employee's identification number: ");
+                        String identNum = scanner.nextLine();
+                        System.out.print("Enter employee's phone number: ");
+                        String phoneNumber = scanner.nextLine();
+                        System.out.print("Enter employee's email: ");
+                        String email = scanner.nextLine();
+                        System.out.print("Enter employee's education level: ");
+                        String eduLevel = scanner.nextLine();
+                        System.out.print("Enter employee's job position: ");
+                        String jobPos = scanner.nextLine();
+                        System.out.print("Enter employee's job position: ");
+                        double salary = Double.parseDouble(scanner.nextLine());
+                        Employee employee = new Employee(id, name, dob, gender,
+                                identNum, phoneNumber, email, eduLevel, jobPos, salary);
+                        controller.addNewEmployee(employee);
                         break;
                     case 3:
+                        System.out.println("[EDITING CUSTOMER]");
+                        System.out.print("Enter employee's ID: ");
+                        String idToFind = scanner.nextLine();
+                        System.out.print("Enter employee's new ID: ");
+                        String newId = scanner.nextLine();
+                        System.out.print("Enter employee's name: ");
+                        String newName = scanner.nextLine();
+                        System.out.print("Enter employee's date of birth: ");
+                        String newDob = scanner.nextLine();
+                        System.out.print("Enter employee's gender: ");
+                        String newGender = scanner.nextLine();
+                        System.out.print("Enter employee's identification number: ");
+                        String newIdentNum = scanner.nextLine();
+                        System.out.print("Enter employee's phone number: ");
+                        String newPhoneNumber = scanner.nextLine();
+                        System.out.print("Enter employee's email: ");
+                        String newEmail = scanner.nextLine();
+                        System.out.print("Enter employee's education level: ");
+                        String newEduLevel = scanner.nextLine();
+                        System.out.print("Enter employee's job position: ");
+                        String newJobPos = scanner.nextLine();
+                        System.out.print("Enter employee's job position: ");
+                        double newSalary = Double.parseDouble(scanner.nextLine());
+                        Employee newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
+                                newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
+                        boolean result = controller.editEmployee(idToFind, newEmployee);
+                        if (result) {
+                            System.out.println("Success");
+                        } else {
+                            System.out.println("Something went wrong...");
+                        }
                         break;
                     case 4:
+                        System.out.println("[DELETING EMPLOYEE]");
+                        System.out.print("Enter employee's ID: ");
+                        String idToDel = scanner.nextLine();
+                        if (controller.deleteEmployee(idToDel)) {
+                            System.out.println("Success!");
+                        } else {
+                            System.out.println("ID does not exist!");
+                        }
                         break;
                     case 5:
+                        System.out.println("[SEARCHING EMPLOYEE]");
+                        System.out.print("Enter a name: ");
+                        String nameToFind = scanner.nextLine();
+                        List<Employee> employeeList = controller.searchEmployeeByName(nameToFind);
+                        if (employeeList.isEmpty()) {
+                            System.out.println("No customer found!");
+                        } else {
+                            for (Employee c : employeeList) {
+                                System.out.println(c);
+                            }
+                        }
                         break;
                     case 6:
                         MainView.start();
@@ -48,7 +134,8 @@ public class EmployeeManagement {
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a number");
             } catch (Exception e) {
-                System.out.println("Something went wrong...");
+                System.out.println("[Exception] Something went wrong...");
+                e.printStackTrace();
             }
         } while (true);
     }

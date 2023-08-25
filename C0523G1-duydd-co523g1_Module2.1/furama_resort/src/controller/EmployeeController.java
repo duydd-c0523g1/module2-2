@@ -8,19 +8,19 @@ import java.util.List;
 
 public class EmployeeController {
     private final IEmployeeService employeeService = new EmployeeServiceImpl();
-    void addNewEmployee(Employee employee) {
+    public void addNewEmployee(Employee employee) {
         employeeService.addNew(employee);
     }
-    List<Employee> displayEmployeeList() {
+    public List<Employee> displayEmployeeList() {
         return employeeService.display();
     }
-    boolean editEmployee(String id, Employee employee) {
+    public boolean editEmployee(String id, Employee employee) {
         return employeeService.editEmployee(id, employee);
     }
-    boolean deleteEmployee(String id) {
+    public boolean deleteEmployee(String id) {
         return employeeService.deleteEmployee(id);
     }
-    List<Employee> searchEmployeeByName(String name) {
+    public List<Employee> searchEmployeeByName(String name) {
         return employeeService.searchEmployeeByName(name);
     }
 }
