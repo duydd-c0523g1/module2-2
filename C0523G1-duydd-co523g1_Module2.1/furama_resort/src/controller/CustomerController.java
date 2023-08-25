@@ -9,19 +9,19 @@ import java.util.List;
 public class CustomerController {
     private final ICustomerService customerService = new CustomerServiceImpl();
 
-    List<Customer> displayCustomerList() {
+    public List<Customer> displayCustomerList() {
         return customerService.display();
     }
-    void addNewCustomer(Customer customer) {
+    public void addNewCustomer(Customer customer) {
         customerService.addNew(customer);
     }
-    boolean editCustomer(String id) {
-        return customerService.editCustomer(id);
+    public boolean editCustomer(String id, Customer customer) {
+        return customerService.editCustomer(id, customer);
     }
-    boolean deleteCustomer(String id) {
+    public boolean deleteCustomer(String id) {
         return customerService.deleteCustomer(id);
     }
-    List<Customer> searchCustomerByName(String name) {
+    public List<Customer> searchCustomerByName(String name) {
         return customerService.searchCustomerByName(name);
     }
 }

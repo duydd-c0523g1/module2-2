@@ -1,10 +1,13 @@
 package service.people;
 
 import model.people.Customer;
+import repository.people.CustomerRepositoryImpl;
+import repository.people.ICustomerRepository;
 
 import java.util.List;
 
 public class CustomerServiceImpl implements ICustomerService {
+    private final ICustomerRepository customerRepository = new CustomerRepositoryImpl();
     @Override
     public void addNew(Customer customer) {
 
@@ -12,21 +15,21 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public List<Customer> display() {
-        return null;
+        return customerRepository.displayList();
     }
 
     @Override
-    public boolean editCustomer(String id) {
-        return false;
+    public boolean editCustomer(String id, Customer customer) {
+        return customerRepository.editCustomer(id, customer);
     }
 
     @Override
     public boolean deleteCustomer(String id) {
-        return false;
+        return customerRepository.deleteCustomer(id);
     }
 
     @Override
     public List<Customer> searchCustomerByName(String name) {
-        return null;
+        return customerRepository.searchCustomerByName(name);
     }
 }

@@ -1,10 +1,13 @@
 package service.facilities;
 
 import model.facilities.Facility;
+import repository.facility.FacilityRepositoryImpl;
+import repository.facility.IFacilityRepository;
 
 import java.util.List;
 
 public class FacilityServiceImpl implements IFacilityService {
+    private final IFacilityRepository facilityRepository = new FacilityRepositoryImpl();
     @Override
     public void addNew(Facility facility) {
 

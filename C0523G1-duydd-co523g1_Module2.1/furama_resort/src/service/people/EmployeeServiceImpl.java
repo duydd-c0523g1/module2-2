@@ -1,10 +1,13 @@
 package service.people;
 
 import model.people.Employee;
+import repository.people.EmployeeRepositoryImpl;
+import repository.people.IEmployeeRepository;
 
 import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
+    private final IEmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     @Override
     public void addNew(Employee employee) {
 
