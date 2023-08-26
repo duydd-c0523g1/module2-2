@@ -32,10 +32,12 @@ public class MainView {
                         FacilityManagement.startFacilityManagement();
                         break;
                     case 4:
-                        BookingManagement.startEmployeeManagement();
+                        System.out.println("Work in progress");
+                        //BookingManagement.startEmployeeManagement();
                         break;
                     case 5:
-                        PromotionManagement.startPromotionManagement();
+                        System.out.println("Work in progress");
+                        //PromotionManagement.startPromotionManagement();
                         break;
                     case 0:
                         System.exit(0);
