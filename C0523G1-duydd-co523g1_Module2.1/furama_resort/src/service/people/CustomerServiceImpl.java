@@ -33,4 +33,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<Customer> searchCustomerByName(String name) {
         return customerRepository.searchCustomerByName(name);
     }
+
+    @Override
+    public boolean idExist(String id) {
+        return customerRepository.idExist(id);
+    }
 }

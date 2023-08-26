@@ -79,6 +79,17 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         return result;
     }
 
+    @Override
+    public boolean idExist(String id) {
+        List<Customer> customers = this.displayList();
+        for (Customer customer : customers) {
+            if (customer.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<String> convertToString(List<Customer> customers) {
         List<String> strings = new ArrayList<>();
         for (Customer c : customers) {

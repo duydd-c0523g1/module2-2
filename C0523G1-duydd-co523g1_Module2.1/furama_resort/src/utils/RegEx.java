@@ -7,6 +7,10 @@ public class RegEx {
         Pattern pattern = Pattern.compile("^NV-\\d{4}$");
         return pattern.matcher(id).matches();
     }
+    public static boolean regexCustomerId(String id) {
+        Pattern pattern = Pattern.compile("^KH-\\d{4}$");
+        return pattern.matcher(id).matches();
+    }
     public static boolean regexIdentNumber(String id) {
         Pattern pattern1 = Pattern.compile("^\\d{9}$");
         Pattern pattern2 = Pattern.compile("^\\d{12}$");

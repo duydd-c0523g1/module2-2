@@ -9,4 +9,6 @@ public interface ICustomerRepository extends IRepository<Customer> {
     boolean editCustomer(String id, Customer customer);
     boolean deleteCustomer(String id);
     List<Customer> searchCustomerByName(String name);
+
+    boolean idExist(String id);
 }

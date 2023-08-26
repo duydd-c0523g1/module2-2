@@ -60,7 +60,11 @@ public class EmployeeManagement {
                             System.out.print("Enter employee's ID: ");
                             id = scanner.nextLine();
                             if (RegEx.regexEmployeeId(id)) {
-                                validId = true;
+                                if (!controller.idExist(id)) {
+                                    validId = true;
+                                } else {
+                                    System.out.println("[INVALID ID] Must be unique");
+                                }
                             } else {
                                 System.out.println("[INVALID ID] Must look like this: NV-0123");
                             }
@@ -120,9 +124,9 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID SALARY] Must be greater than 0");
                             }
                         } while (!validSalary);
-                            Employee employee = new Employee(id, name, dob, gender,
-                                    identNum, phoneNumber, email, eduLevel, jobPos, salary);
-                            controller.addNewEmployee(employee);
+                        Employee employee = new Employee(id, name, dob, gender,
+                                identNum, phoneNumber, email, eduLevel, jobPos, salary);
+                        controller.addNewEmployee(employee);
 
                         break;
                     case 3:

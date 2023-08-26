@@ -24,4 +24,7 @@ public class CustomerController {
     public List<Customer> searchCustomerByName(String name) {
         return customerService.searchCustomerByName(name);
     }
+    public boolean idExist(String id) {
+        return customerService.idExist(id);
+    }
 }

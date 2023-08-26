@@ -9,4 +9,6 @@ public interface ICustomerService extends IService<Customer> {
     boolean editCustomer(String id, Customer customer);
     boolean deleteCustomer(String id);
     List<Customer> searchCustomerByName(String name);
+
+    boolean idExist(String id);
 }
