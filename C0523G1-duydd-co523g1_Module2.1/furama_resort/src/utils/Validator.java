@@ -1,5 +1,9 @@
 package utils;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 public class Validator {
     public static boolean validateName(String name) {
         String[] parts = name.split(" ");
@@ -17,5 +21,13 @@ public class Validator {
             }
         }
         return true;
+    }
+    public static boolean validateAge(String dobString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dob = LocalDate.parse(dobString, formatter);
+        LocalDate today = LocalDate.now();
+        Period period = Period.between(dob, today);
+
+        return period.getYears() >= 18;
     }
 }
