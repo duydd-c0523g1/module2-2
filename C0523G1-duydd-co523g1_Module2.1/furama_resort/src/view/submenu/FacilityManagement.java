@@ -9,6 +9,7 @@ import utils.RegEx;
 import utils.Validator;
 import view.MainView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FacilityManagement {
@@ -33,7 +34,16 @@ public class FacilityManagement {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        controller.displayFacilities();
+                        List<Facility> facilities = controller.displayFacilities();
+                        if (facilities.isEmpty()) {
+                            System.out.println("No facility found");
+                        } else {
+                            for (Facility facility : facilities) {
+                                System.out.println("-----------------------------");
+                                System.out.println(facility);
+                                System.out.println("-----------------------------");
+                            }
+                        }
                         break;
                     case 2:
                         do {
@@ -50,6 +60,8 @@ public class FacilityManagement {
                                     controller.addNewFacility(newHouse());
                                 } else if (selection == 3) {
                                     controller.addNewFacility(newRoom());
+                                } else if (selection == 0) {
+                                    startFacilityManagement();
                                 } else {
                                     System.out.println("Function unavailable");
                                 }
@@ -60,8 +72,17 @@ public class FacilityManagement {
                             }
                         } while (true);
                     case 3:
-                        controller.displayMaintenanceList();
-                        break;
+                        List<Facility> maintenanceList = controller.displayMaintenanceList();
+                        if (maintenanceList.isEmpty()) {
+                            System.out.println("Facilities are in good condition");
+                        } else {
+                            for (Facility m : maintenanceList) {
+                                System.out.println("-----------------------------");
+                                System.out.println(m);
+                                System.out.println("-----------------------------");
+                            }
+                        }
+                            break;
                     case 4:
                         System.out.println("[DELETING FACILITY]");
                         System.out.print("Enter facility's ID: ");

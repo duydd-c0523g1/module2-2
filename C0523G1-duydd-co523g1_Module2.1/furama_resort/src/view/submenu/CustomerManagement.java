@@ -38,7 +38,9 @@ public class CustomerManagement {
                             System.out.println("No customer found");
                         } else {
                             for (Customer customer : customers) {
+                                System.out.println("-----------------------------");
                                 System.out.println(customer);
+                                System.out.println("-----------------------------");
                             }
                         }
                         break;
@@ -227,7 +229,9 @@ public class CustomerManagement {
                             System.out.println("No customer found!");
                         } else {
                             for (Customer c : customerList) {
+                                System.out.println("-----------------------------");
                                 System.out.println(c);
+                                System.out.println("-----------------------------");
                             }
                         }
                         break;

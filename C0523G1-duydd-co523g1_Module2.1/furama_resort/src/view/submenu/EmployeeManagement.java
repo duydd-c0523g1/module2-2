@@ -38,7 +38,9 @@ public class EmployeeManagement {
                             System.out.println("No customer found");
                         } else {
                             for (Employee employee : employees) {
+                                System.out.println("-----------------------------");
                                 System.out.println(employee);
+                                System.out.println("-----------------------------");
                             }
                         }
                         break;
@@ -250,7 +252,9 @@ public class EmployeeManagement {
                             System.out.println("No customer found!");
                         } else {
                             for (Employee c : employeeList) {
+                                System.out.println("-----------------------------");
                                 System.out.println(c);
+                                System.out.println("-----------------------------");
                             }
                         }
                         break;
