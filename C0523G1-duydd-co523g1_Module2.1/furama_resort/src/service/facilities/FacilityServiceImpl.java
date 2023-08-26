@@ -10,21 +10,21 @@ public class FacilityServiceImpl implements IFacilityService {
     private final IFacilityRepository facilityRepository = new FacilityRepositoryImpl();
     @Override
     public void addNew(Facility facility) {
-
+        facilityRepository.addNew(facility);
     }
 
     @Override
     public List<Facility> display() {
-        return null;
+        return facilityRepository.displayList();
     }
 
     @Override
     public List<Facility> displayMaintenanceList() {
-        return null;
+        return facilityRepository.displayMaintenanceList();
     }
 
     @Override
     public boolean deleteFacility(String id) {
-        return false;
+        return facilityRepository.deleteFacility(id);
     }
 }

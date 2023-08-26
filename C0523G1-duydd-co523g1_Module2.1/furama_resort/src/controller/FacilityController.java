@@ -8,16 +8,16 @@ import java.util.List;
 
 public class FacilityController {
     private final IFacilityService facilityService = new FacilityServiceImpl();
-    List<Facility> displayFacilities() {
+    public List<Facility> displayFacilities() {
         return facilityService.display();
     }
-    void addNewFacility(Facility facility) {
+    public void addNewFacility(Facility facility) {
         facilityService.addNew(facility);
     }
-    List<Facility> displayMaintenanceList() {
+    public List<Facility> displayMaintenanceList() {
         return facilityService.displayMaintenanceList();
     }
-    boolean deleteFacility(String id) {
+    public boolean deleteFacility(String id) {
         return facilityService.deleteFacility(id);
     }
 

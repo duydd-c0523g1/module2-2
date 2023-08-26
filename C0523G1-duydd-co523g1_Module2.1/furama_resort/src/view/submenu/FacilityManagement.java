@@ -1,12 +1,18 @@
 package view.submenu;
 
 import controller.FacilityController;
+import model.facilities.Facility;
+import model.facilities.House;
+import model.facilities.Room;
+import model.facilities.Villa;
+import utils.RegEx;
+import utils.Validator;
 import view.MainView;
 
 import java.util.Scanner;
 
 public class FacilityManagement {
-    private final FacilityController controller = new FacilityController();
+    private static final FacilityController controller = new FacilityController();
     private static final Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
@@ -27,12 +33,44 @@ public class FacilityManagement {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
+                        controller.displayFacilities();
                         break;
                     case 2:
-                        break;
+                        do {
+                            try {
+                                System.out.println("[ADDING NEW FACILITY]");
+                                System.out.println("1. Add a new Villa");
+                                System.out.println("2. Add a new House");
+                                System.out.println("3. Add a new Room");
+                                System.out.print("Your option: ");
+                                int selection = Integer.parseInt(scanner.nextLine());
+                                if (selection == 1) {
+                                    controller.addNewFacility(newVilla());
+                                } else if (selection == 2) {
+                                    controller.addNewFacility(newHouse());
+                                } else if (selection == 3) {
+                                    controller.addNewFacility(newRoom());
+                                } else {
+                                    System.out.println("Function unavailable");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Please enter a number");
+                            } catch (Exception e) {
+                                System.out.println("Something went wrong...");
+                            }
+                        } while (true);
                     case 3:
+                        controller.displayMaintenanceList();
                         break;
                     case 4:
+                        System.out.println("[DELETING FACILITY]");
+                        System.out.print("Enter facility's ID: ");
+                        String id = scanner.nextLine();
+                        if (controller.deleteFacility(id)) {
+                            System.out.println("Success!");
+                        } else {
+                            System.out.println("No facility found");
+                        }
                         break;
                     case 5:
                         MainView.start();
@@ -48,5 +86,136 @@ public class FacilityManagement {
                 System.out.println("Something went wrong...");
             }
         } while (true);
+    }
+
+    private static Facility newVilla() {
+        String id;
+        String name;
+        int usageArea;
+        double rentalFee;
+        int maxUserAmount;
+        String rentalType;
+        String roomStandard;
+        int poolArea;
+        int floor;
+        boolean validId = false;
+        boolean validName = false;
+        boolean validUsageArea = false;
+        boolean validRentalFee = false;
+        boolean validMaxUser = false;
+        System.out.println("[ADDING NEW VILLA]");
+        do {
+            System.out.print("Enter villa's ID: ");
+            id = scanner.nextLine();
+            if (RegEx.regexVillaId(id)) {
+                validId = true;
+            } else {
+                System.out.println("[INVALID ID] Must look like this: SVVL-0123");
+            }
+        } while (!validId);
+        do {
+            System.out.print("Enter villa's name: ");
+            name = scanner.nextLine();
+            if (Validator.validateName(name)) {
+                validName = true;
+            } else {
+                System.out.println("[INVALID NAME] Cannot use this name");
+            }
+        } while (!validName);
+        do {
+            System.out.print("Enter usage area: ");
+            usageArea = Integer.parseInt(scanner.nextLine());
+            if (usageArea >= 30) {
+                validUsageArea = true;
+            } else {
+                System.out.println("[INVALID AREA] Must be larger than 30m2");
+            }
+        } while (!validUsageArea);
+        do {
+            System.out.print("Enter rental fee: ");
+            rentalFee = Double.parseDouble(scanner.nextLine());
+            if (rentalFee >= 0) {
+                validRentalFee = true;
+            } else {
+                System.out.println("[INVALID FEE] Must be higher than 0");
+            }
+        } while (!validRentalFee);
+        do {
+            System.out.print("Enter maximum number of user: ");
+            maxUserAmount = Integer.parseInt(scanner.nextLine());
+            if (maxUserAmount > 0 && maxUserAmount < 20) {
+                validMaxUser = true;
+            } else {
+                System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
+            }
+        } while (!validMaxUser);
+
+        System.out.print("Enter rental type: ");
+        rentalType = scanner.nextLine();
+        System.out.print("Enter room standard: ");
+        roomStandard = scanner.nextLine();
+        System.out.print("Enter pool area: ");
+        poolArea = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter number of floors: ");
+        floor = Integer.parseInt(scanner.nextLine());
+        return new Villa(id, name, usageArea, rentalFee,
+                maxUserAmount, rentalType, roomStandard, poolArea, floor);
+    }
+
+    private static Facility newHouse() {
+        String id;
+        String name;
+        int usageArea;
+        double rentalFee;
+        int maxUserAmount;
+        String rentalType;
+        String roomStandard;
+        int floor;
+        System.out.println("[ADDING NEW VILLA]");
+        System.out.print("Enter villa's ID: ");
+        id = scanner.nextLine();
+        System.out.print("Enter villa's name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter usage area: ");
+        usageArea = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter rental fee: ");
+        rentalFee = Double.parseDouble(scanner.nextLine());
+        System.out.print("Enter maximum number of user: ");
+        maxUserAmount = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter rental type: ");
+        rentalType = scanner.nextLine();
+        System.out.print("Enter room standard: ");
+        roomStandard = scanner.nextLine();
+        System.out.print("Enter number of floors: ");
+        floor = Integer.parseInt(scanner.nextLine());
+        return new House(id, name, usageArea, rentalFee,
+                maxUserAmount, rentalType, roomStandard, floor);
+    }
+
+    private static Facility newRoom() {
+        String id;
+        String name;
+        int usageArea;
+        double rentalFee;
+        int maxUserAmount;
+        String rentalType;
+        String additionalRoomService;
+        System.out.println("[ADDING NEW VILLA]");
+        System.out.print("Enter villa's ID: ");
+        id = scanner.nextLine();
+        System.out.print("Enter villa's name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter usage area: ");
+        usageArea = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter rental fee: ");
+        rentalFee = Double.parseDouble(scanner.nextLine());
+        System.out.print("Enter maximum number of user: ");
+        maxUserAmount = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter rental type: ");
+        rentalType = scanner.nextLine();
+        System.out.print("Enter additional room service: ");
+        additionalRoomService = scanner.nextLine();
+        return new Room(id, name, usageArea, rentalFee,
+                maxUserAmount, rentalType, additionalRoomService);
     }
 }
