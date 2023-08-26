@@ -1,6 +1,6 @@
 package utils;
 
-public class NameValidator {
+public class Validator {
     public static boolean validateName(String name) {
         String[] parts = name.split(" ");
         if (parts.length < 2) {

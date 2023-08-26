@@ -2,7 +2,7 @@ package view.submenu;
 
 import controller.EmployeeController;
 import model.people.Employee;
-import utils.NameValidator;
+import utils.Validator;
 import utils.RegEx;
 import view.MainView;
 
@@ -47,10 +47,12 @@ public class EmployeeManagement {
                         boolean validName = false;
                         boolean validIdent = false;
                         boolean validPhone = false;
+                        boolean validSalary = false;
                         String name;
                         String id;
                         String identNum;
                         String phoneNumber;
+                        double salary;
                         System.out.println("[ADDING NEW EMPLOYEE]");
                         do {
                             System.out.print("Enter employee's ID: ");
@@ -58,13 +60,13 @@ public class EmployeeManagement {
                             if (RegEx.regexEmployeeId(id)) {
                                 validId = true;
                             } else {
-                                System.out.println("[INVALID ID] ID must look like this: NV-YYYY");
+                                System.out.println("[INVALID ID] Must look like this: NV-0123");
                             }
                         } while (!validId);
                         do {
                             System.out.print("Enter employee's name: ");
                             name = scanner.nextLine();
-                            if (NameValidator.validateName(name)) {
+                            if (Validator.validateName(name)) {
                                 validName = true;
                             } else {
                                 System.out.println("[INVALID NAME] This name is invalid!");
@@ -100,11 +102,19 @@ public class EmployeeManagement {
                         String eduLevel = scanner.nextLine();
                         System.out.print("Enter employee's job position: ");
                         String jobPos = scanner.nextLine();
-                        System.out.print("Enter employee's salary: ");
-                        double salary = Double.parseDouble(scanner.nextLine());
-                        Employee employee = new Employee(id, name, dob, gender,
-                                identNum, phoneNumber, email, eduLevel, jobPos, salary);
-                        controller.addNewEmployee(employee);
+                        do {
+                            System.out.print("Enter employee's salary: ");
+                            salary = Double.parseDouble(scanner.nextLine());
+                            if (salary > 0) {
+                                validSalary = true;
+                            } else {
+                                System.out.println("[INVALID SALARY] Must be greater than 0");
+                            }
+                        } while (!validSalary);
+                            Employee employee = new Employee(id, name, dob, gender,
+                                    identNum, phoneNumber, email, eduLevel, jobPos, salary);
+                            controller.addNewEmployee(employee);
+
                         break;
                     case 3:
                         System.out.println("[EDITING CUSTOMER]");
