@@ -47,7 +47,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
                 c.setJobPosition(employee.getJobPosition());
                 c.setSalary(employee.getSalary());
                 List<String> strings = convertToString(employees);
-                Stream.write(FILE_PATH,strings);
+                Stream.write(FILE_PATH, strings);
                 return true;
             }
         }
@@ -91,5 +91,16 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
                     + COMMA + c.getEduLevel() + COMMA + c.getJobPosition() + COMMA + c.getSalary());
         }
         return strings;
+    }
+
+    @Override
+    public boolean idExist(String id) {
+        List<Employee> employees = this.displayList();
+        for (Employee employee : employees) {
+            if (employee.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

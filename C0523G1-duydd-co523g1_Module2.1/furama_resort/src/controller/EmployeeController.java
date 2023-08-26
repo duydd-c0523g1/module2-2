@@ -23,4 +23,7 @@ public class EmployeeController {
     public List<Employee> searchEmployeeByName(String name) {
         return employeeService.searchEmployeeByName(name);
     }
+    public boolean idExist(String id) {
+        return employeeService.idExist(id);
+    }
 }

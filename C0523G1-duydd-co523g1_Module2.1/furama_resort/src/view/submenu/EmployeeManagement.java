@@ -72,7 +72,6 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID NAME] This name is invalid!");
                             }
                         } while (!validName);
-
                         System.out.print("Enter employee's date of birth: ");
                         String dob = scanner.nextLine();
                         System.out.print("Enter employee's gender: ");
@@ -117,29 +116,84 @@ public class EmployeeManagement {
 
                         break;
                     case 3:
+                        boolean validNewId = false;
+                        boolean validNewName = false;
+                        boolean validNewIdent = false;
+                        boolean validNewPhone = false;
+                        boolean validNewSalary = false;
+                        boolean validIdToFind = false;
+                        String newId;
+                        String newName;
+                        String newIdentNum;
+                        String newPhoneNumber;
+                        String idToFind;
+                        double newSalary;
                         System.out.println("[EDITING CUSTOMER]");
-                        System.out.print("Enter employee's ID: ");
-                        String idToFind = scanner.nextLine();
-                        System.out.print("Enter employee's new ID: ");
-                        String newId = scanner.nextLine();
-                        System.out.print("Enter employee's name: ");
-                        String newName = scanner.nextLine();
-                        System.out.print("Enter employee's date of birth: ");
+                        do {
+                            System.out.print("Enter employee's ID: ");
+                            idToFind = scanner.nextLine();
+                            if (controller.idExist(idToFind)) {
+                                validIdToFind = true;
+                            } else {
+                                System.out.println("[ERROR] No ID found");
+                            }
+                        } while (!validIdToFind);
+                        do {
+                            System.out.print("Enter employee's new ID: ");
+                            newId = scanner.nextLine();
+                            if (RegEx.regexEmployeeId(newId)) {
+                                validNewId = true;
+                            } else {
+                                System.out.println("[INVALID ID] Must look like this: NV-0123");
+                            }
+                        } while (!validNewId);
+                        do {
+                            System.out.print("Enter employee's new name: ");
+                            newName = scanner.nextLine();
+                            if (Validator.validateName(newName)) {
+                                validNewName = true;
+                            } else {
+                                System.out.println("[INVALID NAME] This name is invalid!");
+                            }
+                        } while (!validNewName);
+                        System.out.print("Enter employee's new date of birth: ");
                         String newDob = scanner.nextLine();
-                        System.out.print("Enter employee's gender: ");
+                        System.out.print("Enter employee's new gender: ");
                         String newGender = scanner.nextLine();
-                        System.out.print("Enter employee's identification number: ");
-                        String newIdentNum = scanner.nextLine();
-                        System.out.print("Enter employee's phone number: ");
-                        String newPhoneNumber = scanner.nextLine();
-                        System.out.print("Enter employee's email: ");
+                        do {
+                            System.out.print("Enter employee's new identification number: ");
+                            newIdentNum = scanner.nextLine();
+                            if (RegEx.regexIdentNumber(newIdentNum)) {
+                                validNewIdent = true;
+                            } else {
+                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                            }
+                        } while (!validNewIdent);
+                        do {
+                            System.out.print("Enter employee's new phone number: ");
+                            newPhoneNumber = scanner.nextLine();
+                            if (RegEx.regexPhoneNumber(newPhoneNumber)) {
+                                validNewPhone = true;
+                            } else {
+                                System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
+                                        "\n10 digits in total");
+                            }
+                        } while (!validNewPhone);
+                        System.out.print("Enter employee's new email: ");
                         String newEmail = scanner.nextLine();
                         System.out.print("Enter employee's education level: ");
                         String newEduLevel = scanner.nextLine();
                         System.out.print("Enter employee's job position: ");
                         String newJobPos = scanner.nextLine();
-                        System.out.print("Enter employee's job position: ");
-                        double newSalary = Double.parseDouble(scanner.nextLine());
+                        do {
+                            System.out.print("Enter employee's salary: ");
+                            newSalary = Double.parseDouble(scanner.nextLine());
+                            if (newSalary > 0) {
+                                validNewSalary = true;
+                            } else {
+                                System.out.println("[INVALID SALARY] Must be greater than 0");
+                            }
+                        } while (!validNewSalary);
                         Employee newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
                                 newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
                         boolean result = controller.editEmployee(idToFind, newEmployee);

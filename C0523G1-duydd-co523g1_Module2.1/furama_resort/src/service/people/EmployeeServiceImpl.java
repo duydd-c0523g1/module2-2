@@ -32,4 +32,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public List<Employee> searchEmployeeByName(String name) {
         return employeeRepository.searchEmployeeByName(name);
     }
+
+    @Override
+    public boolean idExist(String id) {
+        return employeeRepository.idExist(id);
+    }
 }
