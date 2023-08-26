@@ -214,7 +214,7 @@ public class EmployeeManagement {
                         System.out.print("Enter employee's new job position: ");
                         String newJobPos = scanner.nextLine();
                         do {
-                            System.out.print("Enter employee's new salary: ");
+                            System.out.print("Enter employee's new salary ($): ");
                             newSalary = Double.parseDouble(scanner.nextLine());
                             if (newSalary > 0) {
                                 validNewSalary = true;

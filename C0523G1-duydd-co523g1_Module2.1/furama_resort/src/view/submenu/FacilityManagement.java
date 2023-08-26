@@ -136,7 +136,7 @@ public class FacilityManagement {
             }
         } while (!validUsageArea);
         do {
-            System.out.print("Enter rental fee: ");
+            System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
                 validRentalFee = true;
@@ -240,7 +240,7 @@ public class FacilityManagement {
             }
         } while (!validUsageArea);
         do {
-            System.out.print("Enter rental fee: ");
+            System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
                 validRentalFee = true;
@@ -336,7 +336,7 @@ public class FacilityManagement {
             }
         } while (!validUsageArea);
         do {
-            System.out.print("Enter rental fee: ");
+            System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
                 validRentalFee = true;

@@ -47,6 +47,6 @@ public class Employee extends Person {
         return super.toString()
                 + "\nEducation level: " + eduLevel
                 + "\nJob position: " + jobPosition
-                + "\nSalary: " + salary;
+                + "\nSalary: " + "$" + salary;
     }
 }

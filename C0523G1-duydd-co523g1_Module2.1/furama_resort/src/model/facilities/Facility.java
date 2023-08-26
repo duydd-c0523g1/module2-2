@@ -73,7 +73,7 @@ public abstract class Facility {
         return "ID: " + id
                 + "\nFacility name: " + name
                 + "\nArea in use: " + usageArea
-                + "\nRental fee: " + rentalFee
+                + "\nRental fee: " + "$" + rentalFee
                 + "\nUser limit: " + maxUserAmount
                 + "\nRental type: " + rentalType;
     }
