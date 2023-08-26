@@ -87,7 +87,6 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID AGE] Must be 18 or older");
                             }
                         } while (!validAge);
-
                         System.out.print("Enter employee's gender: ");
                         String gender = scanner.nextLine();
                         do {
@@ -130,6 +129,7 @@ public class EmployeeManagement {
 
                         break;
                     case 3:
+                        Employee newEmployee = new Employee();
                         boolean validNewId = false;
                         boolean validNewName = false;
                         boolean validNewIdent = false;
@@ -149,6 +149,7 @@ public class EmployeeManagement {
                             System.out.print("Enter employee's ID: ");
                             idToFind = scanner.nextLine();
                             if (controller.idExist(idToFind)) {
+                                newEmployee.setId(idToFind);
                                 validIdToFind = true;
                             } else {
                                 System.out.println("[ERROR] No ID found");
@@ -158,7 +159,11 @@ public class EmployeeManagement {
                             System.out.print("Enter employee's new ID: ");
                             newId = scanner.nextLine();
                             if (RegEx.regexEmployeeId(newId)) {
-                                validNewId = true;
+                                if (!controller.idExist(newId) || newEmployee.getId().equals(newId)) {
+                                    validNewId = true;
+                                } else {
+                                    System.out.println("[INVALID ID] Must be unique");
+                                }
                             } else {
                                 System.out.println("[INVALID ID] Must look like this: NV-0123");
                             }
@@ -217,7 +222,7 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID SALARY] Must be greater than 0");
                             }
                         } while (!validNewSalary);
-                        Employee newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
+                        newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
                                 newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
                         boolean result = controller.editEmployee(idToFind, newEmployee);
                         if (result) {

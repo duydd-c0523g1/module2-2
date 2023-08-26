@@ -2,6 +2,8 @@ package view.submenu;
 
 import controller.CustomerController;
 import model.people.Customer;
+import utils.RegEx;
+import utils.Validator;
 import view.MainView;
 
 import java.util.List;
@@ -41,19 +43,69 @@ public class CustomerManagement {
                         }
                         break;
                     case 2:
+                        boolean validId = false;
+                        boolean validName = false;
+                        boolean validAge = false;
+                        boolean validIdent = false;
+                        boolean validPhone = false;
+                        String id;
+                        String name;
+                        String dob;
+                        String identNum;
+                        String phoneNumber;
                         System.out.println("[ADDING NEW CUSTOMER]");
-                        System.out.print("Enter customer's ID: ");
-                        String id = scanner.nextLine();
-                        System.out.print("Enter customer's name: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Enter customer's date of birth: ");
-                        String dob = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's ID: ");
+                            id = scanner.nextLine();
+                            if (RegEx.regexCustomerId(id)) {
+                                if (!controller.idExist(id)) {
+                                    validId = true;
+                                } else {
+                                    System.out.println("[INVALID ID] Must be unique");
+                                }
+                            } else {
+                                System.out.println("[INVALID ID] Must look like this: KH-0123");
+                            }
+                        } while (!validId);
+                        do {
+                            System.out.print("Enter customer's name: ");
+                            name = scanner.nextLine();
+                            if (Validator.validateName(name)) {
+                                validName = true;
+                            } else {
+                                System.out.println("[INVALID NAME] This name is invalid!");
+                            }
+                        } while (!validName);
+                        do {
+                            System.out.print("Enter customer's date of birth (dd/mm/yyy): ");
+                            dob = scanner.nextLine();
+                            if (Validator.validateAge(dob)) {
+                                validAge = true;
+                            } else {
+                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            }
+                        } while (!validAge);
                         System.out.print("Enter customer's gender: ");
                         String gender = scanner.nextLine();
-                        System.out.print("Enter customer's identification number: ");
-                        String identNum = scanner.nextLine();
-                        System.out.print("Enter customer's phone number: ");
-                        String phoneNumber = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's identification number: ");
+                            identNum = scanner.nextLine();
+                            if (RegEx.regexIdentNumber(identNum)) {
+                                validIdent = true;
+                            } else {
+                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                            }
+                        } while (!validIdent);
+                        do {
+                            System.out.print("Enter customer's phone number: ");
+                            phoneNumber = scanner.nextLine();
+                            if (RegEx.regexPhoneNumber(phoneNumber)) {
+                                validPhone = true;
+                            } else {
+                                System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
+                                        "\n10 digits in total");
+                            }
+                        } while (!validPhone);
                         System.out.print("Enter customer's email: ");
                         String email = scanner.nextLine();
                         System.out.print("Enter customer's type: ");
@@ -65,28 +117,89 @@ public class CustomerManagement {
                         controller.addNewCustomer(customer);
                         break;
                     case 3:
+                        Customer newCustomer = new Customer();
+                        boolean validNewId = false;
+                        boolean validNewName = false;
+                        boolean validNewIdent = false;
+                        boolean validNewPhone = false;
+                        boolean validIdToFind = false;
+                        boolean validNewAge = false;
+                        String newId;
+                        String newName;
+                        String newIdentNum;
+                        String newPhoneNumber;
+                        String idToFind;
+                        String newDob;
                         System.out.println("[EDITING CUSTOMER]");
-                        System.out.print("Enter customer's ID: ");
-                        String idToFind = scanner.nextLine();
-                        System.out.print("Enter new customer's ID: ");
-                        String newId = scanner.nextLine();
-                        System.out.print("Enter new customer's name: ");
-                        String newName = scanner.nextLine();
-                        System.out.print("Enter new customer's date of birth: ");
-                        String newDob = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's ID: ");
+                            idToFind = scanner.nextLine();
+                            if (controller.idExist(idToFind)) {
+                                newCustomer.setId(idToFind);
+                                validIdToFind = true;
+                            } else {
+                                System.out.println("[ERROR] No ID found");
+                            }
+                        } while (!validIdToFind);
+                        do {
+                            System.out.print("Enter customer's new ID: ");
+                            newId = scanner.nextLine();
+                            if (RegEx.regexEmployeeId(newId)) {
+                                if (!controller.idExist(newId) || newCustomer.getId().equals(newId)) {
+                                    validNewId = true;
+                                } else {
+                                    System.out.println("[INVALID ID] Must be unique");
+                                }
+                            } else {
+                                System.out.println("[INVALID ID] Must look like this: KH-0123");
+                            }
+                        } while (!validNewId);
+                        do {
+                            System.out.print("Enter customer's new name: ");
+                            newName = scanner.nextLine();
+                            if (Validator.validateName(newName)) {
+                                validNewName = true;
+                            } else {
+                                System.out.println("[INVALID NAME] This name is invalid!");
+                            }
+                        } while (!validNewName);
+                        do {
+                            System.out.print("Enter customer's new date of birth: ");
+                            newDob = scanner.nextLine();
+                            if (Validator.validateAge(newDob)) {
+                                validNewAge = true;
+                            } else {
+                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            }
+                        } while (!validNewAge);
                         System.out.print("Enter new customer's gender: ");
                         String newGender = scanner.nextLine();
-                        System.out.print("Enter new customer's identification number: ");
-                        String newIdentNum = scanner.nextLine();
-                        System.out.print("Enter new customer's phone number: ");
-                        String newPhoneNumber = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's new identification number: ");
+                            newIdentNum = scanner.nextLine();
+                            if (RegEx.regexIdentNumber(newIdentNum)) {
+                                validNewIdent = true;
+                            } else {
+                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                            }
+                        } while (!validNewIdent);
+                        do {
+                            System.out.print("Enter customer's new phone number: ");
+                            newPhoneNumber = scanner.nextLine();
+                            if (RegEx.regexPhoneNumber(newPhoneNumber)) {
+                                validNewPhone = true;
+                            } else {
+                                System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
+                                        "\n10 digits in total");
+                            }
+                        } while (!validNewPhone);
                         System.out.print("Enter new customer's email: ");
                         String newEmail = scanner.nextLine();
                         System.out.print("Enter new customer's type: ");
                         String newType = scanner.nextLine();
                         System.out.print("Enter new customer's address: ");
                         String newAddress = scanner.nextLine();
-                        Customer newCustomer = new Customer(newId, newName, newDob, newGender,
+                        newCustomer = new Customer(newId, newName, newDob, newGender,
                                 newIdentNum, newPhoneNumber, newEmail, newType, newAddress);
                         boolean result = controller.editCustomer(idToFind, newCustomer);
                         if (result) {
