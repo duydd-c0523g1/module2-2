@@ -48,10 +48,12 @@ public class EmployeeManagement {
                         boolean validIdent = false;
                         boolean validPhone = false;
                         boolean validSalary = false;
+                        boolean validAge = false;
                         String name;
                         String id;
                         String identNum;
                         String phoneNumber;
+                        String dob;
                         double salary;
                         System.out.println("[ADDING NEW EMPLOYEE]");
                         do {
@@ -72,8 +74,16 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID NAME] This name is invalid!");
                             }
                         } while (!validName);
-                        System.out.print("Enter employee's date of birth: ");
-                        String dob = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's date of birth: ");
+                            dob = scanner.nextLine();
+                            if (Validator.validateAge(dob)) {
+                                validAge = true;
+                            } else {
+                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            }
+                        } while (!validAge);
+
                         System.out.print("Enter employee's gender: ");
                         String gender = scanner.nextLine();
                         do {
@@ -122,11 +132,13 @@ public class EmployeeManagement {
                         boolean validNewPhone = false;
                         boolean validNewSalary = false;
                         boolean validIdToFind = false;
+                        boolean validNewAge = false;
                         String newId;
                         String newName;
                         String newIdentNum;
                         String newPhoneNumber;
                         String idToFind;
+                        String newDob;
                         double newSalary;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
@@ -156,8 +168,15 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID NAME] This name is invalid!");
                             }
                         } while (!validNewName);
-                        System.out.print("Enter employee's new date of birth: ");
-                        String newDob = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's new date of birth: ");
+                            newDob = scanner.nextLine();
+                            if (Validator.validateAge(newDob)) {
+                                validNewAge = true;
+                            } else {
+                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            }
+                        } while (!validNewAge);
                         System.out.print("Enter employee's new gender: ");
                         String newGender = scanner.nextLine();
                         do {
@@ -181,12 +200,12 @@ public class EmployeeManagement {
                         } while (!validNewPhone);
                         System.out.print("Enter employee's new email: ");
                         String newEmail = scanner.nextLine();
-                        System.out.print("Enter employee's education level: ");
+                        System.out.print("Enter employee's new education level: ");
                         String newEduLevel = scanner.nextLine();
-                        System.out.print("Enter employee's job position: ");
+                        System.out.print("Enter employee's new job position: ");
                         String newJobPos = scanner.nextLine();
                         do {
-                            System.out.print("Enter employee's salary: ");
+                            System.out.print("Enter employee's new salary: ");
                             newSalary = Double.parseDouble(scanner.nextLine());
                             if (newSalary > 0) {
                                 validNewSalary = true;
