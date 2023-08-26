@@ -1,4 +1,4 @@
-package view.submenu;
+package view.submenu.redundant;
 
 import controller.FacilityController;
 import view.MainView;
