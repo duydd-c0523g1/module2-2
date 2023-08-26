@@ -215,7 +215,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter house's ID: ");
             id = scanner.nextLine();
-            if (RegEx.regexVillaId(id)) {
+            if (RegEx.regexHouseId(id)) {
                 validId = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVHO-0123");
@@ -307,11 +307,11 @@ public class FacilityManagement {
         boolean validRentalType = false;
         boolean validRoomStandard = false;
         boolean validService = false;
-        System.out.println("[ADDING NEW VILLA]");
+        System.out.println("[ADDING NEW ROOM]");
         do {
             System.out.print("Enter room's ID: ");
             id = scanner.nextLine();
-            if (RegEx.regexVillaId(id)) {
+            if (RegEx.regexRoomId(id)) {
                 validId = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVRO-0123");
