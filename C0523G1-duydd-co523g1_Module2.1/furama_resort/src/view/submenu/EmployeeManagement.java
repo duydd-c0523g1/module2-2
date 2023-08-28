@@ -51,11 +51,13 @@ public class EmployeeManagement {
                         boolean validPhone = false;
                         boolean validSalary = false;
                         boolean validAge = false;
+                        boolean validEmail = false;
                         String name;
                         String id;
                         String identNum;
                         String phoneNumber;
                         String dob;
+                        String email;
                         double salary;
                         System.out.println("[ADDING NEW EMPLOYEE]");
                         do {
@@ -110,8 +112,15 @@ public class EmployeeManagement {
                                         "\n10 digits in total");
                             }
                         } while (!validPhone);
-                        System.out.print("Enter employee's email: ");
-                        String email = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's email: ");
+                            email = scanner.nextLine();
+                            if (RegEx.regexEmail(email)) {
+                                validEmail = true;
+                            } else {
+                                System.out.println("[INVALID EMAIL] Illegal email format");
+                            }
+                        } while (!validEmail);
                         System.out.print("Enter employee's education level: ");
                         String eduLevel = scanner.nextLine();
                         System.out.print("Enter employee's job position: ");
@@ -139,12 +148,14 @@ public class EmployeeManagement {
                         boolean validNewSalary = false;
                         boolean validIdToFind = false;
                         boolean validNewAge = false;
+                        boolean validNewEmail = false;
                         String newId;
                         String newName;
                         String newIdentNum;
                         String newPhoneNumber;
                         String idToFind;
                         String newDob;
+                        String newEmail;
                         double newSalary;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
@@ -209,8 +220,15 @@ public class EmployeeManagement {
                                         "\n10 digits in total");
                             }
                         } while (!validNewPhone);
-                        System.out.print("Enter employee's new email: ");
-                        String newEmail = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's new email: ");
+                            newEmail = scanner.nextLine();
+                            if (RegEx.regexEmail(newEmail)) {
+                                validNewEmail = true;
+                            } else {
+                                System.out.println("[INVALID EMAIL] Illegal email format");
+                            }
+                        } while (!validNewEmail);
                         System.out.print("Enter employee's new education level: ");
                         String newEduLevel = scanner.nextLine();
                         System.out.print("Enter employee's new job position: ");

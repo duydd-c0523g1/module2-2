@@ -50,11 +50,13 @@ public class CustomerManagement {
                         boolean validAge = false;
                         boolean validIdent = false;
                         boolean validPhone = false;
+                        boolean validEmail = false;
                         String id;
                         String name;
                         String dob;
                         String identNum;
                         String phoneNumber;
+                        String email;
                         System.out.println("[ADDING NEW CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
@@ -108,8 +110,15 @@ public class CustomerManagement {
                                         "\n10 digits in total");
                             }
                         } while (!validPhone);
-                        System.out.print("Enter customer's email: ");
-                        String email = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's email: ");
+                            email = scanner.nextLine();
+                            if (RegEx.regexEmail(email)) {
+                                validEmail = true;
+                            } else {
+                                System.out.println("[INVALID EMAIL] Must look like an EMAIL");
+                            }
+                        } while (!validEmail);
                         System.out.print("Enter customer's type: ");
                         String type = scanner.nextLine();
                         System.out.print("Enter customer's address: ");
@@ -126,12 +135,14 @@ public class CustomerManagement {
                         boolean validNewPhone = false;
                         boolean validIdToFind = false;
                         boolean validNewAge = false;
+                        boolean validNewEmail = false;
                         String newId;
                         String newName;
                         String newIdentNum;
                         String newPhoneNumber;
                         String idToFind;
                         String newDob;
+                        String newEmail;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
@@ -195,8 +206,15 @@ public class CustomerManagement {
                                         "\n10 digits in total");
                             }
                         } while (!validNewPhone);
-                        System.out.print("Enter new customer's email: ");
-                        String newEmail = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's new email: ");
+                            newEmail = scanner.nextLine();
+                            if (RegEx.regexEmail(newEmail)) {
+                                validNewEmail = true;
+                            } else {
+                                System.out.println("[INVALID EMAIL] Must look like an EMAIL");
+                            }
+                        } while (!validNewEmail);
                         System.out.print("Enter new customer's type: ");
                         String newType = scanner.nextLine();
                         System.out.print("Enter new customer's address: ");

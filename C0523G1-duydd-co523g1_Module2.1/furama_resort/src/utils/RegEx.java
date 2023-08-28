@@ -32,4 +32,9 @@ public class RegEx {
         Pattern pattern = Pattern.compile("^0\\d{9}");
         return pattern.matcher(phoneNumber).matches();
     }
+    public static boolean regexEmail(String email) {
+        Pattern pattern = Pattern.compile("^(?=.{6,32}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        return pattern.matcher(email).matches();
+    }
 }
