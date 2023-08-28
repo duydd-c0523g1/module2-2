@@ -27,7 +27,6 @@ public class Validator {
         LocalDate dob = LocalDate.parse(dobString, formatter);
         LocalDate today = LocalDate.now();
         Period period = Period.between(dob, today);
-
         return period.getYears() >= 18;
     }
 }
