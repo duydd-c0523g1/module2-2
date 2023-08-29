@@ -3,6 +3,8 @@ package view.submenu;
 import controller.EmployeeController;
 import model.people.Employee;
 import view.MainView;
+
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 import static utils.RegEx.*;
@@ -34,7 +36,7 @@ public class EmployeeManagement {
                         System.out.println("[DISPLAYING EMPLOYEE LIST]");
                         List<Employee> employees = controller.displayEmployeeList();
                         if (employees.isEmpty()) {
-                            System.out.println("No customer found");
+                            System.out.println("[EMPTY LIST] No employee found");
                         } else {
                             for (Employee employee : employees) {
                                 System.out.println("-----------------------------");
@@ -55,7 +57,7 @@ public class EmployeeManagement {
                         String id;
                         String identNum;
                         String phoneNumber;
-                        String dob;
+                        String dob = null;
                         String email;
                         double salary;
                         System.out.println("[ADDING NEW EMPLOYEE]");
@@ -82,12 +84,16 @@ public class EmployeeManagement {
                             }
                         } while (!validName);
                         do {
-                            System.out.print("Enter employee's date of birth: ");
-                            dob = scanner.nextLine();
-                            if (validateAge(dob)) {
-                                validAge = true;
-                            } else {
-                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            try {
+                                System.out.print("Enter employee's date of birth: ");
+                                dob = scanner.nextLine();
+                                if (validateAge(dob)) {
+                                    validAge = true;
+                                } else {
+                                    System.out.println("[INVALID AGE] Must be 18 or older");
+                                }
+                            } catch (DateTimeParseException e) {
+                                System.out.println("[INVALID DATE] Illegal date format");
                             }
                         } while (!validAge);
                         System.out.print("Enter employee's gender: ");

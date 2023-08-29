@@ -1,6 +1,6 @@
 import view.MainView;
 
-public class Main {
+public class FuramaMainApp {
     public static void main(String[] args) {
         MainView.start();
     }
