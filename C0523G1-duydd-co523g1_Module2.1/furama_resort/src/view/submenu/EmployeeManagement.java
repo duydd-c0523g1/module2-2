@@ -2,12 +2,11 @@ package view.submenu;
 
 import controller.EmployeeController;
 import model.people.Employee;
-import utils.Validator;
-import utils.RegEx;
 import view.MainView;
-
 import java.util.List;
 import java.util.Scanner;
+import static utils.RegEx.*;
+import static utils.Validator.*;
 
 public class EmployeeManagement {
     private static final EmployeeController controller = new EmployeeController();
@@ -63,7 +62,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's ID: ");
                             id = scanner.nextLine();
-                            if (RegEx.regexEmployeeId(id)) {
+                            if (regexEmployeeId(id)) {
                                 if (!controller.idExist(id)) {
                                     validId = true;
                                 } else {
@@ -76,7 +75,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's name: ");
                             name = scanner.nextLine();
-                            if (Validator.validateName(name)) {
+                            if (validateName(name)) {
                                 validName = true;
                             } else {
                                 System.out.println("[INVALID NAME] This name is invalid!");
@@ -85,7 +84,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's date of birth: ");
                             dob = scanner.nextLine();
-                            if (Validator.validateAge(dob)) {
+                            if (validateAge(dob)) {
                                 validAge = true;
                             } else {
                                 System.out.println("[INVALID AGE] Must be 18 or older");
@@ -96,7 +95,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's identification number: ");
                             identNum = scanner.nextLine();
-                            if (RegEx.regexIdentNumber(identNum)) {
+                            if (regexIdentNumber(identNum)) {
                                 validIdent = true;
                             } else {
                                 System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
@@ -105,7 +104,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's phone number: ");
                             phoneNumber = scanner.nextLine();
-                            if (RegEx.regexPhoneNumber(phoneNumber)) {
+                            if (regexPhoneNumber(phoneNumber)) {
                                 validPhone = true;
                             } else {
                                 System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
@@ -115,7 +114,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's email: ");
                             email = scanner.nextLine();
-                            if (RegEx.regexEmail(email)) {
+                            if (regexEmail(email)) {
                                 validEmail = true;
                             } else {
                                 System.out.println("[INVALID EMAIL] Illegal email format");
@@ -171,7 +170,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new ID: ");
                             newId = scanner.nextLine();
-                            if (RegEx.regexEmployeeId(newId)) {
+                            if (regexEmployeeId(newId)) {
                                 if (!controller.idExist(newId) || newEmployee.getId().equals(newId)) {
                                     validNewId = true;
                                 } else {
@@ -184,7 +183,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new name: ");
                             newName = scanner.nextLine();
-                            if (Validator.validateName(newName)) {
+                            if (validateName(newName)) {
                                 validNewName = true;
                             } else {
                                 System.out.println("[INVALID NAME] This name is invalid!");
@@ -193,7 +192,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new date of birth: ");
                             newDob = scanner.nextLine();
-                            if (Validator.validateAge(newDob)) {
+                            if (validateAge(newDob)) {
                                 validNewAge = true;
                             } else {
                                 System.out.println("[INVALID AGE] Must be 18 or older");
@@ -204,7 +203,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new identification number: ");
                             newIdentNum = scanner.nextLine();
-                            if (RegEx.regexIdentNumber(newIdentNum)) {
+                            if (regexIdentNumber(newIdentNum)) {
                                 validNewIdent = true;
                             } else {
                                 System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
@@ -213,7 +212,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new phone number: ");
                             newPhoneNumber = scanner.nextLine();
-                            if (RegEx.regexPhoneNumber(newPhoneNumber)) {
+                            if (regexPhoneNumber(newPhoneNumber)) {
                                 validNewPhone = true;
                             } else {
                                 System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
@@ -223,7 +222,7 @@ public class EmployeeManagement {
                         do {
                             System.out.print("Enter employee's new email: ");
                             newEmail = scanner.nextLine();
-                            if (RegEx.regexEmail(newEmail)) {
+                            if (regexEmail(newEmail)) {
                                 validNewEmail = true;
                             } else {
                                 System.out.println("[INVALID EMAIL] Illegal email format");
