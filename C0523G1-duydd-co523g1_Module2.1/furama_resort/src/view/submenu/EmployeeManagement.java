@@ -7,6 +7,7 @@ import view.MainView;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
+
 import static utils.RegEx.*;
 import static utils.Validator.*;
 
@@ -159,7 +160,7 @@ public class EmployeeManagement {
                         String newIdentNum;
                         String newPhoneNumber;
                         String idToFind;
-                        String newDob;
+                        String newDob = null;
                         String newEmail;
                         double newSalary;
                         System.out.println("[EDITING CUSTOMER]");
@@ -196,12 +197,16 @@ public class EmployeeManagement {
                             }
                         } while (!validNewName);
                         do {
-                            System.out.print("Enter employee's new date of birth: ");
-                            newDob = scanner.nextLine();
-                            if (validateAge(newDob)) {
-                                validNewAge = true;
-                            } else {
-                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            try {
+                                System.out.print("Enter employee's new date of birth: ");
+                                newDob = scanner.nextLine();
+                                if (validateAge(newDob)) {
+                                    validNewAge = true;
+                                } else {
+                                    System.out.println("[INVALID AGE] Must be 18 or older");
+                                }
+                            } catch (DateTimeParseException e) {
+                                System.out.println("[INVALID DATE] Illegal date format");
                             }
                         } while (!validNewAge);
                         System.out.print("Enter employee's new gender: ");

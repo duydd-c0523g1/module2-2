@@ -3,6 +3,8 @@ package view.submenu;
 import controller.CustomerController;
 import model.people.Customer;
 import view.MainView;
+
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 import static utils.RegEx.*;
@@ -52,7 +54,7 @@ public class CustomerManagement {
                         boolean validEmail = false;
                         String id;
                         String name;
-                        String dob;
+                        String dob = null;
                         String identNum;
                         String phoneNumber;
                         String email;
@@ -80,12 +82,16 @@ public class CustomerManagement {
                             }
                         } while (!validName);
                         do {
-                            System.out.print("Enter customer's date of birth (dd/mm/yyy): ");
-                            dob = scanner.nextLine();
-                            if (validateAge(dob)) {
-                                validAge = true;
-                            } else {
-                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            try {
+                                System.out.print("Enter customer's date of birth (dd/mm/yyy): ");
+                                dob = scanner.nextLine();
+                                if (validateAge(dob)) {
+                                    validAge = true;
+                                } else {
+                                    System.out.println("[INVALID AGE] Must be 18 or older");
+                                }
+                            } catch (DateTimeParseException e) {
+                                System.out.println("[INVALID DATE] Illegal date format");
                             }
                         } while (!validAge);
                         System.out.print("Enter customer's gender: ");
@@ -140,7 +146,7 @@ public class CustomerManagement {
                         String newIdentNum;
                         String newPhoneNumber;
                         String idToFind;
-                        String newDob;
+                        String newDob = null;
                         String newEmail;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
@@ -176,12 +182,16 @@ public class CustomerManagement {
                             }
                         } while (!validNewName);
                         do {
-                            System.out.print("Enter customer's new date of birth: ");
-                            newDob = scanner.nextLine();
-                            if (validateAge(newDob)) {
-                                validNewAge = true;
-                            } else {
-                                System.out.println("[INVALID AGE] Must be 18 or older");
+                            try {
+                                System.out.print("Enter customer's new date of birth: ");
+                                newDob = scanner.nextLine();
+                                if (validateAge(newDob)) {
+                                    validNewAge = true;
+                                } else {
+                                    System.out.println("[INVALID AGE] Must be 18 or older");
+                                }
+                            } catch (DateTimeParseException e) {
+                                System.out.println("[INVALID DATE] Illegal date format");
                             }
                         } while (!validNewAge);
                         System.out.print("Enter new customer's gender: ");
