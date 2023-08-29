@@ -5,12 +5,11 @@ import model.facilities.Facility;
 import model.facilities.House;
 import model.facilities.Room;
 import model.facilities.Villa;
-import utils.RegEx;
-import utils.Validator;
 import view.MainView;
-
 import java.util.List;
 import java.util.Scanner;
+import static utils.RegEx.*;
+import static utils.Validator.*;
 
 public class FacilityManagement {
     private static final FacilityController controller = new FacilityController();
@@ -132,7 +131,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter villa's ID: ");
             id = scanner.nextLine();
-            if (RegEx.regexVillaId(id)) {
+            if (regexVillaId(id)) {
                 validId = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVVL-0123");
@@ -141,7 +140,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter villa's name: ");
             name = scanner.nextLine();
-            if (Validator.validateName(name)) {
+            if (validateName(name)) {
                 validName = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
@@ -177,7 +176,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
-            if (Validator.validateName(rentalType)) {
+            if (validateName(rentalType)) {
                 validRentalType = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -186,7 +185,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
-            if (Validator.validateName(roomStandard)) {
+            if (validateName(roomStandard)) {
                 validRoomStandard = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -236,7 +235,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter house's ID: ");
             id = scanner.nextLine();
-            if (RegEx.regexHouseId(id)) {
+            if (regexHouseId(id)) {
                 validId = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVHO-0123");
@@ -245,7 +244,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter house's name: ");
             name = scanner.nextLine();
-            if (Validator.validateName(name)) {
+            if (validateName(name)) {
                 validName = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
@@ -281,7 +280,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
-            if (Validator.validateName(rentalType)) {
+            if (validateName(rentalType)) {
                 validRentalType = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -290,7 +289,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
-            if (Validator.validateName(roomStandard)) {
+            if (validateName(roomStandard)) {
                 validRoomStandard = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -332,7 +331,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter room's ID: ");
             id = scanner.nextLine();
-            if (RegEx.regexRoomId(id)) {
+            if (regexRoomId(id)) {
                 validId = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVRO-0123");
@@ -341,7 +340,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter room's name: ");
             name = scanner.nextLine();
-            if (Validator.validateName(name)) {
+            if (validateName(name)) {
                 validName = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
@@ -377,7 +376,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
-            if (Validator.validateName(rentalType)) {
+            if (validateName(rentalType)) {
                 validRentalType = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -386,7 +385,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
-            if (Validator.validateName(roomStandard)) {
+            if (validateName(roomStandard)) {
                 validRoomStandard = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
@@ -395,7 +394,7 @@ public class FacilityManagement {
         do {
             System.out.print("Enter additional room service: ");
             roomService = scanner.nextLine();
-            if (Validator.validateName(roomService)) {
+            if (validateName(roomService)) {
                 validService = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
