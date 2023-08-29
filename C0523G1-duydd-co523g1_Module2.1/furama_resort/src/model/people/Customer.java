@@ -3,6 +3,7 @@ package model.people;
 public class Customer extends Person {
     private String type;
     private String address;
+
     public Customer() {
     }
 

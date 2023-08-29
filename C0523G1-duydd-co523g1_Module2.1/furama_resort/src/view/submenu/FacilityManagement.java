@@ -6,10 +6,12 @@ import model.facilities.House;
 import model.facilities.Room;
 import model.facilities.Villa;
 import view.MainView;
+
 import java.util.List;
 import java.util.Scanner;
+
 import static utils.RegEx.*;
-import static utils.Validator.*;
+import static utils.Validator.validateName;
 
 public class FacilityManagement {
     private static final FacilityController controller = new FacilityController();
@@ -81,7 +83,7 @@ public class FacilityManagement {
                                 System.out.println("-----------------------------");
                             }
                         }
-                            break;
+                        break;
                     case 4:
                         System.out.println("[DELETING FACILITY]");
                         System.out.print("Enter facility's ID: ");

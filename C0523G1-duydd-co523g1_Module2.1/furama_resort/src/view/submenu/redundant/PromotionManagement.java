@@ -6,8 +6,8 @@ import view.MainView;
 import java.util.Scanner;
 
 public class PromotionManagement {
-    private final FacilityController controller = new FacilityController();
     private static final Scanner scanner = new Scanner(System.in);
+    private final FacilityController controller = new FacilityController();
 
     private static void showPromotionMenu() {
         System.out.println("-----PROMOTION MANAGEMENT-----");

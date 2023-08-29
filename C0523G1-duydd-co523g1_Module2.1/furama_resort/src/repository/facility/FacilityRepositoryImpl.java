@@ -4,7 +4,6 @@ import model.facilities.Facility;
 import model.facilities.House;
 import model.facilities.Room;
 import model.facilities.Villa;
-import view.MainView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +12,7 @@ import java.util.Map;
 
 public class FacilityRepositoryImpl implements IFacilityRepository {
     private static Map<Facility, Integer> properties = new HashMap<>();
+
     static {
         properties.put(new Villa("SVVL-0001", "Furama Ocean Villa", 150,
                 2000, 8, "Weekly Rental", "Furama Standard"
@@ -24,6 +24,7 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
                 800, 2, "Daily Rental"
                 , "Free 5G Wifi"), 5);
     }
+
     @Override
     public List<Facility> displayList() {
         List<Facility> propertyList = new ArrayList<>();

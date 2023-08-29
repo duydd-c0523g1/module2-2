@@ -12,18 +12,23 @@ public class CustomerController {
     public List<Customer> displayCustomerList() {
         return customerService.display();
     }
+
     public void addNewCustomer(Customer customer) {
         customerService.addNew(customer);
     }
+
     public boolean editCustomer(String id, Customer customer) {
         return customerService.editCustomer(id, customer);
     }
+
     public boolean deleteCustomer(String id) {
         return customerService.deleteCustomer(id);
     }
+
     public List<Customer> searchCustomerByName(String name) {
         return customerService.searchCustomerByName(name);
     }
+
     public boolean idExist(String id) {
         return customerService.idExist(id);
     }

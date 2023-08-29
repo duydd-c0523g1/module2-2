@@ -44,7 +44,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 c.setType(customer.getType());
                 c.setAddress(customer.getAddress());
                 List<String> strings = convertToString(customers);
-                Stream.write(FILE_PATH,strings);
+                Stream.write(FILE_PATH, strings);
                 return true;
             }
         }

@@ -1,11 +1,14 @@
 package view;
 
-import view.submenu.*;
+import view.submenu.CustomerManagement;
+import view.submenu.EmployeeManagement;
+import view.submenu.FacilityManagement;
 
 import java.util.Scanner;
 
 public class MainView {
     private static final Scanner scanner = new Scanner(System.in);
+
     private static void showMenu() {
         System.out.println("-----FURAMA RESORT-----");
         System.out.println("1. Employee Management");
@@ -15,6 +18,7 @@ public class MainView {
         System.out.println("5. Promotion management");
         System.out.println("0. Exit");
     }
+
     public static void start() {
         do {
             try {

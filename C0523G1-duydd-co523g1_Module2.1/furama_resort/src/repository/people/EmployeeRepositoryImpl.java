@@ -1,6 +1,5 @@
 package repository.people;
 
-import model.people.Customer;
 import model.people.Employee;
 import utils.Stream;
 

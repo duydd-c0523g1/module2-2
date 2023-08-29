@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IFacilityService extends IService<Facility> {
     List<Facility> displayMaintenanceList();
+
     boolean deleteFacility(String id);
 }

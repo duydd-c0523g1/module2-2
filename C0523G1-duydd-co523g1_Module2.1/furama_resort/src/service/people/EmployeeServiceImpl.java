@@ -8,6 +8,7 @@ import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     private final IEmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
+
     @Override
     public void addNew(Employee employee) {
         employeeRepository.addNew(employee);

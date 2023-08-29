@@ -1,7 +1,5 @@
 package model.people;
 
-import java.util.Date;
-
 public abstract class Person {
     private String id;
     private String name;

@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import static utils.RegEx.*;
-import static utils.Validator.*;
+import static utils.Validator.validateAge;
+import static utils.Validator.validateName;
 
 public class EmployeeManagement {
     private static final EmployeeController controller = new EmployeeController();

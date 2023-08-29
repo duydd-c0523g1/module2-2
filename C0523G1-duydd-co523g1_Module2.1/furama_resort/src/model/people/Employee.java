@@ -1,11 +1,10 @@
 package model.people;
 
-import view.submenu.EmployeeManagement;
-
 public class Employee extends Person {
     private String eduLevel;
     private String jobPosition;
     private double salary;
+
     public Employee() {
     }
 

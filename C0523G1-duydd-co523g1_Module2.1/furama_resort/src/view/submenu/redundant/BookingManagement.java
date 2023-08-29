@@ -6,8 +6,8 @@ import view.MainView;
 import java.util.Scanner;
 
 public class BookingManagement {
-    private final FacilityController controller = new FacilityController();
     private static final Scanner scanner = new Scanner(System.in);
+    private final FacilityController controller = new FacilityController();
 
     private static void showMenu() {
         System.out.println("-----BOOKING MANAGEMENT-----");
