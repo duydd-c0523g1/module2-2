@@ -33,6 +33,7 @@ public class EmployeeManagement {
                 showMenu();
                 System.out.print("Your option: ");
                 int option = Integer.parseInt(scanner.nextLine());
+                boolean valid = false;
                 switch (option) {
                     case 1:
                         System.out.println("[DISPLAYING EMPLOYEE LIST]");
@@ -48,13 +49,6 @@ public class EmployeeManagement {
                         }
                         break;
                     case 2:
-                        boolean validId = false;
-                        boolean validName = false;
-                        boolean validIdent = false;
-                        boolean validPhone = false;
-                        boolean validSalary = false;
-                        boolean validAge = false;
-                        boolean validEmail = false;
                         String name;
                         String id;
                         String identNum;
@@ -68,79 +62,86 @@ public class EmployeeManagement {
                             id = scanner.nextLine();
                             if (regexEmployeeId(id)) {
                                 if (!controller.idExist(id)) {
-                                    validId = true;
+                                    valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
                                 }
                             } else {
                                 System.out.println("[INVALID ID] Must look like this: NV-0123");
                             }
-                        } while (!validId);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's name: ");
                             name = scanner.nextLine();
                             if (validateName(name)) {
-                                validName = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID NAME] This name is invalid!");
                             }
-                        } while (!validName);
+                        } while (!valid);
+                        valid = false;
                         do {
                             try {
                                 System.out.print("Enter employee's date of birth: ");
                                 dob = scanner.nextLine();
                                 if (validateAge(dob)) {
-                                    validAge = true;
+                                    valid = true;
                                 } else {
                                     System.out.println("[INVALID AGE] Must be 18 or older");
                                 }
                             } catch (DateTimeParseException e) {
                                 System.out.println("[INVALID DATE] Illegal date format");
                             }
-                        } while (!validAge);
+                        } while (!valid);
+                        valid = false;
                         System.out.print("Enter employee's gender: ");
                         String gender = scanner.nextLine();
                         do {
                             System.out.print("Enter employee's identification number: ");
                             identNum = scanner.nextLine();
                             if (regexIdentNumber(identNum)) {
-                                validIdent = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
                             }
-                        } while (!validIdent);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's phone number: ");
                             phoneNumber = scanner.nextLine();
                             if (regexPhoneNumber(phoneNumber)) {
-                                validPhone = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
                                         "\n10 digits in total");
                             }
-                        } while (!validPhone);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's email: ");
                             email = scanner.nextLine();
                             if (regexEmail(email)) {
-                                validEmail = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID EMAIL] Illegal email format");
                             }
-                        } while (!validEmail);
+                        } while (!valid);
+                        valid = false;
                         System.out.print("Enter employee's education level: ");
-                        String eduLevel = scanner.nextLine();
+                        String eduLevel = eduLevel();
                         System.out.print("Enter employee's job position: ");
                         String jobPos = scanner.nextLine();
                         do {
-                            System.out.print("Enter employee's salary: ");
+                            System.out.print("Enter employee's salary ($): ");
                             salary = Double.parseDouble(scanner.nextLine());
                             if (salary > 0) {
-                                validSalary = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID SALARY] Must be greater than 0");
                             }
-                        } while (!validSalary);
+                        } while (!valid);
+                        valid = false;
                         Employee employee = new Employee(id, name, dob, gender,
                                 identNum, phoneNumber, email, eduLevel, jobPos, salary);
                         controller.addNewEmployee(employee);
@@ -148,14 +149,6 @@ public class EmployeeManagement {
                         break;
                     case 3:
                         Employee newEmployee = new Employee();
-                        boolean validNewId = false;
-                        boolean validNewName = false;
-                        boolean validNewIdent = false;
-                        boolean validNewPhone = false;
-                        boolean validNewSalary = false;
-                        boolean validIdToFind = false;
-                        boolean validNewAge = false;
-                        boolean validNewEmail = false;
                         String newId;
                         String newName;
                         String newIdentNum;
@@ -170,89 +163,97 @@ public class EmployeeManagement {
                             idToFind = scanner.nextLine();
                             if (controller.idExist(idToFind)) {
                                 newEmployee.setId(idToFind);
-                                validIdToFind = true;
+                                valid = true;
                             } else {
                                 System.out.println("[ERROR] No ID found");
                             }
-                        } while (!validIdToFind);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's new ID: ");
                             newId = scanner.nextLine();
                             if (regexEmployeeId(newId)) {
                                 if (!controller.idExist(newId) || newEmployee.getId().equals(newId)) {
-                                    validNewId = true;
+                                    valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
                                 }
                             } else {
                                 System.out.println("[INVALID ID] Must look like this: NV-0123");
                             }
-                        } while (!validNewId);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's new name: ");
                             newName = scanner.nextLine();
                             if (validateName(newName)) {
-                                validNewName = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID NAME] This name is invalid!");
                             }
-                        } while (!validNewName);
+                        } while (!valid);
+                        valid = false;
                         do {
                             try {
                                 System.out.print("Enter employee's new date of birth: ");
                                 newDob = scanner.nextLine();
                                 if (validateAge(newDob)) {
-                                    validNewAge = true;
+                                    valid = true;
                                 } else {
                                     System.out.println("[INVALID AGE] Must be 18 or older");
                                 }
                             } catch (DateTimeParseException e) {
                                 System.out.println("[INVALID DATE] Illegal date format");
                             }
-                        } while (!validNewAge);
+                        } while (!valid);
+                        valid = false;
                         System.out.print("Enter employee's new gender: ");
                         String newGender = scanner.nextLine();
                         do {
                             System.out.print("Enter employee's new identification number: ");
                             newIdentNum = scanner.nextLine();
                             if (regexIdentNumber(newIdentNum)) {
-                                validNewIdent = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
                             }
-                        } while (!validNewIdent);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's new phone number: ");
                             newPhoneNumber = scanner.nextLine();
                             if (regexPhoneNumber(newPhoneNumber)) {
-                                validNewPhone = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID PHONE NUMBER] Must start with 0 and have " +
                                         "\n10 digits in total");
                             }
-                        } while (!validNewPhone);
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's new email: ");
                             newEmail = scanner.nextLine();
                             if (regexEmail(newEmail)) {
-                                validNewEmail = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID EMAIL] Illegal email format");
                             }
-                        } while (!validNewEmail);
+                        } while (!valid);
+                        valid = false;
                         System.out.print("Enter employee's new education level: ");
-                        String newEduLevel = scanner.nextLine();
+                        String newEduLevel = eduLevel();
                         System.out.print("Enter employee's new job position: ");
                         String newJobPos = scanner.nextLine();
                         do {
                             System.out.print("Enter employee's new salary ($): ");
                             newSalary = Double.parseDouble(scanner.nextLine());
                             if (newSalary > 0) {
-                                validNewSalary = true;
+                                valid = true;
                             } else {
                                 System.out.println("[INVALID SALARY] Must be greater than 0");
                             }
-                        } while (!validNewSalary);
+                        } while (!valid);
+                        valid = false;
                         newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
                                 newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
                         boolean result = controller.editEmployee(idToFind, newEmployee);
@@ -303,4 +304,39 @@ public class EmployeeManagement {
             }
         } while (true);
     }
+
+    private static String eduLevel() {
+        String level;
+        do {
+            try {
+                System.out.println("---SELECT EDUCATION LEVEL---");
+                System.out.println("1. Intermediate");
+                System.out.println("2. College");
+                System.out.println("3. Undergraduate ");
+                System.out.println("4. Graduate");
+                System.out.print("Your selection: ");
+                int option = Integer.parseInt(scanner.nextLine());
+                switch (option) {
+                    case 1:
+                        level = "Intermediate";
+                        return level;
+                    case 2:
+                        level = "College";
+                        return level;
+                    case 3:
+                        level = "Undergraduate";
+                        return level;
+                    case 4:
+                        level = "Graduate";
+                        return level;
+                    default:
+                        System.out.println("[INVALID OPTION] Please try again");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[INVALID FORMAT] Please enter a number");
+            }
+        } while (true);
+    }
 }
+

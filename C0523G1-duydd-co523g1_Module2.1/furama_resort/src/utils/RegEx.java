@@ -44,4 +44,8 @@ public class RegEx {
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
         return pattern.matcher(email).matches();
     }
+    public static boolean regexGender(String gender) {
+        Pattern pattern = Pattern.compile("^(Male|Female|Non Binary)$");
+        return pattern.matcher(gender).matches();
+    }
 }

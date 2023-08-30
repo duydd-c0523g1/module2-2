@@ -5,13 +5,10 @@ import model.facilities.House;
 import model.facilities.Room;
 import model.facilities.Villa;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FacilityRepositoryImpl implements IFacilityRepository {
-    private static Map<Facility, Integer> properties = new HashMap<>();
+    private static Map<Facility, Integer> properties = new LinkedHashMap<>();
 
     static {
         properties.put(new Villa("SVVL-0001", "Furama Ocean Villa", 150,
