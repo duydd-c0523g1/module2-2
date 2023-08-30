@@ -82,7 +82,7 @@ public abstract class Person {
     public String toString() {
         return "[ID: " + id + "]"
                 + "\nName: " + "....................... " + name
-                + "\nDate of birth: "+ ".............. " + dob
+                + "\nDate of birth: " + ".............. " + dob
                 + "\nGender: " + "..................... " + gender
                 + "\nIdentity number: " + "............ " + identNumber
                 + "\nPhone number: " + "............... " + phoneNumber
