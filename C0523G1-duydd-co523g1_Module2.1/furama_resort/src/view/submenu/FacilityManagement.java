@@ -14,8 +14,8 @@ import static utils.RegEx.*;
 import static utils.Validator.validateName;
 
 public class FacilityManagement {
-    private static final FacilityController controller = new FacilityController();
-    private static final Scanner scanner = new Scanner(System.in);
+    private static FacilityController controller = new FacilityController();
+    private static Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
         System.out.println("-----FACILITY MANAGEMENT-----");

@@ -13,8 +13,8 @@ import static utils.Validator.validateAge;
 import static utils.Validator.validateName;
 
 public class CustomerManagement {
-    private static final CustomerController controller = new CustomerController();
-    private static final Scanner scanner = new Scanner(System.in);
+    private static CustomerController controller = new CustomerController();
+    private static Scanner scanner = new Scanner(System.in);
 
     private static void showMenu() {
         System.out.println("-----CUSTOMER MANAGEMENT-----");
