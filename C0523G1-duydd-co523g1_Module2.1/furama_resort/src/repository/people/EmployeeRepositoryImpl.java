@@ -45,6 +45,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
                 c.setEduLevel(employee.getEduLevel());
                 c.setJobPosition(employee.getJobPosition());
                 c.setSalary(employee.getSalary());
+                c.setEmail(employee.getEmail());
                 List<String> strings = convertToString(employees);
                 Stream.write(FILE_PATH, strings);
                 return true;

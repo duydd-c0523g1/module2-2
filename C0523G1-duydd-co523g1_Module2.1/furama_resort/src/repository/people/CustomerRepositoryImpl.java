@@ -43,6 +43,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 c.setPhoneNumber(customer.getPhoneNumber());
                 c.setType(customer.getType());
                 c.setAddress(customer.getAddress());
+                c.setEmail(customer.getEmail());
                 List<String> strings = convertToString(customers);
                 Stream.write(FILE_PATH, strings);
                 return true;
