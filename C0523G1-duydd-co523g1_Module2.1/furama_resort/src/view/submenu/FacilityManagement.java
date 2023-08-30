@@ -53,6 +53,7 @@ public class FacilityManagement {
                                 System.out.println("1. Add a new Villa");
                                 System.out.println("2. Add a new House");
                                 System.out.println("3. Add a new Room");
+                                System.out.println("0. Back");
                                 System.out.print("Your option: ");
                                 int selection = Integer.parseInt(scanner.nextLine());
                                 if (selection == 1) {
