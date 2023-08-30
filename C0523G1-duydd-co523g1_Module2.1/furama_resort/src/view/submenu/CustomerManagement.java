@@ -55,6 +55,7 @@ public class CustomerManagement {
                         String identNum;
                         String phoneNumber;
                         String email;
+                        String gender;
                         System.out.println("[ADDING NEW CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
@@ -94,8 +95,16 @@ public class CustomerManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        System.out.print("Enter customer's gender: ");
-                        String gender = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
+                            gender = scanner.nextLine();
+                            if (regexGender(gender)) {
+                                valid = true;
+                            } else {
+                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
+                            }
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter customer's identification number: ");
                             identNum = scanner.nextLine();
@@ -144,6 +153,7 @@ public class CustomerManagement {
                         String idToFind;
                         String newDob = null;
                         String newEmail;
+                        String newGender;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
@@ -194,8 +204,16 @@ public class CustomerManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        System.out.print("Enter new customer's gender: ");
-                        String newGender = scanner.nextLine();
+                        do {
+                            System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
+                            newGender = scanner.nextLine();
+                            if (regexGender(newGender)) {
+                                valid = true;
+                            } else {
+                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
+                            }
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter customer's new identification number: ");
                             newIdentNum = scanner.nextLine();

@@ -45,7 +45,7 @@ public class RegEx {
         return pattern.matcher(email).matches();
     }
     public static boolean regexGender(String gender) {
-        Pattern pattern = Pattern.compile("^(Male|Female|Non Binary)$");
+        Pattern pattern = Pattern.compile("^(Male|Female|Non-Binary)$");
         return pattern.matcher(gender).matches();
     }
 }

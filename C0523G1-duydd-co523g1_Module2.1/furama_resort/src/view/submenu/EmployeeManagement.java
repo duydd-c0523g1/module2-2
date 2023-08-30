@@ -55,6 +55,7 @@ public class EmployeeManagement {
                         String phoneNumber;
                         String dob = null;
                         String email;
+                        String gender;
                         double salary;
                         System.out.println("[ADDING NEW EMPLOYEE]");
                         do {
@@ -95,8 +96,16 @@ public class EmployeeManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        System.out.print("Enter employee's gender: ");
-                        String gender = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
+                            gender = scanner.nextLine();
+                            if (regexGender(gender)) {
+                                valid = true;
+                            } else {
+                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
+                            }
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's identification number: ");
                             identNum = scanner.nextLine();
@@ -156,6 +165,7 @@ public class EmployeeManagement {
                         String idToFind;
                         String newDob = null;
                         String newEmail;
+                        String newGender;
                         double newSalary;
                         System.out.println("[EDITING CUSTOMER]");
                         do {
@@ -207,8 +217,16 @@ public class EmployeeManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        System.out.print("Enter employee's new gender: ");
-                        String newGender = scanner.nextLine();
+                        do {
+                            System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
+                            newGender = scanner.nextLine();
+                            if (regexGender(newGender)) {
+                                valid = true;
+                            } else {
+                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
+                            }
+                        } while (!valid);
+                        valid = false;
                         do {
                             System.out.print("Enter employee's new identification number: ");
                             newIdentNum = scanner.nextLine();
