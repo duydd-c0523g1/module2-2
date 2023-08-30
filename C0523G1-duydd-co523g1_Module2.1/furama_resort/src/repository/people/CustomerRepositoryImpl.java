@@ -35,15 +35,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         List<Customer> customers = this.displayList();
         for (Customer c : customers) {
             if (c.getId().equals(id)) {
-                c.setId(customer.getId());
-                c.setName(customer.getName());
-                c.setDob(customer.getDob());
-                c.setGender(customer.getGender());
-                c.setIdentNumber(customer.getIdentNumber());
-                c.setPhoneNumber(customer.getPhoneNumber());
-                c.setType(customer.getType());
-                c.setAddress(customer.getAddress());
-                c.setEmail(customer.getEmail());
+                int index = customers.indexOf(c);
+                customers.set(index, customer);
                 List<String> strings = convertToString(customers);
                 Stream.write(FILE_PATH, strings);
                 return true;

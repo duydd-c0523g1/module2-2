@@ -245,9 +245,9 @@ public class CustomerManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        System.out.print("Enter new customer's type: ");
+                        System.out.print("Enter customer's new type: ");
                         String newType = customerType();
-                        System.out.print("Enter new customer's address: ");
+                        System.out.print("Enter customer's new address: ");
                         String newAddress = scanner.nextLine();
                         newCustomer = new Customer(newId, newName, newDob, newGender,
                                 newIdentNum, newPhoneNumber, newEmail, newType, newAddress);

@@ -36,16 +36,8 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
         List<Employee> employees = this.displayList();
         for (Employee c : employees) {
             if (c.getId().equals(id)) {
-                c.setId(employee.getId());
-                c.setName(employee.getName());
-                c.setDob(employee.getDob());
-                c.setGender(employee.getGender());
-                c.setIdentNumber(employee.getIdentNumber());
-                c.setPhoneNumber(employee.getPhoneNumber());
-                c.setEduLevel(employee.getEduLevel());
-                c.setJobPosition(employee.getJobPosition());
-                c.setSalary(employee.getSalary());
-                c.setEmail(employee.getEmail());
+                int index = employees.indexOf(c);
+                employees.set(index,employee);
                 List<String> strings = convertToString(employees);
                 Stream.write(FILE_PATH, strings);
                 return true;

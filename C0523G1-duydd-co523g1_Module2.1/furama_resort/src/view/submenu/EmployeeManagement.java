@@ -128,7 +128,7 @@ public class EmployeeManagement {
                         } while (!valid);
                         valid = false;
                         do {
-                            System.out.print("Enter employee's email: ");
+                            System.out.print("Enter employee's new email: ");
                             email = scanner.nextLine();
                             if (regexEmail(email)) {
                                 valid = true;
