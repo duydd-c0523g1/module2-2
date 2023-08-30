@@ -120,98 +120,98 @@ public class FacilityManagement {
         String roomStandard;
         int poolArea;
         int floor;
-        boolean validId = false;
-        boolean validName = false;
-        boolean validUsageArea = false;
-        boolean validRentalFee = false;
-        boolean validMaxUser = false;
-        boolean validRentalType = false;
-        boolean validRoomStandard = false;
-        boolean validPoolArea = false;
-        boolean validFloor = false;
+        boolean valid = false;
         System.out.println("[ADDING NEW VILLA]");
         do {
             System.out.print("Enter villa's ID: ");
             id = scanner.nextLine();
             if (regexVillaId(id)) {
-                validId = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVVL-0123");
             }
-        } while (!validId);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter villa's name: ");
             name = scanner.nextLine();
             if (validateName(name)) {
-                validName = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
             }
-        } while (!validName);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter usage area: ");
             usageArea = Integer.parseInt(scanner.nextLine());
             if (usageArea >= 30) {
-                validUsageArea = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID AREA] Must be larger than 30m2");
             }
-        } while (!validUsageArea);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
-                validRentalFee = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FEE] Must be higher than 0");
             }
-        } while (!validRentalFee);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter maximum number of user: ");
             maxUserAmount = Integer.parseInt(scanner.nextLine());
             if (maxUserAmount > 0 && maxUserAmount < 20) {
-                validMaxUser = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
             }
-        } while (!validMaxUser);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
             if (validateName(rentalType)) {
-                validRentalType = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRentalType);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
             if (validateName(roomStandard)) {
-                validRoomStandard = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRoomStandard);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter pool area: ");
             poolArea = Integer.parseInt(scanner.nextLine());
             if (poolArea >= 30) {
-                validPoolArea = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID AREA] Must be larger than 30m2");
             }
-        } while (!validPoolArea);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter number of floors: ");
             floor = Integer.parseInt(scanner.nextLine());
             if (floor > 0) {
-                validFloor = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FLOOR] Are you high?");
             }
-        } while (!validFloor);
-
+        } while (!valid);
+        valid = false;
         return new Villa(id, name, usageArea, rentalFee,
                 maxUserAmount, rentalType, roomStandard, poolArea, floor);
     }
@@ -225,88 +225,88 @@ public class FacilityManagement {
         String rentalType;
         String roomStandard;
         int floor;
-        boolean validId = false;
-        boolean validName = false;
-        boolean validUsageArea = false;
-        boolean validRentalFee = false;
-        boolean validMaxUser = false;
-        boolean validRentalType = false;
-        boolean validRoomStandard = false;
-        boolean validFloor = false;
+        boolean valid = false;
         System.out.println("[ADDING NEW HOUSE]");
         do {
             System.out.print("Enter house's ID: ");
             id = scanner.nextLine();
             if (regexHouseId(id)) {
-                validId = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVHO-0123");
             }
-        } while (!validId);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter house's name: ");
             name = scanner.nextLine();
             if (validateName(name)) {
-                validName = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
             }
-        } while (!validName);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter usage area: ");
             usageArea = Integer.parseInt(scanner.nextLine());
             if (usageArea >= 30) {
-                validUsageArea = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID AREA] Must be larger than 30m2");
             }
-        } while (!validUsageArea);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
-                validRentalFee = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FEE] Must be higher than 0");
             }
-        } while (!validRentalFee);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter maximum number of user: ");
             maxUserAmount = Integer.parseInt(scanner.nextLine());
             if (maxUserAmount > 0 && maxUserAmount < 20) {
-                validMaxUser = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
             }
-        } while (!validMaxUser);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
             if (validateName(rentalType)) {
-                validRentalType = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRentalType);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
             if (validateName(roomStandard)) {
-                validRoomStandard = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRoomStandard);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter number of floors: ");
             floor = Integer.parseInt(scanner.nextLine());
             if (floor > 0) {
-                validFloor = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FLOOR] Are you high?");
             }
-        } while (!validFloor);
-
+        } while (!valid);
+        valid = false;
         return new House(id, name, usageArea, rentalFee,
                 maxUserAmount, rentalType, roomStandard, floor);
     }
@@ -321,87 +321,88 @@ public class FacilityManagement {
         String rentalType;
         String roomStandard;
         String roomService;
-        boolean validId = false;
-        boolean validName = false;
-        boolean validUsageArea = false;
-        boolean validRentalFee = false;
-        boolean validMaxUser = false;
-        boolean validRentalType = false;
-        boolean validRoomStandard = false;
-        boolean validService = false;
+        boolean valid = false;
         System.out.println("[ADDING NEW ROOM]");
         do {
             System.out.print("Enter room's ID: ");
             id = scanner.nextLine();
             if (regexRoomId(id)) {
-                validId = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVRO-0123");
             }
-        } while (!validId);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter room's name: ");
             name = scanner.nextLine();
             if (validateName(name)) {
-                validName = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NAME] Cannot use this name");
             }
-        } while (!validName);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter usage area: ");
             usageArea = Integer.parseInt(scanner.nextLine());
             if (usageArea >= 30) {
-                validUsageArea = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID AREA] Must be larger than 30m2");
             }
-        } while (!validUsageArea);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental fee ($): ");
             rentalFee = Double.parseDouble(scanner.nextLine());
             if (rentalFee >= 0) {
-                validRentalFee = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FEE] Rental fee cannot be negative");
             }
-        } while (!validRentalFee);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter maximum number of user: ");
             maxUserAmount = Integer.parseInt(scanner.nextLine());
             if (maxUserAmount > 0 && maxUserAmount < 6) {
-                validMaxUser = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 6 user");
             }
-        } while (!validMaxUser);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter rental type: ");
             rentalType = scanner.nextLine();
             if (validateName(rentalType)) {
-                validRentalType = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRentalType);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter room standard: ");
             roomStandard = scanner.nextLine();
             if (validateName(roomStandard)) {
-                validRoomStandard = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validRoomStandard);
+        } while (!valid);
+        valid = false;
         do {
             System.out.print("Enter additional room service: ");
             roomService = scanner.nextLine();
             if (validateName(roomService)) {
-                validService = true;
+                valid = true;
             } else {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
-        } while (!validService);
+        } while (!valid);
+        valid = false;
         return new Room(id, name, usageArea, rentalFee,
                 maxUserAmount, rentalType, roomStandard);
     }
