@@ -385,16 +385,6 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter room standard: ");
-            roomStandard = scanner.nextLine();
-            if (validateName(roomStandard)) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FORMAT] ...bruh wth was that??");
-            }
-        } while (!valid);
-        valid = false;
-        do {
             System.out.print("Enter additional room service: ");
             roomService = scanner.nextLine();
             if (validateName(roomService)) {
@@ -404,7 +394,6 @@ public class FacilityManagement {
             }
         } while (!valid);
         valid = false;
-        return new Room(id, name, usageArea, rentalFee,
-                maxUserAmount, rentalType, roomStandard);
+        return new Room(id, name, usageArea, rentalFee, maxUserAmount, rentalType, roomService);
     }
 }
