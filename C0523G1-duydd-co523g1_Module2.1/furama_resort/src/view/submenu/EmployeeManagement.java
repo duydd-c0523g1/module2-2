@@ -112,7 +112,7 @@ public class EmployeeManagement {
                             if (regexIdentNumber(identNum)) {
                                 valid = true;
                             } else {
-                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                                System.out.println("[INVALID IDENTITY] Must have 9 or 12 digits");
                             }
                         } while (!valid);
                         valid = false;
@@ -233,7 +233,7 @@ public class EmployeeManagement {
                             if (regexIdentNumber(newIdentNum)) {
                                 valid = true;
                             } else {
-                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                                System.out.println("[INVALID IDENTITY] Must have 9 or 12 digits");
                             }
                         } while (!valid);
                         valid = false;
