@@ -70,11 +70,11 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "ID: " + id
-                + "\nFacility name: " + name
-                + "\nArea in use: " + usageArea
-                + "\nRental fee: " + "$" + rentalFee
-                + "\nUser limit: " + maxUserAmount
-                + "\nRental type: " + rentalType;
+        return "[ID: " + id + "]"
+                + "\nFacility name: " + ".............. " + name
+                + "\nArea in use: " + "................ " + usageArea
+                + "\nRental fee: " + "................. " + "$" + rentalFee
+                + "\nUser limit: " + "................. " + maxUserAmount
+                + "\nRental type: " + "................ " + rentalType;
     }
 }

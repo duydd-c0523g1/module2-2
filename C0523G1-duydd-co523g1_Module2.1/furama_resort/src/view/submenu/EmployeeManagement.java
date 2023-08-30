@@ -107,7 +107,7 @@ public class EmployeeManagement {
                         } while (!valid);
                         valid = false;
                         do {
-                            System.out.print("Enter employee's identification number: ");
+                            System.out.print("Enter employee's identity number: ");
                             identNum = scanner.nextLine();
                             if (regexIdentNumber(identNum)) {
                                 valid = true;
@@ -228,7 +228,7 @@ public class EmployeeManagement {
                         } while (!valid);
                         valid = false;
                         do {
-                            System.out.print("Enter employee's new identification number: ");
+                            System.out.print("Enter employee's new identity number: ");
                             newIdentNum = scanner.nextLine();
                             if (regexIdentNumber(newIdentNum)) {
                                 valid = true;

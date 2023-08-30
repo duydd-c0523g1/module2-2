@@ -80,12 +80,12 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "ID: " + id
-                + "\nName: " + name
-                + "\nDate of birth: " + dob
-                + "\nGender: " + gender
-                + "\nIdentification number: " + identNumber
-                + "\nPhone number: " + phoneNumber
-                + "\nEmail: " + email;
+        return "[ID: " + id + "]"
+                + "\nName: " + "....................... " + name
+                + "\nDate of birth: "+ ".............. " + dob
+                + "\nGender: " + "..................... " + gender
+                + "\nIdentity number: " + "............ " + identNumber
+                + "\nPhone number: " + "............... " + phoneNumber
+                + "\nEmail: " + "...................... " + email;
     }
 }

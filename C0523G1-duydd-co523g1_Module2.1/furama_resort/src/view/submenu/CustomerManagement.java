@@ -106,12 +106,12 @@ public class CustomerManagement {
                         } while (!valid);
                         valid = false;
                         do {
-                            System.out.print("Enter customer's identification number: ");
+                            System.out.print("Enter customer's identity number: ");
                             identNum = scanner.nextLine();
                             if (regexIdentNumber(identNum)) {
                                 valid = true;
                             } else {
-                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                                System.out.println("[INVALID IDENTITY] Must have 9 or 12 digits");
                             }
                         } while (!valid);
                         valid = false;
@@ -215,12 +215,12 @@ public class CustomerManagement {
                         } while (!valid);
                         valid = false;
                         do {
-                            System.out.print("Enter customer's new identification number: ");
+                            System.out.print("Enter customer's new identity number: ");
                             newIdentNum = scanner.nextLine();
                             if (regexIdentNumber(newIdentNum)) {
                                 valid = true;
                             } else {
-                                System.out.println("[INVALID IDENTIFICATION] Must have 9 or 12 digits");
+                                System.out.println("[INVALID IDENTITY] Must have 9 or 12 digits");
                             }
                         } while (!valid);
                         valid = false;
