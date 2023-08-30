@@ -27,7 +27,7 @@ public class FacilityManagement {
         System.out.println("0. Exit");
     }
 
-    public static void startFacilityManagement() {
+    public static void launchFacilityMenu() {
         do {
             try {
                 showMenu();
@@ -63,7 +63,7 @@ public class FacilityManagement {
                                 } else if (selection == 3) {
                                     controller.addNewFacility(newRoom());
                                 } else if (selection == 0) {
-                                    startFacilityManagement();
+                                    launchFacilityMenu();
                                 } else {
                                     System.out.println("Function unavailable");
                                 }
@@ -96,7 +96,7 @@ public class FacilityManagement {
                         }
                         break;
                     case 5:
-                        MainView.start();
+                        MainView.launch();
                         break;
                     case 0:
                         System.exit(0);

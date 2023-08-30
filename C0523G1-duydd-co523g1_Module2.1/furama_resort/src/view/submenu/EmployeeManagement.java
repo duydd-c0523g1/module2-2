@@ -27,7 +27,7 @@ public class EmployeeManagement {
         System.out.println("0. Exit");
     }
 
-    public static void startEmployeeManagement() {
+    public static void launchEmployeeMenu() {
         do {
             try {
                 showMenu();
@@ -307,7 +307,7 @@ public class EmployeeManagement {
                         }
                         break;
                     case 6:
-                        MainView.start();
+                        MainView.launch();
                         break;
                     case 0:
                         System.exit(0);

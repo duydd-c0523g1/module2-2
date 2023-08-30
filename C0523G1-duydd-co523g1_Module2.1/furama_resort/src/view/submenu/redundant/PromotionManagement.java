@@ -29,7 +29,7 @@ public class PromotionManagement {
                     case 2:
                         break;
                     case 3:
-                        MainView.start();
+                        MainView.launch();
                         break;
                     case 0:
                         System.exit(0);

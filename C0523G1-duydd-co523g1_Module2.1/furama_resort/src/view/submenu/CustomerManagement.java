@@ -27,7 +27,7 @@ public class CustomerManagement {
         System.out.println("0. Exit");
     }
 
-    public static void startCustomerManagement() {
+    public static void launchCustomerMenu() {
         do {
             try {
                 showMenu();
@@ -284,7 +284,7 @@ public class CustomerManagement {
                         }
                         break;
                     case 6:
-                        MainView.start();
+                        MainView.launch();
                         break;
                     case 0:
                         System.exit(0);

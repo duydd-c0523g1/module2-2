@@ -19,7 +19,7 @@ public class MainView {
         System.out.println("0. Exit");
     }
 
-    public static void start() {
+    public static void launch() {
         do {
             try {
                 showMenu();
@@ -27,13 +27,13 @@ public class MainView {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
-                        EmployeeManagement.startEmployeeManagement();
+                        EmployeeManagement.launchEmployeeMenu();
                         break;
                     case 2:
-                        CustomerManagement.startCustomerManagement();
+                        CustomerManagement.launchCustomerMenu();
                         break;
                     case 3:
-                        FacilityManagement.startFacilityManagement();
+                        FacilityManagement.launchFacilityMenu();
                         break;
                     case 4:
                         System.out.println("Work in progress");
