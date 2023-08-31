@@ -95,16 +95,8 @@ public class CustomerManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        do {
-                            System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
-                            gender = SCANNER.nextLine();
-                            if (regexGender(gender)) {
-                                valid = true;
-                            } else {
-                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
-                            }
-                        } while (!valid);
-                        valid = false;
+                            System.out.print("Choose customer's gender: ");
+                            gender = customerGender();
                         do {
                             System.out.print("Enter customer's identity number: ");
                             identNum = SCANNER.nextLine();
@@ -204,16 +196,8 @@ public class CustomerManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        do {
-                            System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
-                            newGender = SCANNER.nextLine();
-                            if (regexGender(newGender)) {
-                                valid = true;
-                            } else {
-                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
-                            }
-                        } while (!valid);
-                        valid = false;
+                        System.out.print("Choose customer's new gender: ");
+                        newGender = customerGender();
                         do {
                             System.out.print("Enter customer's new identity number: ");
                             newIdentNum = SCANNER.nextLine();
@@ -244,7 +228,6 @@ public class CustomerManagement {
                                 System.out.println("[INVALID EMAIL] Must look like an EMAIL");
                             }
                         } while (!valid);
-                        valid = false;
                         System.out.print("Enter customer's new type: ");
                         String newType = customerType();
                         System.out.print("Enter customer's new address: ");
@@ -327,6 +310,36 @@ public class CustomerManagement {
                         return type;
                     case 5:
                         type = "Member";
+                        return type;
+                    default:
+                        System.out.println("[INVALID OPTION] Please try again");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[INVALID FORMAT] Please enter a number");
+            }
+        } while (true);
+    }
+
+    private static String customerGender() {
+        String type;
+        do {
+            try {
+                System.out.println("---SELECT CUSTOMER GENDER---");
+                System.out.println("1. Male");
+                System.out.println("2. Female");
+                System.out.println("3. Non-Binary");
+                System.out.print("Your selection:");
+                int option = Integer.parseInt(SCANNER.nextLine());
+                switch (option) {
+                    case 1:
+                        type = "Male";
+                        return type;
+                    case 2:
+                        type = "Female";
+                        return type;
+                    case 3:
+                        type = "Non-Binary";
                         return type;
                     default:
                         System.out.println("[INVALID OPTION] Please try again");

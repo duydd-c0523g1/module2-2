@@ -96,16 +96,8 @@ public class EmployeeManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        do {
-                            System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
-                            gender = SCANNER.nextLine();
-                            if (regexGender(gender)) {
-                                valid = true;
-                            } else {
-                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
-                            }
-                        } while (!valid);
-                        valid = false;
+                            System.out.print("Choose employee's gender: ");
+                            gender = employeeGender();
                         do {
                             System.out.print("Enter employee's identity number: ");
                             identNum = SCANNER.nextLine();
@@ -217,16 +209,8 @@ public class EmployeeManagement {
                             }
                         } while (!valid);
                         valid = false;
-                        do {
-                            System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
-                            newGender = SCANNER.nextLine();
-                            if (regexGender(newGender)) {
-                                valid = true;
-                            } else {
-                                System.out.println("[INVALID GENDER] Must be Male, Female or Non-Binary");
-                            }
-                        } while (!valid);
-                        valid = false;
+                            System.out.print("Choose employee's new gender: ");
+                            newGender = employeeGender();
                         do {
                             System.out.print("Enter employee's new identity number: ");
                             newIdentNum = SCANNER.nextLine();
@@ -388,6 +372,35 @@ public class EmployeeManagement {
                     case 6:
                         jobPos = "Director";
                         return jobPos;
+                    default:
+                        System.out.println("[INVALID OPTION] Please try again");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[INVALID FORMAT] Please enter a number");
+            }
+        } while (true);
+    }
+    private static String employeeGender() {
+        String type;
+        do {
+            try {
+                System.out.println("---SELECT CUSTOMER GENDER---");
+                System.out.println("1. Male");
+                System.out.println("2. Female");
+                System.out.println("3. Non-Binary");
+                System.out.print("Your selection:");
+                int option = Integer.parseInt(SCANNER.nextLine());
+                switch (option) {
+                    case 1:
+                        type = "Male";
+                        return type;
+                    case 2:
+                        type = "Female";
+                        return type;
+                    case 3:
+                        type = "Non-Binary";
+                        return type;
                     default:
                         System.out.println("[INVALID OPTION] Please try again");
                         break;
