@@ -1,4 +1,4 @@
-package view;
+package furama_resort.src.view;
 
 import view.submenu.CustomerManagement;
 import view.submenu.EmployeeManagement;
@@ -36,11 +36,11 @@ public class MainView {
                         FacilityManagement.launchFacilityMenu();
                         break;
                     case 4:
-                        System.out.println("Work in progress");
+                        System.out.println("WIP");
                         //BookingManagement.startEmployeeManagement();
                         break;
                     case 5:
-                        System.out.println("Work in progress");
+                        System.out.println("WIP");
                         //PromotionManagement.startPromotionManagement();
                         break;
                     case 0:
