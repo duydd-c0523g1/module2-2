@@ -14,7 +14,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     public List<Employee> displayList() {
         List<String> strings = Stream.read(FILE_PATH);
         List<Employee> employees = new ArrayList<>();
-        String[] arr = null;
+        String[] arr;
         for (String s : strings) {
             arr = s.split(",");
             employees.add(new Employee(arr[0], arr[1], arr[2], arr[3], arr[4]
