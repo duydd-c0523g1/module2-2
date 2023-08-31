@@ -35,6 +35,7 @@ public class FacilityManagement {
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
                     case 1:
+                        System.out.println("[DISPLAYING FACILITY LIST]");
                         List<Facility> facilities = controller.displayFacilities();
                         if (facilities.isEmpty()) {
                             System.out.println("No facility found");
