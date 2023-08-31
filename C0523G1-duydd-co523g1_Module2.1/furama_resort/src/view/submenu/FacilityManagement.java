@@ -238,7 +238,6 @@ public class FacilityManagement {
                 System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
-        valid = false;
         return new Villa(id, name, usageArea, rentalFee,
                 maxUserAmount, rentalType, roomStandard, poolArea, floor);
     }
@@ -353,7 +352,6 @@ public class FacilityManagement {
                 System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
-        valid = false;
         return new House(id, name, usageArea, rentalFee,
                 maxUserAmount, rentalType, roomStandard, floor);
     }
@@ -454,7 +452,6 @@ public class FacilityManagement {
                 System.out.println("[INVALID FORMAT] ...bruh wth was that??");
             }
         } while (!valid);
-        valid = false;
         return new Room(id, name, usageArea, rentalFee, maxUserAmount, rentalType, roomService);
     }
 }

@@ -127,7 +127,6 @@ public class CustomerManagement {
                                 System.out.println("[INVALID EMAIL] Must look like an EMAIL");
                             }
                         } while (!valid);
-                        valid = false;
                         System.out.print("Enter customer's type: ");
                         String type = customerType();
                         System.out.print("Enter customer's address: ");

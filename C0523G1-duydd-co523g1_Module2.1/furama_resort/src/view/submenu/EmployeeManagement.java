@@ -255,7 +255,6 @@ public class EmployeeManagement {
                                 System.out.println("[INVALID SALARY] Must be greater than 0");
                             }
                         } while (!valid);
-                        valid = false;
                         newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
                                 newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
                         boolean result = CONTROLLER.editEmployee(idToFind, newEmployee);
