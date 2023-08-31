@@ -140,7 +140,7 @@ public class EmployeeManagement {
                         System.out.print("Enter employee's education level: ");
                         String eduLevel = eduLevel();
                         System.out.print("Enter employee's job position: ");
-                        String jobPos = scanner.nextLine();
+                        String jobPos = jobPos();
                         do {
                             System.out.print("Enter employee's salary ($): ");
                             salary = Double.parseDouble(scanner.nextLine());
@@ -261,7 +261,7 @@ public class EmployeeManagement {
                         System.out.print("Enter employee's new education level: ");
                         String newEduLevel = eduLevel();
                         System.out.print("Enter employee's new job position: ");
-                        String newJobPos = scanner.nextLine();
+                        String newJobPos = jobPos();
                         do {
                             System.out.print("Enter employee's new salary ($): ");
                             newSalary = Double.parseDouble(scanner.nextLine());
@@ -347,6 +347,47 @@ public class EmployeeManagement {
                     case 4:
                         level = "Graduate";
                         return level;
+                    default:
+                        System.out.println("[INVALID OPTION] Please try again");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[INVALID FORMAT] Please enter a number");
+            }
+        } while (true);
+    }
+    private static String jobPos() {
+        String jobPos;
+        do {
+            try {
+                System.out.println("---SELECT Job Position---");
+                System.out.println("1. Receptionist");
+                System.out.println("2. Server");
+                System.out.println("3. Specialist ");
+                System.out.println("4. Supervisor");
+                System.out.println("5. Manager");
+                System.out.println("6. Director");
+                System.out.print("Your selection: ");
+                int option = Integer.parseInt(scanner.nextLine());
+                switch (option) {
+                    case 1:
+                        jobPos = "Receptionist";
+                        return jobPos;
+                    case 2:
+                        jobPos = "Server";
+                        return jobPos;
+                    case 3:
+                        jobPos = "Specialist";
+                        return jobPos;
+                    case 4:
+                        jobPos = "Supervisor";
+                        return jobPos;
+                    case 5:
+                        jobPos = "Manager";
+                        return jobPos;
+                    case 6:
+                        jobPos = "Director";
+                        return jobPos;
                     default:
                         System.out.println("[INVALID OPTION] Please try again");
                         break;

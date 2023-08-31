@@ -18,7 +18,7 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
                 1500, 4, "Weekly Rental",
                 "Furama Standard", 1), 3);
         properties.put(new Room("SVRO-0001", "Furama Lux Suite", 80,
-                800, 2, "Daily Rental"
+                200, 2, "Daily Rental"
                 , "Free 5G Wifi"), 5);
     }
 
@@ -60,8 +60,8 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
 
     @Override
     public boolean idExist(String id) {
-        for (Map.Entry<Facility, Integer> facil : properties.entrySet()) {
-            if (facil.getKey().getId().equals(id)) {
+        for (Map.Entry<Facility, Integer> entry : properties.entrySet()) {
+            if (entry.getKey().getId().equals(id)) {
                 return false;
             }
         }
