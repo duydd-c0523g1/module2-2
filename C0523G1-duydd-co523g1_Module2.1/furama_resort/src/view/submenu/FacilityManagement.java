@@ -114,20 +114,24 @@ public class FacilityManagement {
     private static Facility newVilla() {
         String id;
         String name;
-        int usageArea;
-        double rentalFee;
-        int maxUserAmount;
+        int usageArea = 0;
+        double rentalFee = 0;
+        int maxUserAmount = 0;
         String rentalType;
         String roomStandard;
-        int poolArea;
-        int floor;
+        int poolArea = 0;
+        int floor = 0;
         boolean valid = false;
         System.out.println("[ADDING NEW VILLA]");
         do {
             System.out.print("Enter villa's ID: ");
             id = scanner.nextLine();
             if (regexVillaId(id)) {
-                valid = true;
+                if (!controller.idExist(id)) {
+                    System.out.println("[INVALID ID] ID must be unique");
+                } else {
+                    valid = true;
+                }
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVVL-0123");
             }
@@ -144,32 +148,45 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter usage area: ");
-            usageArea = Integer.parseInt(scanner.nextLine());
-            if (usageArea >= 30) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID AREA] Must be larger than 30m2");
+            try {
+                System.out.print("Enter usage area: ");
+                usageArea = Integer.parseInt(scanner.nextLine());
+                if (usageArea >= 30) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID AREA] Must be larger than 30m2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
+            }
+
+        } while (!valid);
+        valid = false;
+        do {
+            try {
+                System.out.print("Enter rental fee ($): ");
+                rentalFee = Double.parseDouble(scanner.nextLine());
+                if (rentalFee >= 0) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID FEE] Must be higher than 0");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter rental fee ($): ");
-            rentalFee = Double.parseDouble(scanner.nextLine());
-            if (rentalFee >= 0) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FEE] Must be higher than 0");
-            }
-        } while (!valid);
-        valid = false;
-        do {
-            System.out.print("Enter maximum number of user: ");
-            maxUserAmount = Integer.parseInt(scanner.nextLine());
-            if (maxUserAmount > 0 && maxUserAmount < 20) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
+            try {
+                System.out.print("Enter maximum number of user: ");
+                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                if (maxUserAmount > 0 && maxUserAmount < 20) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
@@ -194,22 +211,30 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter pool area: ");
-            poolArea = Integer.parseInt(scanner.nextLine());
-            if (poolArea >= 30) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID AREA] Must be larger than 30m2");
+            try {
+                System.out.print("Enter pool area: ");
+                poolArea = Integer.parseInt(scanner.nextLine());
+                if (poolArea >= 30) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID AREA] Must be larger than 30m2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter number of floors: ");
-            floor = Integer.parseInt(scanner.nextLine());
-            if (floor > 0) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FLOOR] Are you high?");
+            try {
+                System.out.print("Enter number of floors: ");
+                floor = Integer.parseInt(scanner.nextLine());
+                if (floor > 0) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID FLOOR] Are you high?");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
@@ -220,19 +245,23 @@ public class FacilityManagement {
     private static Facility newHouse() {
         String id;
         String name;
-        int usageArea;
-        double rentalFee;
-        int maxUserAmount;
+        int usageArea = 0;
+        double rentalFee = 0;
+        int maxUserAmount = 0;
         String rentalType;
         String roomStandard;
-        int floor;
+        int floor = 0;
         boolean valid = false;
         System.out.println("[ADDING NEW HOUSE]");
         do {
             System.out.print("Enter house's ID: ");
             id = scanner.nextLine();
             if (regexHouseId(id)) {
-                valid = true;
+                if (!controller.idExist(id)) {
+                    System.out.println("[INVALID ID] ID must be unique");
+                } else {
+                    valid = true;
+                }
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVHO-0123");
             }
@@ -249,32 +278,44 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter usage area: ");
-            usageArea = Integer.parseInt(scanner.nextLine());
-            if (usageArea >= 30) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID AREA] Must be larger than 30m2");
+            try {
+                System.out.print("Enter usage area: ");
+                usageArea = Integer.parseInt(scanner.nextLine());
+                if (usageArea >= 30) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID AREA] Must be larger than 30m2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter rental fee ($): ");
-            rentalFee = Double.parseDouble(scanner.nextLine());
-            if (rentalFee >= 0) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FEE] Must be higher than 0");
+            try {
+                System.out.print("Enter rental fee ($): ");
+                rentalFee = Double.parseDouble(scanner.nextLine());
+                if (rentalFee >= 0) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID FEE] Must be higher than 0");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter maximum number of user: ");
-            maxUserAmount = Integer.parseInt(scanner.nextLine());
-            if (maxUserAmount > 0 && maxUserAmount < 20) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
+            try {
+                System.out.print("Enter maximum number of user: ");
+                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                if (maxUserAmount > 0 && maxUserAmount < 20) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 20 user");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
@@ -299,12 +340,16 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter number of floors: ");
-            floor = Integer.parseInt(scanner.nextLine());
-            if (floor > 0) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FLOOR] Are you high?");
+            try {
+                System.out.print("Enter number of floors: ");
+                floor = Integer.parseInt(scanner.nextLine());
+                if (floor > 0) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID FLOOR] Are you high?");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
@@ -316,11 +361,10 @@ public class FacilityManagement {
     private static Facility newRoom() {
         String id;
         String name;
-        int usageArea;
-        double rentalFee;
-        int maxUserAmount;
+        int usageArea = 0;
+        double rentalFee = 0;
+        int maxUserAmount = 0;
         String rentalType;
-        String roomStandard;
         String roomService;
         boolean valid = false;
         System.out.println("[ADDING NEW ROOM]");
@@ -328,7 +372,11 @@ public class FacilityManagement {
             System.out.print("Enter room's ID: ");
             id = scanner.nextLine();
             if (regexRoomId(id)) {
-                valid = true;
+                if (!controller.idExist(id)) {
+                    System.out.println("[INVALID ID] ID must be unique");
+                } else {
+                    valid = true;
+                }
             } else {
                 System.out.println("[INVALID ID] Must look like this: SVRO-0123");
             }
@@ -345,32 +393,44 @@ public class FacilityManagement {
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter usage area: ");
-            usageArea = Integer.parseInt(scanner.nextLine());
-            if (usageArea >= 30) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID AREA] Must be larger than 30m2");
+            try {
+                System.out.print("Enter usage area: ");
+                usageArea = Integer.parseInt(scanner.nextLine());
+                if (usageArea >= 30) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID AREA] Must be larger than 30m2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter rental fee ($): ");
-            rentalFee = Double.parseDouble(scanner.nextLine());
-            if (rentalFee >= 0) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID FEE] Rental fee cannot be negative");
+            try {
+                System.out.print("Enter rental fee ($): ");
+                rentalFee = Double.parseDouble(scanner.nextLine());
+                if (rentalFee >= 0) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID FEE] Rental fee cannot be negative");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;
         do {
-            System.out.print("Enter maximum number of user: ");
-            maxUserAmount = Integer.parseInt(scanner.nextLine());
-            if (maxUserAmount > 0 && maxUserAmount < 6) {
-                valid = true;
-            } else {
-                System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 6 user");
+            try {
+                System.out.print("Enter maximum number of user: ");
+                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                if (maxUserAmount > 0 && maxUserAmount < 6) {
+                    valid = true;
+                } else {
+                    System.out.println("[INVALID NUMBER] Must be higher than 0 and lower than 6 user");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] Must be a number");
             }
         } while (!valid);
         valid = false;

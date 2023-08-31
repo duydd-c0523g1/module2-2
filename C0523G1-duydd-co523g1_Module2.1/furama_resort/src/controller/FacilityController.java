@@ -24,5 +24,8 @@ public class FacilityController {
     public boolean deleteFacility(String id) {
         return facilityService.deleteFacility(id);
     }
+    public boolean idExist(String id) {
+        return facilityService.idExist(id);
+    }
 
 }

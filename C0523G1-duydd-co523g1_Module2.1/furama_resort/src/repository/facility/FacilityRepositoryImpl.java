@@ -57,4 +57,14 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
         }
         return false;
     }
+
+    @Override
+    public boolean idExist(String id) {
+        for (Map.Entry<Facility, Integer> facil : properties.entrySet()) {
+            if (facil.getKey().getId().equals(id)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

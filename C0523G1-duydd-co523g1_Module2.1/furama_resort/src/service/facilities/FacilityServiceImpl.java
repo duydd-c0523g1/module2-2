@@ -28,4 +28,9 @@ public class FacilityServiceImpl implements IFacilityService {
     public boolean deleteFacility(String id) {
         return facilityRepository.deleteFacility(id);
     }
+
+    @Override
+    public boolean idExist(String id) {
+        return facilityRepository.idExist(id);
+    }
 }
