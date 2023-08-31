@@ -1,26 +1,29 @@
-package view.submenu.redundant;
+package view.submenu.wip;
 
 import controller.FacilityController;
 import view.MainView;
 
 import java.util.Scanner;
 
-public class PromotionManagement {
+public class BookingManagement {
     private static final Scanner scanner = new Scanner(System.in);
     private final FacilityController controller = new FacilityController();
 
-    private static void showPromotionMenu() {
-        System.out.println("-----PROMOTION MANAGEMENT-----");
-        System.out.println("1. Customers using services");
-        System.out.println("2. Eligible customers for vouchers");
-        System.out.println("3. Back to main menu");
+    private static void showMenu() {
+        System.out.println("-----BOOKING MANAGEMENT-----");
+        System.out.println("1. Display booking list");
+        System.out.println("2. Add new booking");
+        System.out.println("3. Add new contract");
+        System.out.println("4. Display contract list");
+        System.out.println("5. Edit contract");
+        System.out.println("6. Back to main menu");
         System.out.println("0. Exit");
     }
 
-    public static void startPromotionManagement() {
+    public static void startEmployeeManagement() {
         do {
             try {
-                showPromotionMenu();
+                showMenu();
                 System.out.print("Your option: ");
                 int option = Integer.parseInt(scanner.nextLine());
                 switch (option) {
@@ -29,6 +32,12 @@ public class PromotionManagement {
                     case 2:
                         break;
                     case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
                         MainView.launch();
                         break;
                     case 0:
