@@ -12,5 +12,4 @@ public interface ICustomerService extends IService<Customer> {
 
     List<Customer> searchCustomerByName(String name);
 
-    boolean idExist(String id);
 }

@@ -9,5 +9,5 @@ public interface IFacilityRepository extends IRepository<Facility> {
     List<Facility> displayMaintenanceList();
 
     boolean deleteFacility(String id);
-    boolean idExist(String id);
+
 }

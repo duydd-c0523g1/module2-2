@@ -12,5 +12,4 @@ public interface IEmployeeRepository extends IRepository<Employee> {
 
     List<Employee> searchEmployeeByName(String name);
 
-    boolean idExist(String id);
 }

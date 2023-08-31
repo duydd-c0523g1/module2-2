@@ -12,5 +12,5 @@ public interface IEmployeeService extends IService<Employee> {
 
     List<Employee> searchEmployeeByName(String name);
 
-    boolean idExist(String id);
+
 }

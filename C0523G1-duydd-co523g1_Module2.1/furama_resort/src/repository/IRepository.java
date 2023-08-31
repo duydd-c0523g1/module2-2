@@ -6,4 +6,5 @@ public interface IRepository<T> {
     List<T> displayList();
 
     void addNew(T t);
+    boolean idExist(String id);
 }

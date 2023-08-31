@@ -12,5 +12,4 @@ public interface ICustomerRepository extends IRepository<Customer> {
 
     List<Customer> searchCustomerByName(String name);
 
-    boolean idExist(String id);
 }
