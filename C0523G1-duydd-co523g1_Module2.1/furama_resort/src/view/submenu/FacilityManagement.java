@@ -356,7 +356,6 @@ public class FacilityManagement {
                 maxUserAmount, rentalType, roomStandard, floor);
     }
 
-
     private static Facility newRoom() {
         String id;
         String name;
