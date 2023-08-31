@@ -13,8 +13,8 @@ import static utils.Validator.validateAge;
 import static utils.Validator.validateName;
 
 public class EmployeeManagement {
-    private static EmployeeController controller = new EmployeeController();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final EmployeeController CONTROLLER = new EmployeeController();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private static void showMenu() {
         System.out.println("-----EMPLOYEE MANAGEMENT-----");
@@ -32,12 +32,12 @@ public class EmployeeManagement {
             try {
                 showMenu();
                 System.out.print("Your option: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 boolean valid = false;
                 switch (option) {
                     case 1:
                         System.out.println("[DISPLAYING EMPLOYEE LIST]");
-                        List<Employee> employees = controller.displayEmployeeList();
+                        List<Employee> employees = CONTROLLER.displayEmployeeList();
                         if (employees.isEmpty()) {
                             System.out.println("[EMPTY LIST] No employee found");
                         } else {
@@ -60,9 +60,9 @@ public class EmployeeManagement {
                         System.out.println("[ADDING NEW EMPLOYEE]");
                         do {
                             System.out.print("Enter employee's ID: ");
-                            id = scanner.nextLine();
+                            id = SCANNER.nextLine();
                             if (regexEmployeeId(id)) {
-                                if (!controller.idExist(id)) {
+                                if (!CONTROLLER.idExist(id)) {
                                     valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
@@ -74,7 +74,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's name: ");
-                            name = scanner.nextLine();
+                            name = SCANNER.nextLine();
                             if (validateName(name)) {
                                 valid = true;
                             } else {
@@ -85,7 +85,7 @@ public class EmployeeManagement {
                         do {
                             try {
                                 System.out.print("Enter employee's date of birth: ");
-                                dob = scanner.nextLine();
+                                dob = SCANNER.nextLine();
                                 if (validateAge(dob)) {
                                     valid = true;
                                 } else {
@@ -98,7 +98,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
-                            gender = scanner.nextLine();
+                            gender = SCANNER.nextLine();
                             if (regexGender(gender)) {
                                 valid = true;
                             } else {
@@ -108,7 +108,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's identity number: ");
-                            identNum = scanner.nextLine();
+                            identNum = SCANNER.nextLine();
                             if (regexIdentNumber(identNum)) {
                                 valid = true;
                             } else {
@@ -118,7 +118,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's phone number: ");
-                            phoneNumber = scanner.nextLine();
+                            phoneNumber = SCANNER.nextLine();
                             if (regexPhoneNumber(phoneNumber)) {
                                 valid = true;
                             } else {
@@ -129,7 +129,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new email: ");
-                            email = scanner.nextLine();
+                            email = SCANNER.nextLine();
                             if (regexEmail(email)) {
                                 valid = true;
                             } else {
@@ -143,7 +143,7 @@ public class EmployeeManagement {
                         String jobPos = jobPos();
                         do {
                             System.out.print("Enter employee's salary ($): ");
-                            salary = Double.parseDouble(scanner.nextLine());
+                            salary = Double.parseDouble(SCANNER.nextLine());
                             if (salary > 0) {
                                 valid = true;
                             } else {
@@ -153,7 +153,7 @@ public class EmployeeManagement {
                         valid = false;
                         Employee employee = new Employee(id, name, dob, gender,
                                 identNum, phoneNumber, email, eduLevel, jobPos, salary);
-                        controller.addNewEmployee(employee);
+                        CONTROLLER.addNewEmployee(employee);
 
                         break;
                     case 3:
@@ -170,8 +170,8 @@ public class EmployeeManagement {
                         System.out.println("[EDITING CUSTOMER]");
                         do {
                             System.out.print("Enter employee's ID: ");
-                            idToFind = scanner.nextLine();
-                            if (controller.idExist(idToFind)) {
+                            idToFind = SCANNER.nextLine();
+                            if (CONTROLLER.idExist(idToFind)) {
                                 newEmployee.setId(idToFind);
                                 valid = true;
                             } else {
@@ -181,9 +181,9 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new ID: ");
-                            newId = scanner.nextLine();
+                            newId = SCANNER.nextLine();
                             if (regexEmployeeId(newId)) {
-                                if (!controller.idExist(newId) || newEmployee.getId().equals(newId)) {
+                                if (!CONTROLLER.idExist(newId) || newEmployee.getId().equals(newId)) {
                                     valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
@@ -195,7 +195,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new name: ");
-                            newName = scanner.nextLine();
+                            newName = SCANNER.nextLine();
                             if (validateName(newName)) {
                                 valid = true;
                             } else {
@@ -206,7 +206,7 @@ public class EmployeeManagement {
                         do {
                             try {
                                 System.out.print("Enter employee's new date of birth: ");
-                                newDob = scanner.nextLine();
+                                newDob = SCANNER.nextLine();
                                 if (validateAge(newDob)) {
                                     valid = true;
                                 } else {
@@ -219,7 +219,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's gender [Male | Female | Non-Binary]: ");
-                            newGender = scanner.nextLine();
+                            newGender = SCANNER.nextLine();
                             if (regexGender(newGender)) {
                                 valid = true;
                             } else {
@@ -229,7 +229,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new identity number: ");
-                            newIdentNum = scanner.nextLine();
+                            newIdentNum = SCANNER.nextLine();
                             if (regexIdentNumber(newIdentNum)) {
                                 valid = true;
                             } else {
@@ -239,7 +239,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new phone number: ");
-                            newPhoneNumber = scanner.nextLine();
+                            newPhoneNumber = SCANNER.nextLine();
                             if (regexPhoneNumber(newPhoneNumber)) {
                                 valid = true;
                             } else {
@@ -250,7 +250,7 @@ public class EmployeeManagement {
                         valid = false;
                         do {
                             System.out.print("Enter employee's new email: ");
-                            newEmail = scanner.nextLine();
+                            newEmail = SCANNER.nextLine();
                             if (regexEmail(newEmail)) {
                                 valid = true;
                             } else {
@@ -264,7 +264,7 @@ public class EmployeeManagement {
                         String newJobPos = jobPos();
                         do {
                             System.out.print("Enter employee's new salary ($): ");
-                            newSalary = Double.parseDouble(scanner.nextLine());
+                            newSalary = Double.parseDouble(SCANNER.nextLine());
                             if (newSalary > 0) {
                                 valid = true;
                             } else {
@@ -274,7 +274,7 @@ public class EmployeeManagement {
                         valid = false;
                         newEmployee = new Employee(newId, newName, newDob, newGender, newIdentNum,
                                 newPhoneNumber, newEmail, newEduLevel, newJobPos, newSalary);
-                        boolean result = controller.editEmployee(idToFind, newEmployee);
+                        boolean result = CONTROLLER.editEmployee(idToFind, newEmployee);
                         if (result) {
                             System.out.println("Success");
                         } else {
@@ -284,8 +284,8 @@ public class EmployeeManagement {
                     case 4:
                         System.out.println("[DELETING EMPLOYEE]");
                         System.out.print("Enter employee's ID: ");
-                        String idToDel = scanner.nextLine();
-                        if (controller.deleteEmployee(idToDel)) {
+                        String idToDel = SCANNER.nextLine();
+                        if (CONTROLLER.deleteEmployee(idToDel)) {
                             System.out.println("Success!");
                         } else {
                             System.out.println("ID does not exist!");
@@ -294,8 +294,8 @@ public class EmployeeManagement {
                     case 5:
                         System.out.println("[SEARCHING EMPLOYEE]");
                         System.out.print("Enter a name: ");
-                        String nameToFind = scanner.nextLine();
-                        List<Employee> employeeList = controller.searchEmployeeByName(nameToFind);
+                        String nameToFind = SCANNER.nextLine();
+                        List<Employee> employeeList = CONTROLLER.searchEmployeeByName(nameToFind);
                         if (employeeList.isEmpty()) {
                             System.out.println("No customer found!");
                         } else {
@@ -333,7 +333,7 @@ public class EmployeeManagement {
                 System.out.println("3. Undergraduate ");
                 System.out.println("4. Graduate");
                 System.out.print("Your selection: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 switch (option) {
                     case 1:
                         level = "Intermediate";
@@ -368,7 +368,7 @@ public class EmployeeManagement {
                 System.out.println("5. Manager");
                 System.out.println("6. Director");
                 System.out.print("Your selection: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 switch (option) {
                     case 1:
                         jobPos = "Receptionist";

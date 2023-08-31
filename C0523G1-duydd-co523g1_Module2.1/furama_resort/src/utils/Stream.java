@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Stream {
     public static void write(String filePath, List<String> strings) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(filePath)))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath))) {
             for (String string : strings) {
                 bufferedWriter.write(string);
                 bufferedWriter.newLine();
@@ -17,9 +17,9 @@ public class Stream {
     }
 
     public static List<String> read(String filePath) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(filePath)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             List<String> strings = new ArrayList<>();
-            String line = "";
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 strings.add(line);
             }

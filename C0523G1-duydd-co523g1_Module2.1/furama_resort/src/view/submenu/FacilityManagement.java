@@ -14,8 +14,8 @@ import static utils.RegEx.*;
 import static utils.Validator.validateName;
 
 public class FacilityManagement {
-    private static FacilityController controller = new FacilityController();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final FacilityController CONTROLLER = new FacilityController();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private static void showMenu() {
         System.out.println("-----FACILITY MANAGEMENT-----");
@@ -32,11 +32,11 @@ public class FacilityManagement {
             try {
                 showMenu();
                 System.out.print("Your option: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 switch (option) {
                     case 1:
                         System.out.println("[DISPLAYING FACILITY LIST]");
-                        List<Facility> facilities = controller.displayFacilities();
+                        List<Facility> facilities = CONTROLLER.displayFacilities();
                         if (facilities.isEmpty()) {
                             System.out.println("No facility found");
                         } else {
@@ -56,13 +56,13 @@ public class FacilityManagement {
                                 System.out.println("3. Add a new Room");
                                 System.out.println("0. Back");
                                 System.out.print("Your option: ");
-                                int selection = Integer.parseInt(scanner.nextLine());
+                                int selection = Integer.parseInt(SCANNER.nextLine());
                                 if (selection == 1) {
-                                    controller.addNewFacility(newVilla());
+                                    CONTROLLER.addNewFacility(newVilla());
                                 } else if (selection == 2) {
-                                    controller.addNewFacility(newHouse());
+                                    CONTROLLER.addNewFacility(newHouse());
                                 } else if (selection == 3) {
-                                    controller.addNewFacility(newRoom());
+                                    CONTROLLER.addNewFacility(newRoom());
                                 } else if (selection == 0) {
                                     launchFacilityMenu();
                                 } else {
@@ -75,7 +75,7 @@ public class FacilityManagement {
                             }
                         } while (true);
                     case 3:
-                        List<Facility> maintenanceList = controller.displayMaintenanceList();
+                        List<Facility> maintenanceList = CONTROLLER.displayMaintenanceList();
                         if (maintenanceList.isEmpty()) {
                             System.out.println("Facilities are in good condition");
                         } else {
@@ -89,8 +89,8 @@ public class FacilityManagement {
                     case 4:
                         System.out.println("[DELETING FACILITY]");
                         System.out.print("Enter facility's ID: ");
-                        String id = scanner.nextLine();
-                        if (controller.deleteFacility(id)) {
+                        String id = SCANNER.nextLine();
+                        if (CONTROLLER.deleteFacility(id)) {
                             System.out.println("Success!");
                         } else {
                             System.out.println("No facility found");
@@ -126,9 +126,9 @@ public class FacilityManagement {
         System.out.println("[ADDING NEW VILLA]");
         do {
             System.out.print("Enter villa's ID: ");
-            id = scanner.nextLine();
+            id = SCANNER.nextLine();
             if (regexVillaId(id)) {
-                if (!controller.idExist(id)) {
+                if (!CONTROLLER.idExist(id)) {
                     System.out.println("[INVALID ID] ID must be unique");
                 } else {
                     valid = true;
@@ -140,7 +140,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter villa's name: ");
-            name = scanner.nextLine();
+            name = SCANNER.nextLine();
             if (validateName(name)) {
                 valid = true;
             } else {
@@ -151,7 +151,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter usage area: ");
-                usageArea = Integer.parseInt(scanner.nextLine());
+                usageArea = Integer.parseInt(SCANNER.nextLine());
                 if (usageArea >= 30) {
                     valid = true;
                 } else {
@@ -166,7 +166,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter rental fee ($): ");
-                rentalFee = Double.parseDouble(scanner.nextLine());
+                rentalFee = Double.parseDouble(SCANNER.nextLine());
                 if (rentalFee >= 0) {
                     valid = true;
                 } else {
@@ -180,7 +180,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter maximum number of user: ");
-                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                maxUserAmount = Integer.parseInt(SCANNER.nextLine());
                 if (maxUserAmount > 0 && maxUserAmount < 20) {
                     valid = true;
                 } else {
@@ -193,7 +193,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter rental type: ");
-            rentalType = scanner.nextLine();
+            rentalType = SCANNER.nextLine();
             if (validateName(rentalType)) {
                 valid = true;
             } else {
@@ -203,7 +203,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter room standard: ");
-            roomStandard = scanner.nextLine();
+            roomStandard = SCANNER.nextLine();
             if (validateName(roomStandard)) {
                 valid = true;
             } else {
@@ -214,7 +214,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter pool area: ");
-                poolArea = Integer.parseInt(scanner.nextLine());
+                poolArea = Integer.parseInt(SCANNER.nextLine());
                 if (poolArea >= 30) {
                     valid = true;
                 } else {
@@ -228,7 +228,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter number of floors: ");
-                floor = Integer.parseInt(scanner.nextLine());
+                floor = Integer.parseInt(SCANNER.nextLine());
                 if (floor > 0) {
                     valid = true;
                 } else {
@@ -256,9 +256,9 @@ public class FacilityManagement {
         System.out.println("[ADDING NEW HOUSE]");
         do {
             System.out.print("Enter house's ID: ");
-            id = scanner.nextLine();
+            id = SCANNER.nextLine();
             if (regexHouseId(id)) {
-                if (!controller.idExist(id)) {
+                if (!CONTROLLER.idExist(id)) {
                     System.out.println("[INVALID ID] ID must be unique");
                 } else {
                     valid = true;
@@ -270,7 +270,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter house's name: ");
-            name = scanner.nextLine();
+            name = SCANNER.nextLine();
             if (validateName(name)) {
                 valid = true;
             } else {
@@ -281,7 +281,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter usage area: ");
-                usageArea = Integer.parseInt(scanner.nextLine());
+                usageArea = Integer.parseInt(SCANNER.nextLine());
                 if (usageArea >= 30) {
                     valid = true;
                 } else {
@@ -295,7 +295,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter rental fee ($): ");
-                rentalFee = Double.parseDouble(scanner.nextLine());
+                rentalFee = Double.parseDouble(SCANNER.nextLine());
                 if (rentalFee >= 0) {
                     valid = true;
                 } else {
@@ -309,7 +309,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter maximum number of user: ");
-                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                maxUserAmount = Integer.parseInt(SCANNER.nextLine());
                 if (maxUserAmount > 0 && maxUserAmount < 20) {
                     valid = true;
                 } else {
@@ -322,7 +322,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter rental type: ");
-            rentalType = scanner.nextLine();
+            rentalType = SCANNER.nextLine();
             if (validateName(rentalType)) {
                 valid = true;
             } else {
@@ -332,7 +332,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter room standard: ");
-            roomStandard = scanner.nextLine();
+            roomStandard = SCANNER.nextLine();
             if (validateName(roomStandard)) {
                 valid = true;
             } else {
@@ -343,7 +343,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter number of floors: ");
-                floor = Integer.parseInt(scanner.nextLine());
+                floor = Integer.parseInt(SCANNER.nextLine());
                 if (floor > 0) {
                     valid = true;
                 } else {
@@ -371,9 +371,9 @@ public class FacilityManagement {
         System.out.println("[ADDING NEW ROOM]");
         do {
             System.out.print("Enter room's ID: ");
-            id = scanner.nextLine();
+            id = SCANNER.nextLine();
             if (regexRoomId(id)) {
-                if (!controller.idExist(id)) {
+                if (!CONTROLLER.idExist(id)) {
                     System.out.println("[INVALID ID] ID must be unique");
                 } else {
                     valid = true;
@@ -385,7 +385,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter room's name: ");
-            name = scanner.nextLine();
+            name = SCANNER.nextLine();
             if (validateName(name)) {
                 valid = true;
             } else {
@@ -396,7 +396,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter usage area: ");
-                usageArea = Integer.parseInt(scanner.nextLine());
+                usageArea = Integer.parseInt(SCANNER.nextLine());
                 if (usageArea >= 30) {
                     valid = true;
                 } else {
@@ -410,7 +410,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter rental fee ($): ");
-                rentalFee = Double.parseDouble(scanner.nextLine());
+                rentalFee = Double.parseDouble(SCANNER.nextLine());
                 if (rentalFee >= 0) {
                     valid = true;
                 } else {
@@ -424,7 +424,7 @@ public class FacilityManagement {
         do {
             try {
                 System.out.print("Enter maximum number of user: ");
-                maxUserAmount = Integer.parseInt(scanner.nextLine());
+                maxUserAmount = Integer.parseInt(SCANNER.nextLine());
                 if (maxUserAmount > 0 && maxUserAmount < 6) {
                     valid = true;
                 } else {
@@ -437,7 +437,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter rental type: ");
-            rentalType = scanner.nextLine();
+            rentalType = SCANNER.nextLine();
             if (validateName(rentalType)) {
                 valid = true;
             } else {
@@ -447,7 +447,7 @@ public class FacilityManagement {
         valid = false;
         do {
             System.out.print("Enter additional room service: ");
-            roomService = scanner.nextLine();
+            roomService = SCANNER.nextLine();
             if (validateName(roomService)) {
                 valid = true;
             } else {

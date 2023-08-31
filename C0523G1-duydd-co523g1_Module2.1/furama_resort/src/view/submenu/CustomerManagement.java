@@ -13,8 +13,8 @@ import static utils.Validator.validateAge;
 import static utils.Validator.validateName;
 
 public class CustomerManagement {
-    private static CustomerController controller = new CustomerController();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final CustomerController CONTROLLER = new CustomerController();
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private static void showMenu() {
         System.out.println("-----CUSTOMER MANAGEMENT-----");
@@ -32,12 +32,12 @@ public class CustomerManagement {
             try {
                 showMenu();
                 System.out.print("Your option: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 boolean valid = false;
                 switch (option) {
                     case 1:
                         System.out.println("[DISPLAYING CUSTOMER LIST]");
-                        List<Customer> customers = controller.displayCustomerList();
+                        List<Customer> customers = CONTROLLER.displayCustomerList();
                         if (customers.isEmpty()) {
                             System.out.println("No customer found");
                         } else {
@@ -59,9 +59,9 @@ public class CustomerManagement {
                         System.out.println("[ADDING NEW CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
-                            id = scanner.nextLine();
+                            id = SCANNER.nextLine();
                             if (regexCustomerId(id)) {
-                                if (!controller.idExist(id)) {
+                                if (!CONTROLLER.idExist(id)) {
                                     valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
@@ -73,7 +73,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's name: ");
-                            name = scanner.nextLine();
+                            name = SCANNER.nextLine();
                             if (validateName(name)) {
                                 valid = true;
                             } else {
@@ -84,7 +84,7 @@ public class CustomerManagement {
                         do {
                             try {
                                 System.out.print("Enter customer's date of birth (dd/mm/yyy): ");
-                                dob = scanner.nextLine();
+                                dob = SCANNER.nextLine();
                                 if (validateAge(dob)) {
                                     valid = true;
                                 } else {
@@ -97,7 +97,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
-                            gender = scanner.nextLine();
+                            gender = SCANNER.nextLine();
                             if (regexGender(gender)) {
                                 valid = true;
                             } else {
@@ -107,7 +107,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's identity number: ");
-                            identNum = scanner.nextLine();
+                            identNum = SCANNER.nextLine();
                             if (regexIdentNumber(identNum)) {
                                 valid = true;
                             } else {
@@ -117,7 +117,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's phone number: ");
-                            phoneNumber = scanner.nextLine();
+                            phoneNumber = SCANNER.nextLine();
                             if (regexPhoneNumber(phoneNumber)) {
                                 valid = true;
                             } else {
@@ -128,7 +128,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's email: ");
-                            email = scanner.nextLine();
+                            email = SCANNER.nextLine();
                             if (regexEmail(email)) {
                                 valid = true;
                             } else {
@@ -139,10 +139,10 @@ public class CustomerManagement {
                         System.out.print("Enter customer's type: ");
                         String type = customerType();
                         System.out.print("Enter customer's address: ");
-                        String address = scanner.nextLine();
+                        String address = SCANNER.nextLine();
                         Customer customer = new Customer(id, name, dob, gender,
                                 identNum, phoneNumber, email, type, address);
-                        controller.addNewCustomer(customer);
+                        CONTROLLER.addNewCustomer(customer);
                         break;
                     case 3:
                         Customer newCustomer = new Customer();
@@ -157,8 +157,8 @@ public class CustomerManagement {
                         System.out.println("[EDITING CUSTOMER]");
                         do {
                             System.out.print("Enter customer's ID: ");
-                            idToFind = scanner.nextLine();
-                            if (controller.idExist(idToFind)) {
+                            idToFind = SCANNER.nextLine();
+                            if (CONTROLLER.idExist(idToFind)) {
                                 newCustomer.setId(idToFind);
                                 valid = true;
                             } else {
@@ -168,9 +168,9 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's new ID: ");
-                            newId = scanner.nextLine();
+                            newId = SCANNER.nextLine();
                             if (regexEmployeeId(newId)) {
-                                if (!controller.idExist(newId) || newCustomer.getId().equals(newId)) {
+                                if (!CONTROLLER.idExist(newId) || newCustomer.getId().equals(newId)) {
                                     valid = true;
                                 } else {
                                     System.out.println("[INVALID ID] Must be unique");
@@ -182,7 +182,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's new name: ");
-                            newName = scanner.nextLine();
+                            newName = SCANNER.nextLine();
                             if (validateName(newName)) {
                                 valid = true;
                             } else {
@@ -193,7 +193,7 @@ public class CustomerManagement {
                         do {
                             try {
                                 System.out.print("Enter customer's new date of birth: ");
-                                newDob = scanner.nextLine();
+                                newDob = SCANNER.nextLine();
                                 if (validateAge(newDob)) {
                                     valid = true;
                                 } else {
@@ -206,7 +206,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's gender [Male | Female | Non-Binary]: ");
-                            newGender = scanner.nextLine();
+                            newGender = SCANNER.nextLine();
                             if (regexGender(newGender)) {
                                 valid = true;
                             } else {
@@ -216,7 +216,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's new identity number: ");
-                            newIdentNum = scanner.nextLine();
+                            newIdentNum = SCANNER.nextLine();
                             if (regexIdentNumber(newIdentNum)) {
                                 valid = true;
                             } else {
@@ -226,7 +226,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's new phone number: ");
-                            newPhoneNumber = scanner.nextLine();
+                            newPhoneNumber = SCANNER.nextLine();
                             if (regexPhoneNumber(newPhoneNumber)) {
                                 valid = true;
                             } else {
@@ -237,7 +237,7 @@ public class CustomerManagement {
                         valid = false;
                         do {
                             System.out.print("Enter customer's new email: ");
-                            newEmail = scanner.nextLine();
+                            newEmail = SCANNER.nextLine();
                             if (regexEmail(newEmail)) {
                                 valid = true;
                             } else {
@@ -248,10 +248,10 @@ public class CustomerManagement {
                         System.out.print("Enter customer's new type: ");
                         String newType = customerType();
                         System.out.print("Enter customer's new address: ");
-                        String newAddress = scanner.nextLine();
+                        String newAddress = SCANNER.nextLine();
                         newCustomer = new Customer(newId, newName, newDob, newGender,
                                 newIdentNum, newPhoneNumber, newEmail, newType, newAddress);
-                        boolean result = controller.editCustomer(idToFind, newCustomer);
+                        boolean result = CONTROLLER.editCustomer(idToFind, newCustomer);
                         if (result) {
                             System.out.println("Success");
                         } else {
@@ -261,8 +261,8 @@ public class CustomerManagement {
                     case 4:
                         System.out.println("[DELETING CUSTOMER]");
                         System.out.print("Enter customer's ID: ");
-                        String idToDel = scanner.nextLine();
-                        if (controller.deleteCustomer(idToDel)) {
+                        String idToDel = SCANNER.nextLine();
+                        if (CONTROLLER.deleteCustomer(idToDel)) {
                             System.out.println("Success!");
                         } else {
                             System.out.println("ID does not exist!");
@@ -271,8 +271,8 @@ public class CustomerManagement {
                     case 5:
                         System.out.println("[SEARCHING CUSTOMER]");
                         System.out.print("Enter a name: ");
-                        String nameToFind = scanner.nextLine();
-                        List<Customer> customerList = controller.searchCustomerByName(nameToFind);
+                        String nameToFind = SCANNER.nextLine();
+                        List<Customer> customerList = CONTROLLER.searchCustomerByName(nameToFind);
                         if (customerList.isEmpty()) {
                             System.out.println("No customer found!");
                         } else {
@@ -311,7 +311,7 @@ public class CustomerManagement {
                 System.out.println("4. Silver");
                 System.out.println("5. Member");
                 System.out.print("Your selection: ");
-                int option = Integer.parseInt(scanner.nextLine());
+                int option = Integer.parseInt(SCANNER.nextLine());
                 switch (option) {
                     case 1:
                         type = "Diamond";
