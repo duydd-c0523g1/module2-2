@@ -1,4 +1,4 @@
-package furama_resort.src.view;
+package view;
 
 import view.submenu.CustomerManagement;
 import view.submenu.EmployeeManagement;

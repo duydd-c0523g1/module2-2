@@ -1,7 +1,7 @@
-package furama_resort.src.view.submenu.wip;
+package view.submenu.redundant;
 
 import controller.FacilityController;
-import furama_resort.src.view.MainView;
+import view.MainView;
 
 import java.util.Scanner;
 
