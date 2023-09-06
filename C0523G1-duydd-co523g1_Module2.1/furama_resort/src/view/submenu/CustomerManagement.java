@@ -5,6 +5,7 @@ import model.people.Customer;
 import view.MainView;
 
 import java.time.format.DateTimeParseException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,6 +39,12 @@ public class CustomerManagement {
                     case 1:
                         System.out.println("[DISPLAYING CUSTOMER LIST]");
                         List<Customer> customers = CONTROLLER.displayCustomerList();
+                        customers.sort(new Comparator<Customer>() {
+                            @Override
+                            public int compare(Customer o1, Customer o2) {
+                                return o2.getId().compareTo(o1.getId());
+                            }
+                        });
                         if (customers.isEmpty()) {
                             System.out.println("No customer found");
                         } else {

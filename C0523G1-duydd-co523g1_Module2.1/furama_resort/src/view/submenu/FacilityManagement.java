@@ -96,9 +96,9 @@ public class FacilityManagement {
                             System.out.println("No facility found");
                         }
                         break;
-                    case 5:
+                    case 5: //Chức năng quay lại menu chính
                         MainView.launch();
-                        break;
+                        return;
                     case 0:
                         System.exit(0);
                     default:
