@@ -1,7 +1,7 @@
 package extra.bai16.service;
 
-import extra.bai16.Exeptions.IdNotFoundException;
-import extra.bai16.Exeptions.UniqueIdException;
+import extra.bai16.exception.IdNotFoundException;
+import extra.bai16.exception.UniqueIdException;
 import extra.bai16.model.Spend;
 import extra.bai16.repository.ISpendingRepository;
 import extra.bai16.repository.SpendingRepositoryImpl;

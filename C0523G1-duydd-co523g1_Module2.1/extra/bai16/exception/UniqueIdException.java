@@ -1,4 +1,4 @@
-package extra.bai16.Exeptions;
+package extra.bai16.exception;
 
 public class UniqueIdException extends Exception {
     public UniqueIdException(String msg) {

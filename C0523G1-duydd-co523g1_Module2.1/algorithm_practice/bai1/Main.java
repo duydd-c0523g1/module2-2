@@ -8,8 +8,8 @@ package algorithm_practice.bai1;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {1,1,2,3,3,2};
-        boolean result = CheckFreqFunction.checkFrequency(array);
+        int[] array = {1,1,2,3,3,2, 2};
+        boolean result = CheckFreqFunction.checkFreq(array);
             if (result) {
                 System.out.println("Mảng có tần số xuất hiện các phần tử bằng nhau");
             } else {

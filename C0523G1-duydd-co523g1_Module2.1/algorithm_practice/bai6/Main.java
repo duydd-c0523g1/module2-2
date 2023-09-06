@@ -12,13 +12,12 @@ public class Main {
         char[] chars = string.toCharArray();
         List<Character> result = new ArrayList<>();
         List<Character> characters1 = new ArrayList<>();
-        List<Character> characters2 = characters1;
         for (char c : chars) {
             characters1.add(c);
         }
         for (int i = 0; i < characters1.size(); characters1.remove(characters1.get(i))) {
             for (int j = i + 1; j < characters1.size(); j++) {
-                if (characters1.get(i) == characters2.get(j)) {
+                if (characters1.get(i) == characters1.get(j)) {
                     result.add(characters1.get(i));
                 }
             }

@@ -1,6 +1,6 @@
 package extra.bai16.repository;
 
-import extra.bai16.Exeptions.IdNotFoundException;
+import extra.bai16.exception.IdNotFoundException;
 import extra.bai16.model.Spend;
 import extra.bai16.utils.Stream;
 
@@ -127,4 +127,3 @@ public class SpendingRepositoryImpl implements ISpendingRepository {
         return strings;
     }
 }
-
